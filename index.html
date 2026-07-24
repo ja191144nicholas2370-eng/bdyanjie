@@ -37,8 +37,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
   <link href="https://fonts.googleapis.cn/css2?family=Cinzel:wght@500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="assets/css/core.css"
-  <link rel="stylesheet" href="assets/css/mobile.css" />
+  <link rel="stylesheet" href="assets/css/core.css" />
+  <style>
+    @media (max-width: 767px) {
+      .nav .wrap { flex-wrap:wrap;gap:4px;justify-content:center; }
+      .nav-links { display:flex!important;flex-wrap:wrap;gap:4px 8px;font-size:11px;justify-content:center;order:3;width:100%;padding:2px 0; }
+      .nav-links a { white-space:nowrap; }
+      .brand .name { font-size:14px; }
+      .brand .mono { width:26px;height:26px;font-size:12px; }
+      .hero { padding:110px 0 30px!important; }
+      .hero-grid { display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px; }
+      .hero-visual { order:1;max-width:160px; }
+      .hero-content { order:2; }
+      .hero-portrait { max-width:160px;border-radius:50%;display:block;margin:0 auto; }
+      h1,.d1 { font-size:24px!important;line-height:1.3; }
+      .svc-grid { display:flex;flex-direction:column;gap:10px; }
+      .trust-grid { display:flex;flex-direction:column;gap:10px; }
+      .about-grid { display:flex;flex-direction:column;gap:16px; }
+      .stats { grid-template-columns:repeat(3,1fr);gap:6px; }
+      .stat .sub { display:none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -84,11 +103,11 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div class="hero-content">
-        <div class="eyebrow reveal" data-i18n="hero.eyebrow">北大燕姐 · AI定位与GEO增长</div>
-        <h1 class="reveal d1" data-i18n="hero.title">
+        <div class="eyebrow reveal in" data-i18n="hero.eyebrow">北大燕姐 · AI定位与GEO增长</div>
+        <h1 class="reveal in d1" data-i18n="hero.title">
           放大企业<span class="accent">锋芒</span>，<br>擦亮个人<span class="accent">光芒</span>
         </h1>
-        <p class="hero-facts reveal d2" data-i18n="hero.facts">
+        <p class="hero-facts reveal in d2" data-i18n="hero.facts">
           用AI定位与GEO增长，帮你被搜到、被选择、被信任。
         </p>
         <div class="hero-cta reveal d3">
@@ -96,7 +115,7 @@
           <a class="btn btn-ghost" href="#services" data-i18n="hero.cta2">看服务</a>
         </div>
       </div>
-      <div class="hero-visual reveal d2" aria-hidden="true">
+      <div class="hero-visual reveal in d2" aria-hidden="true">
         <img src="assets/img/portrait-web.png" alt="北大燕姐" class="hero-portrait" loading="eager" />
       </div>
     </div>
