@@ -65,8 +65,12 @@
     }
     .back-link:hover { text-decoration: underline; }
     @media (max-width: 640px) {
-      .article-detail { padding: 24px 20px; font-size: 0.95rem; border-radius: 12px; }
-      .article-detail .lead { font-size: 1.05rem; }
+      .article-detail { padding: 24px 16px; font-size: 0.92rem; border-radius: 12px; }
+      .article-detail .lead { font-size: 1rem; }
+      .article-detail h1 { font-size: 1.4rem; }
+      .article-detail h2 { font-size: 1.15rem; }
+      .tool-card { padding: 14px; }
+      .back-link { margin-left: 8px; }
     }
   </style>
 </head>
@@ -197,6 +201,11 @@
   <button class="back-to-top" id="backToTop" type="button" aria-label="返回顶部">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </button>
+
+  <div class="mobile-cta" id="mobileCta">
+    <a class="btn btn-ghost" href="../articles.html">文章列表</a>
+    <a class="btn btn-primary" href="index.html#contact" data-copy>加微信 cheny2806</a>
+  </div>
 
   <script src="../assets/js/main.js"></script>
 </body>
