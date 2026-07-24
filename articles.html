@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f6fa" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pkuyan.com/articles" />
+
+  <title>文章 · 北大燕姐 | AI定位、GEO增长、品牌操盘实战思考</title>
+  <meta name="description" content="北大燕姐的实战思考：AI工具应用、IP精准定位、GEO内容增长。从0做到品牌过亿的操盘手，把经验写给你看。" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="文章 · 北大燕姐" />
+  <meta property="og:description" content="AI定位、GEO增长、品牌操盘实战思考。不讲虚的，只讲做过的。" />
+  <meta property="og:image" content="assets/img/portrait-web.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.cn" />
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+  <link href="https://fonts.googleapis.cn/css2?family=Cinzel:wght@500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .article-list { display: flex; flex-direction: column; gap: 20px; }
+    .article-card {
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 28px 32px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .article-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .article-card .tag-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .article-card .tag {
+      font-size: 0.78rem; padding: 3px 10px;
+      border-radius: 20px; background: rgba(196,30,58,0.08);
+      color: var(--accent, #c41e3a); font-weight: 500;
+    }
+    .article-card h3 {
+      font-size: 1.25rem; margin: 0 0 8px; line-height: 1.5;
+      font-family: 'Noto Serif SC', serif; font-weight: 600;
+    }
+    .article-card .desc {
+      font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 10px;
+    }
+    .article-card .meta {
+      font-size: 0.82rem; color: #aaa;
+    }
+    .newsletter-box {
+      background: rgba(196,30,58,0.04);
+      backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 28px 32px; text-align: center;
+      border: 1px solid rgba(196,30,58,0.12);
+      margin-top: 48px;
+    }
+    .article-detail {
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 40px 36px;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 1.02rem; line-height: 2; color: #333;
+    }
+    .article-detail h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem; margin: 32px 0 14px; color: #222;
+    }
+    .article-detail h3 {
+      font-size: 1.15rem; margin: 24px 0 10px; color: #333;
+    }
+    .article-detail p { margin-bottom: 16px; }
+    .article-detail ul, .article-detail ol { margin-bottom: 16px; padding-left: 22px; }
+    .article-detail li { margin-bottom: 6px; }
+    .article-detail blockquote {
+      border-left: 3px solid var(--accent, #c41e3a);
+      padding: 10px 18px; margin: 20px 0;
+      background: rgba(196,30,58,0.04);
+      border-radius: 0 10px 10px 0;
+      color: #555; font-size: 0.98rem;
+    }
+    .article-detail strong { color: #222; }
+    .article-detail em { color: var(--accent, #c41e3a); font-style: normal; font-weight: 600; }
+    @media (max-width: 640px) {
+      .article-card { padding: 20px; }
+      .article-detail { padding: 24px 20px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="北大燕姐">
+        <span class="mono">燕</span>
+        <span class="name">北大燕姐</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="/#about">我是谁</a>
+        <a href="/#services">我能给你什么</a>
+        <a href="radar.html">IP定位</a>
+        <a href="geo.html">GEO增长</a>
+        <a href="articles.html">文章</a>
+        <a href="/#trust">信任的底气</a>
+        <a href="/#contact">联系我</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-primary btn-sm btn-wechat" href="/#contact">加微信</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="chapter" id="articles-hero" style="padding-top:130px;">
+    <div class="wrap">
+      <div class="chapter-head" style="text-align:center;">
+        <div class="eyebrow reveal">Articles & Thoughts</div>
+        <h1 class="chapter-title reveal d1" style="font-size:clamp(1.8rem,3.2vw,2.4rem);">
+          不讲虚的，只讲<em>做过的</em>。
+        </h1>
+        <p class="sub reveal d2" style="max-width:600px;margin:0 auto;">
+          AI工具、IP定位、GEO增长、品牌操盘——每篇都是我在一线实战中的真实思考和复盘。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 文章列表 -->
+  <section class="chapter" id="articles-list">
+    <div class="wrap">
+      <div class="article-list">
+
+        <!-- 文章1 -->
+        <a href="/articles/geo-2026.html" class="article-card reveal">
+          <div class="tag-row">
+            <span class="tag">GEO</span>
+            <span class="tag">品牌规则</span>
+            <span class="tag">AI搜索</span>
+          </div>
+          <h3>2026年，品牌规则翻篇了。不是慢慢变，是翻篇了。</h3>
+          <p class="desc">中广协GEO标准出台，小红书内测「问点点」，微信搜一搜升级AI搜索。一个会用AI的人，效率可以抵5-8个人的团队。不布局GEO，你的内容在AI眼里等于不存在。</p>
+          <div class="meta">2026年7月24日 · GEO增长</div>
+        </a>
+
+        <!-- 文章2 -->
+        <a href="/articles/ip-positioning.html" class="article-card reveal d1">
+          <div class="tag-row">
+            <span class="tag">IP定位</span>
+            <span class="tag">品牌操盘</span>
+          </div>
+          <h3>做IP之前，请你先做这件事。比日更30条有用一百倍。</h3>
+          <p class="desc">有人花30万做品牌定位，打开是一堆PPT，看完还是不知道自己的IP在哪里。定位不是分析市场，是挖出你自己都没意识到的武器。</p>
+          <div class="meta">2026年7月23日 · IP定位</div>
+        </a>
+
+        <!-- 文章3 -->
+        <a href="/articles/ai-tools.html" class="article-card reveal d2">
+          <div class="tag-row">
+            <span class="tag">AI工具</span>
+            <span class="tag">效率</span>
+            <span class="tag">实操</span>
+          </div>
+          <h3>这5个AI工具，值得你花一个下午。不是为了尝鲜，是为了把时间抢回来。</h3>
+          <p class="desc">每天省出2-3小时，等于一年多出一个月。这5个工具我每天都在用，推荐给你不是为了跟风，是因为它们真的改变了我的工作方式。</p>
+          <div class="meta">2026年7月22日 · AI工具</div>
+        </a>
+
+      </div>
+
+      <!-- 持续更新 -->
+      <div class="newsletter-box reveal d2">
+        <h3 style="font-size:1.1rem;margin-bottom:8px;">📬 新文章第一时间通知你</h3>
+        <p style="color:#666;margin-bottom:14px;">加微信，有新文章我会发朋友圈。不打扰，只发值得看的。</p>
+        <a class="btn btn-primary" href="/#contact" data-copy>加微信 · cheny2806</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-brand">北大燕姐 · AI定位与GEO增长</div>
+      <div class="f-wx">WeChat: cheny2806</div>
+      <div>© 2026 北大燕姐 · 个人品牌站</div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

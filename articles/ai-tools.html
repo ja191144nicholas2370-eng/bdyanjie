@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f6fa" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pkuyan.com/articles/ai-tools.html" />
+
+  <title>这5个AI工具值得你花一个下午 · 北大燕姐 | 不是为了尝鲜，是为了把时间抢回来</title>
+  <meta name="description" content="每天省出2-3小时，等于一年多出一个月。推荐5个我每天都在用的AI工具：从知识库到内容生产、从语音转文字到设计出图。" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="这5个AI工具值得你花一个下午 · 北大燕姐" />
+  <meta property="og:description" content="不是为了尝鲜，是为了把时间抢回来。" />
+  <meta property="og:image" content="../assets/img/portrait-web.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.cn" />
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+  <link href="https://fonts.googleapis.cn/css2?family=Cinzel:wght@500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .article-detail {
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 40px 36px;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 1.02rem; line-height: 2; color: #333;
+      max-width: 720px; margin: 0 auto;
+    }
+    .article-detail h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem; margin: 36px 0 14px; color: #222;
+      padding-bottom: 8px; border-bottom: 2px solid rgba(196,30,58,0.12);
+    }
+    .article-detail h3 {
+      font-size: 1.15rem; margin: 28px 0 10px; color: #333;
+    }
+    .article-detail p { margin-bottom: 18px; }
+    .article-detail ul, .article-detail ol { margin-bottom: 18px; padding-left: 22px; }
+    .article-detail li { margin-bottom: 8px; }
+    .article-detail blockquote {
+      border-left: 3px solid var(--accent, #c41e3a);
+      padding: 12px 20px; margin: 24px 0;
+      background: rgba(196,30,58,0.04);
+      border-radius: 0 10px 10px 0;
+      color: #555; font-size: 0.98rem;
+    }
+    .article-detail strong { color: #222; }
+    .article-detail .lead {
+      font-size: 1.15rem; color: #444; line-height: 1.9;
+      margin-bottom: 28px; font-weight: 500;
+    }
+    .article-header-meta { text-align: center; margin-bottom: 32px; color: #999; font-size: 0.9rem; }
+    .back-link { display: inline-block; margin-bottom: 16px; font-size: 0.9rem; color: var(--accent, #c41e3a); text-decoration: none; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; }
+    .tool-card {
+      background: rgba(255,255,255,0.6);
+      border-radius: 12px; padding: 22px 24px;
+      margin: 20px 0; border: 1px solid rgba(0,0,0,0.06);
+    }
+    .tool-card h3 { margin-top: 0; }
+    .tool-card .tool-tag {
+      display: inline-block; font-size: 0.75rem; padding: 2px 8px;
+      border-radius: 12px; background: rgba(196,30,58,0.1);
+      color: #c41e3a; margin-right: 6px; margin-bottom: 4px;
+    }
+    @media (max-width: 640px) {
+      .article-detail { padding: 24px 20px; font-size: 0.95rem; }
+      .article-detail .lead { font-size: 1.05rem; }
+      .tool-card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="北大燕姐">
+        <span class="mono">燕</span>
+        <span class="name">北大燕姐</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="/#about">我是谁</a>
+        <a href="/#services">我能给你什么</a>
+        <a href="/articles">文章</a>
+        <a href="/#contact">联系我</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-primary btn-sm btn-wechat" href="/#contact">加微信</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="chapter" style="padding-top:130px;padding-bottom:20px;">
+    <div class="wrap">
+      <a href="/articles" class="back-link reveal">← 返回文章列表</a>
+
+      <div class="article-detail reveal d1">
+        <h1 style="font-family:'Noto Serif SC',serif;font-size:1.8rem;text-align:center;line-height:1.4;margin-bottom:8px;">
+          这5个AI工具，值得你花一个下午
+        </h1>
+        <p style="text-align:center;font-size:1.1rem;color:#666;margin-bottom:6px;">不是为了尝鲜，是为了把时间抢回来。</p>
+        <div class="article-header-meta">2026年7月22日 · 北大燕姐 · AI工具</div>
+
+        <p class="lead">
+          我每天用AI省出2-3个小时。不是在玩——是在抢时间。这5个工具是我从一堆AI产品里筛出来的，每个都是长期在用、真实改变了工作方式的。推荐给你不是为了跟风，是因为它们真的有用。
+        </p>
+
+        <!-- 工具1 -->
+        <div class="tool-card">
+          <h3>① AI助理：Hermes Agent</h3>
+          <span class="tool-tag">内容生产</span><span class="tool-tag">行程管理</span><span class="tool-tag">知识库</span>
+          <p>这是我用得最狠的工具。它不是一个聊天机器人，是搭在我整个工作系统上的AI助理。帮我做选题挖掘、写公众号长文、出小红书图卡、管理行程日历、维护知识库。说一个数字：公众号从选题到发布，过去我要花4-6个小时，现在1个小时搞定。不是我变快了，是我有了一个不睡觉的搭档。</p>
+          <p><strong>适合谁：</strong>需要把AI嵌入日常工作流的人。不只是"偶尔问问题"，而是"AI帮你跑整套流程"。</p>
+        </div>
+
+        <!-- 工具2 -->
+        <div class="tool-card">
+          <h3>② 知识库：Obsidian + AI</h3>
+          <span class="tool-tag">笔记</span><span class="tool-tag">知识管理</span><span class="tool-tag">碎片萃取</span>
+          <p>Obsidian是我的第二大脑。所有碎片信息、灵感、设计参考、平台规则变化，全部掉进去。加上AI辅助，它不是仓库，是加工厂。碎片扔进去，结构化的内容流出来。小红书刷到一条爆款，剪藏进来，AI帮我拆解它的标题结构、正文节奏、评论区关键词——然后用我自己的风格重新表达。</p>
+          <p><strong>适合谁：</strong>每天接触大量信息、需要把碎片变系统的人。</p>
+        </div>
+
+        <!-- 工具3 -->
+        <div class="tool-card">
+          <h3>③ 语音转文字：whisper.cpp</h3>
+          <span class="tool-tag">语音</span><span class="tool-tag">灵感捕捉</span>
+          <p>灵感从来不挑时间和地点。开车时想到一个标题，走路时冒出一个金句，临睡前脑子里闪过一个选题——过去这些就丢了。现在打开手机录一段语音，whisper自动转成文字，存进知识库。第二天打开，素材已经在那了。从灵感到可用素材，0秒损耗。</p>
+          <p><strong>适合谁：</strong>脑子快、手跟不上的人。灵感型创作者。</p>
+        </div>
+
+        <!-- 工具4 -->
+        <div class="tool-card">
+          <h3>④ 小红书爆款采集：MCP工具</h3>
+          <span class="tool-tag">数据分析</span><span class="tool-tag">爆款拆解</span><span class="tool-tag">趋势追踪</span>
+          <p>做内容最怕闭门造车。这个小工具帮我自动抓取小红书上的爆款笔记——标题怎么写的、正文什么结构、评论区在讨论什么、数据表现如何。不是我偷懒，是我要把时间花在"创作"上，而不是花在"翻手机找素材"上。采集到的素材AI自动拆解，然后我用自己的风格吸收、转化。</p>
+          <p><strong>适合谁：</strong>做小红书、做内容、需要持续追踪平台风向的人。</p>
+        </div>
+
+        <!-- 工具5 -->
+        <div class="tool-card">
+          <h3>⑤ AI生图：即梦 / 可灵</h3>
+          <span class="tool-tag">设计</span><span class="tool-tag">图卡</span>
+          <p>做小红书图卡，以前一张图要找设计师、等排期、来回改。现在AI直接出图。即梦和可灵各有所长——即梦的质感更细腻，可灵的风格更多元。我不是设计师出身，但AI帮我跨越了"设计能力"这个坎。图卡从文案到出图，以前2-3天，现在30分钟。</p>
+          <p><strong>适合谁：</strong>需要频繁出视觉内容但没设计团队的人。</p>
+        </div>
+
+        <h2>一个下午，搭好你的AI系统</h2>
+
+        <p>这5个工具不是孤立的，它们是我日常工作的一条流水线：</p>
+
+        <ol>
+          <li><strong>小红书采集</strong>发现热点和爆款结构</li>
+          <li><strong>Obsidian</strong>收纳碎片，AI辅助拆解</li>
+          <li><strong>语音转文字</strong>随时捕捉灵感，喂给知识库</li>
+          <li><strong>Hermes</strong>基于知识库出内容、排行程</li>
+          <li><strong>AI生图</strong>把内容变成能发的视觉</li>
+        </ol>
+
+        <p>五步跑通的那天，我感觉自己不是一个人在战斗。</p>
+
+        <blockquote>
+          工具的意义从来不在于它多新、多酷。在于它能让你把时间花在只有你能做的事情上——思考、判断、创作——而不是花在重复劳动上。
+        </blockquote>
+
+        <p>如果你也在搭自己的AI工具系统，或者想知道怎么把上面这套串起来——<strong>加微信，我们聊聊。</strong>我自己踩过的坑，可以帮你绕过去。</p>
+
+        <p style="text-align:center;margin-top:32px;">
+          <a class="btn btn-primary" href="/#contact" data-copy>加微信 · cheny2806</a>
+        </p>
+
+        <p style="text-align:center;margin-top:12px;font-size:0.85rem;color:#999;">
+          标签：AI工具 · AI助理 · Obsidian · whisper · 小红书 · 即梦 · 内容生产 · 效率
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-brand">北大燕姐 · AI定位与GEO增长</div>
+      <div class="f-wx">WeChat: cheny2806</div>
+      <div>© 2026 北大燕姐 · 个人品牌站</div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
