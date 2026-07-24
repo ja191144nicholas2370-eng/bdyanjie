@@ -194,9 +194,10 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-links {
-  display: none;
-  gap: 32px;
-  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 11px;
   color: var(--text-2);
 }
 
@@ -970,7 +971,7 @@ h1 .accent {
 
 /* 响应式 - 桌面端 */
 @media (min-width: 768px) {
-  .nav-links { display: flex; }
+  .nav-links { display: flex; gap: 32px; font-size: 14px; }
   .nav .btn-wechat { display: inline-flex; }
 
   .hero-grid {
