@@ -1,2 +1,372 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=home.html"></head><body></body></html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f6fa" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pkuyan.com/" />
+
+  <title>北大燕姐 · AI定位与GEO增长 | 放大企业锋芒，擦亮个人光芒</title>
+  <meta name="description" content="用AI定位与GEO增长，帮你被搜到、被选择、被信任。15年世界500强品牌运营与管理，10年+企业培训与职业培训师，从0做到品牌过亿。" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="北大燕姐 · AI定位与GEO增长" />
+  <meta property="og:description" content="放大企业锋芒，擦亮个人光芒。15年世界500强品牌运营，从0做到品牌过亿。" />
+  <meta property="og:image" content="assets/img/portrait-web.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "北大燕姐",
+    "alternateName": "PKU Yan",
+    "jobTitle": "Brand Strategist & AI Positioning Consultant",
+    "description": "15年世界500强品牌运营与管理，从0做到品牌过亿。AI定位与GEO增长顾问。",
+    "knowsAbout": ["品牌战略", "AI定位", "GEO搜索优化", "品牌运营", "企业培训"],
+    "address": { "@type": "PostalAddress", "addressLocality": "深圳" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.cn" />
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+  <link href="https://fonts.googleapis.cn/css2?family=Cinzel:wght@500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/core.css" />
+  <style>
+    @media (max-width: 767px) {
+      .nav .wrap { flex-wrap:wrap;gap:4px;justify-content:center; }
+      .nav-links { display:flex!important;flex-wrap:wrap;gap:4px 8px;font-size:11px;justify-content:center;order:3;width:100%;padding:2px 0; }
+      .nav-links a { white-space:nowrap; }
+      .brand .name { font-size:14px; }
+      .brand .mono { width:26px;height:26px;font-size:12px; }
+      .hero { padding:110px 0 30px!important; }
+      .hero-grid { display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px; }
+      .hero-visual { order:1;max-width:160px; }
+      .hero-content { order:2; }
+      .hero-portrait { max-width:160px;border-radius:50%;display:block;margin:0 auto; }
+      h1,.d1 { font-size:24px!important;line-height:1.3; }
+      .svc-grid { display:flex;flex-direction:column;gap:10px; }
+      .trust-grid { display:flex;flex-direction:column;gap:10px; }
+      .about-grid { display:flex;flex-direction:column;gap:16px; }
+      .stats { grid-template-columns:repeat(3,1fr);gap:6px; }
+      .stat .sub { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 滚动进度条 -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- 渐变氛围背景 -->
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- 导航 -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="北大燕姐">
+        <span class="mono">燕</span>
+        <span class="name" data-i18n="brand.name">北大燕姐</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#about" data-i18n="nav.about">我是谁</a>
+        <a href="#services" data-i18n="nav.services">我能给你什么</a>
+        <a href="radar.html" data-i18n="nav.radar">IP定位</a>
+        <a href="geo.html" data-i18n="nav.geo">GEO增长</a>
+        <a href="articles.html" data-i18n="nav.articles">文章</a>
+        <a href="#trust" data-i18n="nav.trust">信任的底气</a>
+        <a href="#contact" data-i18n="nav.contact">联系我</a>
+      </nav>
+      <div class="nav-right">
+        <!-- 语言切换器 -->
+        <div class="lang-switch" id="langSwitch" role="group" aria-label="Language / 语言">
+          <button class="lang-btn active" data-lang="zh" type="button">中</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
+        <a class="btn btn-primary btn-sm btn-wechat" href="#contact" data-i18n="nav.wechat">加微信</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== 1. 首屏 ====== -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow reveal in" data-i18n="hero.eyebrow">北大燕姐 · AI定位与GEO增长</div>
+        <h1 class="reveal in d1" data-i18n="hero.title">
+          放大企业<span class="accent">锋芒</span>，<br>擦亮个人<span class="accent">光芒</span>
+        </h1>
+        <p class="hero-facts reveal in d2" data-i18n="hero.facts">
+          用AI定位与GEO增长，帮你被搜到、被选择、被信任。
+        </p>
+        <div class="hero-cta reveal d3">
+          <a class="btn btn-primary" href="#contact" data-copy data-i18n="hero.cta1">加微信 · cheny2806</a>
+          <a class="btn btn-ghost" href="#services" data-i18n="hero.cta2">看服务</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal in d2" aria-hidden="true">
+        <img src="assets/img/portrait-web.png" alt="北大燕姐" class="hero-portrait" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 2. 我是谁 ====== -->
+  <section class="chapter" id="about">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="eyebrow reveal" data-i18n="about.eyebrow">01 — About</div>
+        <h2 class="chapter-title reveal d1" data-i18n="about.title">我是谁<em>。</em></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="portrait-wrap glass">
+            <img src="assets/img/portrait-web.png" alt="北大燕姐" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="about-card glass reveal d1">
+          <div class="about-text">
+            <p data-i18n="about.p1">15 年世界 500 强品牌操盘手。从零起步，把一款产品做到年销破亿，跑通了品牌从萌芽到爆发的每一道坎。有段时间，白天泡经销商仓库对库存，晚上回酒店改方案到凌晨三点，早上七点又站在培训讲台上。就这么死磕过来的。</p>
+            <p data-i18n="about.p2">2026 年，一位创业者坐在我对面，花 30 万做了一套品牌定位，打开就是一堆 PPT。他说："燕姐，看完我还是不知道我的 IP 在哪里。"</p>
+            <p data-i18n="about.p3">那一刻我确认了一件事：品牌这盘棋，规则已经翻篇了。不是谁有钱谁说了算，是 AI 把信息差抹平了，流量路口换了方向。老地图找不到新大陆。</p>
+            <p data-i18n="about.p4">于是我转身创业。把 15 年品牌经验、10 年培训表达功力，和 AI 这个新引擎熔在一起 —— 帮企业和个人做 IP 精准定位，做 GEO 内容增长。被搜到，被选择，被信任。</p>
+            <p class="about-closing" data-i18n="about.p5">不讲虚的。我走过的每一步，都算数。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat glass reveal">
+          <div class="num" data-i18n="stat1.num">15<small>年</small></div>
+          <div class="label" data-i18n="stat1.label">世界500强品牌运营与管理</div>
+          <div class="sub" data-i18n="stat1.sub">长期扎根品牌运营与品牌管理一线</div>
+        </div>
+        <div class="stat glass reveal d1">
+          <div class="num" data-i18n="stat2.num">10<small>年+</small></div>
+          <div class="label" data-i18n="stat2.label">企业培训与职业培训师</div>
+          <div class="sub" data-i18n="stat2.sub">练就能把实战讲清楚的能力</div>
+        </div>
+        <div class="stat glass reveal d2">
+          <div class="num" data-i18n="stat3.num">0<small>→亿</small></div>
+          <div class="label" data-i18n="stat3.label">从零做到品牌过亿</div>
+          <div class="sub" data-i18n="stat3.sub">跑通产品从0到破亿的完整成长路径</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 3. 我能给你什么 ====== -->
+  <section class="chapter" id="services">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="eyebrow reveal" data-i18n="svc.eyebrow">02 — Services</div>
+        <h2 class="chapter-title reveal d1" data-i18n="svc.title">我能给你什么<em>。</em></h2>
+      </div>
+
+      <div class="svc-grid">
+
+        <!-- ① 工具包 -->
+        <div class="svc-card glass reveal">
+          <span class="tag" data-i18n="svc1.tag">Free · 随喜打赏</span>
+          <h3 data-i18n="svc1.title">AI + IP 定位工具包</h3>
+          <p data-i18n="svc1.desc">我整理的AI+IP定位工具，拿去直接用。觉得有用就打个赏。</p>
+          <button class="btn btn-ghost svc-btn" id="toolkitBtn" type="button" data-i18n="svc1.btn">获取工具包</button>
+        </div>
+
+        <!-- ② 定位雷达 -->
+        <div class="svc-card glass reveal d1">
+          <span class="tag" data-i18n="svc2.tag">￥500 – 600</span>
+          <h3 data-i18n="svc2.title">AI + IP 定位雷达</h3>
+          <p data-i18n="svc2.desc">三步走：帮你理清过往优势 → 发现你自己都没意识到的亮点 → 萃取别人越不过去的核心竞争力。</p>
+          <button class="btn btn-ghost svc-btn radar-trigger" type="button" data-i18n="svc2.btn">立即使用</button>
+        </div>
+
+        <!-- ③ 内容交付 -->
+        <div class="svc-card glass reveal d2">
+          <span class="tag" data-i18n="svc3.tag">￥1,500 – 3,000</span>
+          <h3 data-i18n="svc3.title">10–15天内容交付</h3>
+          <p data-i18n="svc3.desc">基于你的品牌定位，帮你产出10到15天的账号内容。定位帮你定，内容帮你出。</p>
+          <button class="btn btn-ghost svc-btn consult-trigger" data-service-key="svc3.title" type="button" data-i18n="svc3.btn">立即咨询</button>
+        </div>
+
+        <!-- ④ 线下沙龙 -->
+        <div class="svc-card glass reveal">
+          <span class="tag" data-i18n="svc4.tag">Offline</span>
+          <h3 data-i18n="svc4.title">线下半天·行业资源碰撞</h3>
+          <p data-i18n="svc4.desc">面对面深度互动，深入了解你的真实需求。更难得的，是这里汇聚了品牌操盘手、企业决策者之间的资源链接与深度对接——一场真正稀缺的资源碰撞。</p>
+          <a class="btn btn-ghost svc-btn" href="#contact" data-i18n="svc4.btn">预约咨询</a>
+        </div>
+
+        <!-- ⑤ 深度合作 -->
+        <div class="svc-card glass reveal d1">
+          <span class="tag" data-i18n="svc5.tag">Custom</span>
+          <h3 data-i18n="svc5.title">深度合作</h3>
+          <p data-i18n="svc5.desc">基于深度信任与渠道深耕，我们以共创共荣的方式，一起开发属于你的新生态。</p>
+          <p class="svc-gold" data-i18n="svc5.gold">以信任立本，以结果立锋。</p>
+          <a class="btn btn-ghost svc-btn" href="#contact" data-copy data-i18n="svc5.btn">加微信聊</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 4. 信任的底气 ====== -->
+  <section class="chapter" id="trust" style="padding-bottom:60px;">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="eyebrow reveal" data-i18n="trust.eyebrow">03 — Trust</div>
+        <h2 class="chapter-title reveal d1" data-i18n="trust.title">信任的底气<em>。</em></h2>
+      </div>
+
+      <div class="trust-block reveal d1">
+        <p class="trust-quote glass" data-i18n="trust.q1">
+          燕姐只讲真话，只讲自己做过的事情。走过的每一步，都算数。
+        </p>
+      </div>
+
+      <div class="trust-grid">
+        <!-- 品牌操盘 -->
+        <div class="trust-card glass reveal d1">
+          <div class="trust-card-num" data-i18n="trust1.num">0 → 亿</div>
+          <h3 data-i18n="trust1.title">从零到品牌破亿</h3>
+          <p data-i18n="trust1.desc">从零起步，把一个品牌做到年营业额破亿。规划、构建、推动、落地——品牌从萌芽到爆发的每一个关键节点，我全程参与。这条路，实打实从头走到了尾。</p>
+        </div>
+
+        <!-- 案例 -->
+        <div class="trust-card glass reveal d2">
+          <div class="trust-card-num" data-i18n="trust2.num">300<small>万</small></div>
+          <h3 data-i18n="trust2.title">一场活动拉爆一座城</h3>
+          <p data-i18n="trust2.desc">瞄准一个战略重点城市，从策划到客户意向、活动细节、反复协同业务团队调研市场与竞品、深挖用户需求与消费路径、跟渠道经销商团队一轮轮复盘脑暴——最终一次活动拉爆市场，<strong>单场完成300万实际销售</strong>。合作方从头到尾赞不绝口：活动前的召集令培训、过程中的细致对接复盘、快速的执行力，给他们留下了极深的印象和极好的口碑。</p>
+        </div>
+      </div>
+
+      <div class="trust-block reveal d1">
+        <p class="trust-quote glass" data-i18n="trust.q2">
+          在AI领域学习与成长的每一步，做给你看、告诉你怎么做。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 5. 联系我 ====== -->
+  <section class="final" id="contact">
+    <div class="wrap final-inner">
+      <div class="eyebrow reveal" style="justify-content:center;" data-i18n="contact.eyebrow">04 — Let's Talk</div>
+      <h2 class="reveal d1" data-i18n="contact.title">把你的品牌，<br>交给<em>真正操盘过</em>的人。</h2>
+      <p class="sub reveal d2" data-i18n="contact.sub">加微信，聊聊你的品牌。基于信任，我们一起找到答案。</p>
+
+      <div class="wechat-box glass reveal d2">
+        <div class="qr" style="width:auto;height:auto;overflow:visible;">
+          <img src="assets/img/wechat-qr.jpg" alt="北大燕姐微信二维码" style="width:100px;object-fit:contain;" loading="lazy" />
+        </div>
+        <div>
+          <div class="wx-id">cheny2806</div>
+          <div class="wx-label">WECHAT ID</div>
+        </div>
+        <button class="btn btn-ghost" data-copy type="button" data-i18n="contact.copy">复制微信号</button>
+      </div>
+
+      <div class="hero-cta reveal d3" style="justify-content:center;">
+        <a class="btn btn-primary" href="#" data-copy data-i18n="contact.cta1">加微信 · cheny2806</a>
+        <a class="btn btn-ghost" href="#services" data-i18n="contact.cta2">了解服务</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-brand" data-i18n="footer.brand">北大燕姐 · AI定位与GEO增长</div>
+      <div class="f-wx">WeChat: cheny2806</div>
+      <div data-i18n="footer.copy">© 2026 北大燕姐 · 个人品牌站</div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部 -->
+  <button class="back-to-top" id="backToTop" type="button" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- 移动端 sticky CTA -->
+  <div class="mobile-cta" id="mobileCta">
+    <a class="btn btn-ghost" href="#services" data-i18n="mcta.services">服务</a>
+    <a class="btn btn-primary" href="#contact" data-copy data-i18n="mcta.wechat">加微信 cheny2806</a>
+  </div>
+
+  <!-- 复制提示 -->
+  <div class="copy-tip" id="copyTip" data-i18n="copytip">已复制微信号 cheny2806</div>
+
+  <!-- 工具包打赏弹窗 -->
+  <div class="modal-overlay" id="toolkitModal" aria-hidden="true">
+    <div class="modal glass" role="dialog" aria-label="Toolkit">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-body" style="text-align:center;">
+        <h3 class="modal-title">AI + IP 定位工具包</h3>
+        <p class="modal-desc" style="margin-bottom:20px;">10分钟，三步挖出你的核心竞争力。<br>品牌操盘手的方法，跟AI生成的不一样。做完觉得值，页面底部可以打赏。</p>
+        <a href="radar.html" class="btn btn-primary" style="display:inline-block;">打开免费自测 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 咨询弹窗 -->
+  <div class="modal-overlay" id="consultModal" aria-hidden="true">
+    <div class="modal glass" role="dialog" aria-label="Consultation">
+      <button class="modal-close consult-close" aria-label="Close">&times;</button>
+      <div class="modal-body">
+        <h3 class="modal-title" id="consultTitle" data-i18n="modal.consult.title">服务咨询</h3>
+        <p class="modal-desc" data-i18n="modal.consult.desc">添加微信，详细沟通你的需求，我给你具体的建议和方案。</p>
+        <div class="wechat-box" style="margin-bottom:0;">
+          <div class="qr" style="width:auto;height:auto;overflow:visible;">
+            <img src="assets/img/wechat-qr.jpg" alt="北大燕姐微信二维码" style="width:100px;object-fit:contain;" loading="lazy" />
+          </div>
+          <div>
+            <div class="wx-id">cheny2806</div>
+            <div class="wx-label">WECHAT ID</div>
+          </div>
+        </div>
+        <button class="btn btn-primary svc-btn copy-in-modal" data-copy type="button" style="margin-top:18px;" data-i18n="modal.consult.btn">复制微信号</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 定位雷达付费弹窗 -->
+  <div class="modal-overlay" id="radarModal" aria-hidden="true">
+    <div class="modal glass" role="dialog" aria-label="Radar">
+      <button class="modal-close radar-close" aria-label="Close">&times;</button>
+      <div class="modal-body" style="text-align:center;">
+        <h3 class="modal-title">AI + IP 定位雷达</h3>
+        <p style="font-weight:700;color:#c41e3a;font-size:1.1rem;margin-bottom:4px;">¥500 – 600 · 1对1深度定位</p>
+
+        <div style="text-align:left;margin:18px 0;line-height:2;font-size:0.92rem;color:#444;">
+          <div style="margin-bottom:10px;"><strong>① 深度问卷</strong><br><span style="color:#888;">18题·品牌操盘手视角·约25分钟</span></div>
+          <div style="margin-bottom:10px;"><strong>② 30分钟微信访谈</strong><br><span style="color:#888;">基于问卷追问+锁定定位句</span></div>
+          <div><strong>③ 48小时交付定位结果包</strong><br><span style="color:#888;">一句话定位+不可替代标签+账号名×3套+3条内容主线+GEO关键词+对标参考+第一条内容建议</span></div>
+        </div>
+
+        <div style="border-top:1px solid rgba(0,0,0,0.08);padding-top:16px;">
+          <p style="font-size:0.9rem;color:#666;margin-bottom:12px;">加微信，发我你之前做的三个框，我们开始。</p>
+          <div class="qr qr-modal" style="width:auto;height:auto;overflow:visible;">
+            <img src="assets/img/wechat-qr.jpg" alt="微信二维码" style="width:180px;object-fit:contain;" loading="lazy" />
+          </div>
+          <div style="margin-top:8px;font-weight:600;">cheny2806</div>
+          <button class="btn btn-primary" data-copy type="button" style="margin-top:8px;">复制微信号</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
