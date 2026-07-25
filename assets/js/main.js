@@ -304,6 +304,7 @@
       '_desc': 'AI positioning and GEO growth — get found, get chosen, get trusted. 15 years in Fortune 500 brand operations, 10+ years corporate training, built a brand from zero to 100M+.'
     }
   };
+  window.I18N = I18N;
 
   /* ============================================================
      语言切换
