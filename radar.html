@@ -2238,22 +2238,25 @@ h1 .accent {
         var step2 = (document.getElementById('radar-input-step2') || {}).value || '';
         var step3 = (document.getElementById('radar-input-step3') || {}).value || '';
 
-        // 显示加载状态
+        if (!step1 && !step2 && !step3) { alert('请至少填写一个步骤的内容'); return; }
+
         downloadBtn.textContent = '⏳ 燕姐正在为你生成深度分析报告...';
         downloadBtn.disabled = true;
 
-        // 调用燕姐IP定位雷达API
-        fetch('https://4602cdfbd7db1e08-43-139-102-63.serveousercontent.com/api/generate-report', {
+        // 直接调用DeepSeek API生成报告
+        var prompt = '你是「IP定位雷达」。基于用户填写的三步骤内容，生成一份IP定位深度诊断报告。结构：①凭什么是你（找出用户自己没意识到的优势）②你是谁（三句话定位：共鸣型+反常识型+独家型）③现在做什么（三条可执行路径）。不说教、不居高临下。2000字以内。\\n\\n用户填写内容：\\n步骤1：' + step1 + '\\n步骤2：' + step2 + '\\n步骤3：' + step3;
+
+        fetch('https://api.deepseek.com/v1/chat/completions', {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({step1: step1, step2: step2, step3: step3})
+          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-82a23438e1c24ef19b7e61bbc9e08ec1'},
+          body: JSON.stringify({model:'deepseek-v4-pro', messages:[{role:'system',content:'你是IP定位雷达智能体。'},{role:'user',content:prompt}], temperature:0.65, max_tokens:3000})
         })
         .then(function(r) { return r.json(); })
         .then(function(data) {
           downloadBtn.textContent = '✅ 我已打赏，下载文档';
           downloadBtn.disabled = false;
-          if (data.success) {
-            var text = data.report;
+          if (data.choices && data.choices[0]) {
+            var text = data.choices[0].message.content;
             var now = new Date();
             var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
             var ua = navigator.userAgent.toLowerCase();
@@ -2266,14 +2269,12 @@ h1 .accent {
               a.download = '北大燕姐-IP定位分析报告-' + dateStr + '.txt';
               document.body.appendChild(a); a.click(); document.body.removeChild(a);
             }
-          } else {
-            alert('生成失败，请稍后重试。或加微信 cheny2806 直接获取。');
-          }
+          } else { alert('生成失败，请稍后重试。或加微信 cheny2806 直接获取。'); }
         })
         .catch(function() {
           downloadBtn.textContent = '✅ 我已打赏，下载文档';
           downloadBtn.disabled = false;
-          alert('网络异常，请稍后重试。或加微信 cheny2806 直接获取。');
+          alert('网络异常，请稍后重试。或加微信 cheny2806，燕姐手动帮你生成。');
         });
       });
 
