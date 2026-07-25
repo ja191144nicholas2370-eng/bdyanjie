@@ -1556,7 +1556,7 @@ h1 .accent {
         <div style="text-align:center;margin-top:16px;">
           <span style="font-size:0.95rem;font-weight:700;color:var(--accent, #c41e3a);">¥500 – 600 · 一次交付，管你一整年的方向</span>
           <br>
-          <a class="btn btn-primary" href="index.html#contact" data-copy style="margin-top:10px;">加微信 · 发我你的三个框 cheny2806</a>
+          <a class="btn btn-primary" href="index.html#contact" data-copy style="margin-top:10px;">加微信 · 发我你的诊断报告 cheny2806</a>
         </div>
       </div>
     </div>
@@ -1579,7 +1579,7 @@ h1 .accent {
         <div class="svc-card glass reveal d1" style="border:2px solid var(--accent, #c41e3a);">
           <div style="display:inline-block;background:var(--accent, #c41e3a);color:#fff;padding:2px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:10px;">👈 推荐</div>
           <h3 style="margin-bottom:8px;">🎯 跟燕姐做</h3>
-          <p>把三个框发我。1对1出定位+标签+第一条内容。</p>
+          <p>把报告发我。1对1出定位+标签+第一条内容。</p>
           <p style="font-size:0.9rem;font-weight:700;color:var(--accent, #c41e3a);margin-top:8px;">¥500 – 600</p>
           <a class="btn btn-primary svc-btn" href="index.html#contact" data-copy>加微信发我</a>
         </div>
@@ -1617,7 +1617,7 @@ h1 .accent {
         你能剪出一个大概，<br>但剪不出最利落的<em>那一刀</em>。
       </h2>
       <p class="sub reveal d2" style="text-align:center;">
-        把三个框的内容截图，加微信发我。<br>
+        把诊断报告截图，加微信发我。<br>
         我帮你做你自己做不了的那一步。
       </p>
 
@@ -2248,6 +2248,13 @@ h1 .accent {
         downloadBtn.textContent = '⏳ 燕姐正在为你生成深度分析报告...';
         downloadBtn.disabled = true;
 
+        // 显示加载提示
+        var loadingBox = document.createElement('div');
+        loadingBox.id = 'reportLoading';
+        loadingBox.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:rgba(255,255,255,0.95);padding:28px 36px;border-radius:16px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.12);';
+        loadingBox.innerHTML = '<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">IP定位报告正在生成中</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">深度分析需要约30秒，请稍后…</p>';
+        document.body.appendChild(loadingBox);
+
         // 直接调用DeepSeek API生成报告
         var prompt = '你是「IP定位雷达」。基于用户填写的三步骤内容，生成一份IP定位深度诊断报告。结构：①凭什么是你（找出用户自己没意识到的优势）②你是谁（三句话定位：共鸣型+反常识型+独家型）③现在做什么（三条可执行路径）。不说教、不居高临下。2000字以内。\\n\\n用户填写内容：\\n步骤1：' + step1 + '\\n步骤2：' + step2 + '\\n步骤3：' + step3;
 
@@ -2258,6 +2265,7 @@ h1 .accent {
         })
         .then(function(r) { return r.json(); })
         .then(function(data) {
+          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
           downloadBtn.textContent = '✅ 我已打赏，下载文档';
           downloadBtn.disabled = false;
           if (data.choices && data.choices[0]) {
@@ -2277,6 +2285,7 @@ h1 .accent {
           } else { alert('生成失败。你填写的内容已自动保存，刷新页面后还在。可加微信 cheny2806 发给燕姐手动生成。'); downloadBtn.textContent = '🔄 重新生成'; downloadBtn.disabled = false; }
         })
         .catch(function() {
+          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
           downloadBtn.textContent = '🔄 重新生成';
           downloadBtn.disabled = false;
           alert('网络异常。你填写的内容已自动保存，刷新页面后还在。可加微信 cheny2806，燕姐手动帮你生成。');
