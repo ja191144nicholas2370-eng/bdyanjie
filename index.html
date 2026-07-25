@@ -65,7 +65,7 @@
       .hero-bg { position:absolute!important;inset:0!important;z-index:0!important;opacity:1!important;display:block!important; }
       .hero-grid { display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;gap:14px!important;position:relative!important;z-index:1!important; }
       .hero-visual { order:1!important; }
-      .hero-visual img { width:120px!important;height:auto!important;object-fit:contain!important;border-radius:16px!important;display:block!important;margin:0 auto!important;background:#f0eef5!important;box-shadow:0 8px 32px rgba(31,31,46,0.12)!important; }
+      .hero-visual img { width:120px!important;height:auto!important;object-fit:contain!important;border-radius:16px!important;display:block!important;margin:0 auto!important;background:transparent!important;box-shadow:0 8px 32px rgba(31,31,46,0.12)!important; }
       .hero-content { order:2!important;width:100%!important;background:rgba(255,255,255,0.7)!important; }
       .hero-content h1,.d1 { font-size:24px!important;line-height:1.35!important;margin-bottom:8px!important; }
       .hero-facts { font-size:14px!important;margin-bottom:16px!important; }
@@ -1695,51 +1695,6 @@ h1 .accent {
   }; */
 
   /* ============================================================
-     语言切换
-     ============================================================ */
-  var currentLang = 'zh';
-  try { currentLang = localStorage.getItem('lang') || 'zh'; } catch (e) {}
-
-  function applyLang(lang) {
-    if (!I18N[lang]) lang = 'zh';
-    currentLang = lang;
-    var dict = I18N[lang];
-
-    // 更新 html lang 属性
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-
-    // 更新 title 和 meta description
-    if (dict['_title']) document.title = dict['_title'];
-    var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && dict['_desc']) metaDesc.setAttribute('content', dict['_desc']);
-
-    // 更新所有带 data-i18n 的元素
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) el.innerHTML = dict[key];
-    });
-
-    // 更新语言按钮状态
-    document.querySelectorAll('.lang-btn').forEach(function (btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-    });
-
-    // 持久化
-    try { localStorage.setItem('lang', lang); } catch (e) {}
-  }
-
-  // 绑定语言切换按钮
-  document.querySelectorAll('.lang-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var lang = btn.getAttribute('data-lang');
-      if (lang !== currentLang) applyLang(lang);
-    });
-  });
-
-  // 初始化语言
-  applyLang(currentLang);
-
-  /* ============================================================
      导航滚动状态 + 滚动进度条 + 返回顶部
      ============================================================ */
   var nav = document.getElementById('nav');
@@ -1918,8 +1873,9 @@ h1 .accent {
   function openConsult(serviceKey) {
     if (!consultModal) return;
     // 用 i18n key 查找翻译后的服务名
-    if (consultTitle && serviceKey && I18N[currentLang][serviceKey]) {
-      consultTitle.textContent = I18N[currentLang][serviceKey];
+    var lang = localStorage.getItem('lang') || 'zh';
+    if (consultTitle && serviceKey && I18N[lang] && I18N[lang][serviceKey]) {
+      consultTitle.textContent = I18N[lang][serviceKey];
     }
     consultModal.classList.add('open');
     consultModal.setAttribute('aria-hidden', 'false');
