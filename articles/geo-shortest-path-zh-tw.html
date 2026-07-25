@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f6fa" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pkuyan.com/articles/geo-shortest-path.html" />
+
+  <title>GEO國標出臺 · 北大燕姐 | 品牌操盤手的最短路徑</title>
+  <meta name="description" content="7月23日中廣協GEO國標出臺，生成式AI搜索流量年增215%。做了15年品牌的燕姐，花一個通宵理出三條最短路徑。" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="GEO國標出臺：品牌操盤手的最短路徑 · 北大燕姐" />
+  <meta property="og:description" content="SEO是你敲門，GEO是AI替你敲門。窗口期只剩6-12個月。" />
+  <meta property="og:image" content="../assets/img/portrait-web.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.cn" />
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+  <link href="https://fonts.googleapis.cn/css2?family=Cinzel:wght@500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/core.css" />
+  <link rel="stylesheet" href="../assets/css/mobile.css" />
+  <style>
+    .article-detail {
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 40px 36px;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 1.02rem; line-height: 2; color: #333;
+      max-width: 720px; margin: 0 auto;
+    }
+    .article-detail h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem; margin: 36px 0 14px; color: #222;
+      padding-bottom: 8px; border-bottom: 2px solid rgba(196,30,58,0.12);
+    }
+    .article-detail h3 { font-size: 1.15rem; margin: 28px 0 10px; color: #333; }
+    .article-detail p { margin-bottom: 18px; }
+    .article-detail ul, .article-detail ol { margin-bottom: 18px; padding-left: 22px; }
+    .article-detail li { margin-bottom: 8px; }
+    .article-detail blockquote {
+      border-left: 3px solid var(--accent, #c41e3a);
+      padding: 12px 20px; margin: 24px 0;
+      background: rgba(196,30,58,0.04);
+      border-radius: 0 10px 10px 0;
+      color: #555; font-style: italic;
+    }
+    .article-detail strong { color: #222; }
+    .article-detail .lead {
+      font-size: 1.15rem; color: #444; line-height: 1.9;
+      margin-bottom: 28px; font-weight: 500;
+    }
+    .article-header-meta {
+      text-align: center; margin-bottom: 32px; color: #999; font-size: 0.9rem;
+    }
+    .back-link {
+      display: inline-block; margin-bottom: 16px;
+      font-size: 0.9rem; color: var(--accent, #c41e3a);
+      text-decoration: none; font-weight: 500;
+    }
+    .data-highlight {
+      text-align: center; margin: 24px 0;
+      font-size: 2.2rem; font-weight: 800;
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @media (max-width: 640px) {
+      .article-detail { padding: 24px 16px; font-size: 0.92rem; border-radius: 12px; }
+      .article-detail .lead { font-size: 1rem; }
+      .article-detail h1 { font-size: 1.4rem; }
+      .article-detail h2 { font-size: 1.15rem; }
+      .back-link { margin-left: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="北大燕姐">
+        <span class="mono">燕</span>
+        <span class="name">北大燕姐</span>
+      </a>
+      <nav class="nav-links" aria-label="主導航">
+        <a href="../index.html#about">我是誰</a>
+        <a href="../index.html#services">我能給你什麼</a>
+        <a href="../articles.html">文章</a>
+        <a href="../index.html#contact">聯繫我</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-primary btn-sm btn-wechat" href="../index.html#contact">加微信</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="chapter" style="padding-top:130px;padding-bottom:20px;">
+    <div class="wrap">
+      <a href="../articles.html" class="back-link reveal in">← 返回文章列表</a>
+
+      <div class="article-detail reveal in d1">
+        <h1 style="font-family:'Noto Serif SC',serif;font-size:1.8rem;text-align:center;line-height:1.4;margin-bottom:8px;">
+          7月23日GEO國標出臺，我花了一個通宵，給品牌操盤手理出了一條最短路徑
+        </h1>
+        <p style="text-align:center;font-size:1.1rem;color:#666;margin-bottom:6px;">生成式AI搜索流量年增215%，品牌不跟上，搜索入口3年內歸零</p>
+        <div class="article-header-meta">2026年7月25日 · 北大燕姐 · GEO增長</div>
+
+        <div class="data-highlight">215%</div>
+        <p style="text-align:center;font-size:0.9rem;color:#999;margin-top:-18px;">數據來源：GEO紅皮書2026 · 每經AI智庫×GEORankHub聯合發布</p>
+
+        <p class="lead">
+          7月23日，中廣協GEO三項團體標準公開徵求意見。很多人掃了一眼標題就划過去了。但我沒有。我在世界500強做了15年品牌，從0做到破億，我太清楚一件事了：<strong>品牌遊戲規則每次翻篇的時候，第一批看懂的人，吃的不是紅利，是時間差。</strong>
+        </p>
+
+        <h2>GEO跟SEO，到底差在哪</h2>
+        <p>這就是GEO跟傳統SEO最本質的區別。SEO爭的是網頁排名，GEO爭的是大模型腦子裡關於你的那句話。大模型怎麼決定推薦誰？它看三樣東西：你的內容有沒有被權威信源引用過？你的信息在各平臺是不是一致的？你的結構是不是AI能秒讀的？</p>
+        <p>我說個具體場景你就懂了。上周一位創業者朋友問我：「燕姐，我知乎寫了80多篇乾貨，公眾號也有兩萬粉，為什麼我在豆包上搜自己公司名，出來的結果全是競品？」我讓他做了一件事：在豆包裡搜他行業的一個核心問題，看AI引用了哪些來源。他看完沉默了。80篇知乎，一篇都沒被引用。反而是競品在三年前寫的一篇行業白皮書，被豆包反覆引用。</p>
+        <blockquote>這就是GEO時代的殘酷真相：你寫了多少不重要，AI認不認你才重要。</blockquote>
+
+        <h2>三條最短路徑</h2>
+        <p>我花了一個通宵，把中廣協的標準、微盟星啟的DSS方法論、還有我自己15年品牌操盤的經驗揉在一起，理出了三條最短路徑。不講虛的，每條都是能落地的。</p>
+
+        <h3>路徑一：把你的內容變成「AI友好格式」</h3>
+        <p>大模型讀內容跟人不一樣。它看的是：你有沒有明確提出問題再給出答案？你的核心觀點有沒有結構化數據支撐？這個改法不需要你重寫所有內容。你只需要在每篇文章裡加一個模塊：<strong>一段150字以內的核心觀點摘要</strong>，放在文首或文末，用「是什麼-為什麼-怎麼做」三句話講清楚。AI抓的就是這一段。</p>
+
+        <h3>路徑二：把你自己變成「信源」</h3>
+        <p>在至少三個主流平臺保持同一話題的持續輸出。AI會交叉驗證。讓你的觀點被其他信源引用。給自己一個明確的內容標籤——不要說「我做品牌」，要說「我專注品牌從0到1的全鏈條操盤」。越具體，AI越容易給你打標籤，打標籤越準，推薦越穩。</p>
+
+        <h3>路徑三：盯緊三個關鍵指標</h3>
+        <ul>
+          <li><strong>AI首推率</strong> — 在你行業的核心問題上，AI回答裡第一個提到的品牌是不是你？</li>
+          <li><strong>信源引用率</strong> — AI有沒有引用你的某篇文章？</li>
+          <li><strong>品牌提及頻次</strong> — 你的品牌名在AI回答中出現的總次數。</li>
+        </ul>
+        <p>這三個指標不需要花錢買工具。你每周花15分鐘，打開豆包、Kimi、元寶，分別搜3個你行業的核心問題，手動記錄即可。</p>
+
+        <h2>窗口期只剩6到12個月</h2>
+        <p>GEO這件事，目前90%的品牌操盤手還在觀望。但你知道誰已經動了嗎？微盟星啟，中廣協國標起草單位，已經在幫品牌做全鏈路GEO優化了，覆蓋六大平臺。</p>
+        <p>我15年品牌生涯裡見過太多次這種場景。從傳統廣告到搜尋引擎，從搜尋引擎到信息流，從信息流到短視頻，每一次渠道遷移，最先動的那批人，投入成本最低、收益最高。GEO的窗口期，我判斷是6到12個月。今年年底之前布局的人，享受的是先行者信源紅利。過了明年上半年，當行業標配化以後，你再做，就是防禦性操作了。</p>
+
+        <h2>四周行動清單</h2>
+        <ol>
+          <li><strong>第一周</strong> — 打開豆包、Kimi、元寶，搜3個你行業的核心問題，看AI現在推薦了誰。</li>
+          <li><strong>第二周</strong> — 把過去3篇優質文章，按「問題-答案-結論-數據」結構改寫，每篇加150字核心摘要。</li>
+          <li><strong>第三周</strong> — 在至少一個新平臺開帳號，發改寫好的內容。</li>
+          <li><strong>第四周</strong> — 重回第一周的問題搜一遍，看AI的回答有沒有變化。</li>
+        </ol>
+
+        <blockquote>GEO不是說等AI搜索全面普及了你再做。是你現在做，AI就會在它的下一次模型更新裡記住你。</blockquote>
+
+        <p style="text-align:center;font-size:1.1rem;margin:36px 0 12px;">
+          SEO是你主動去敲用戶的門。<br>GEO是用戶問AI「這行誰靠譜」的時候，<strong>AI替你敲門</strong>。
+        </p>
+
+        <p style="text-align:center;margin-top:32px;">
+          <a class="btn btn-primary" href="../index.html#contact" data-copy>加微信 · cheny2806</a>
+        </p>
+
+        <p style="text-align:center;margin-top:12px;font-size:0.85rem;color:#999;">
+          覺得這篇文章有用？轉發給一個也在做品牌的朋友。
+        </p>
+
+        <div style="margin-top:40px;padding:20px;background:rgba(196,30,58,0.04);border-radius:12px;text-align:center;font-size:0.9rem;color:#888;">
+          <p style="margin:0;">🏷️ GEO · 生成式引擎優化 · 品牌增長 · AI搜索 · 個人IP</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mobile-cta" id="mobileCta">
+    <a class="btn btn-ghost" href="../articles.html">文章列表</a>
+    <a class="btn btn-primary" href="../index.html#contact" data-copy>加微信 cheny2806</a>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
+

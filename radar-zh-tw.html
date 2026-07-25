@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f6fa" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pkuyan.com/radar" />
+
+  <title>免費IP定位自測 · 北大燕姐 | 品牌操盤手的定位方法，跟AI生成的不一樣</title>
+  <meta name="description" content="不是AI生成的通用模板。15年品牌操盤手從0做到破億的定位方法，現在免費幫你做一遍。做完不僅知道自己是誰，還知道下一步往哪打。" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="IP定位自測 · 北大燕姐 | 操盤手的方法，跟AI不一樣" />
+  <meta property="og:description" content="不只幫你找到定位，還告訴你下一步怎麼走。做完覺得值，隨心打賞。" />
+  <meta property="og:image" content="assets/img/portrait-web.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+
+  <link rel="stylesheet" href="assets/css/core.css" />
+  <style>
+    .checklist {
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-top: 20px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .checklist h4 {
+      font-size: 1.05rem; margin: 0 0 8px;
+      color: var(--accent, #c41e3a); font-weight: 600;
+    }
+    .checklist .prompt {
+      font-size: 1.15rem; font-weight: 600; margin-bottom: 16px; line-height: 1.6;
+    }
+    .checklist ol {
+      padding-left: 20px; line-height: 2.2; color: var(--text-secondary, #444);
+    }
+    .checklist ol li { margin-bottom: 4px; font-size: 0.98rem; }
+    .checklist textarea {
+      width: 100%; min-height: 100px;
+      border: 1px solid rgba(0,0,0,0.12); border-radius: 10px;
+      padding: 14px 16px; font-size: 0.95rem;
+      font-family: 'Noto Sans SC', sans-serif; resize: vertical;
+      background: rgba(255,255,255,0.7); margin-top: 12px; line-height: 1.7;
+    }
+    .tip-box {
+      background: rgba(196,30,58,0.06);
+      border-left: 3px solid var(--accent, #c41e3a);
+      border-radius: 0 10px 10px 0; padding: 14px 18px;
+      margin-top: 14px; font-size: 0.9rem; color: #555; line-height: 1.7;
+    }
+    .insight-box {
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 14px; padding: 20px 24px;
+      margin-top: 14px; border: 1px solid rgba(0,0,0,0.08);
+      font-size: 0.92rem; line-height: 1.8; color: #444;
+    }
+    .insight-box strong { color: var(--accent, #c41e3a); }
+    .result-box {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(14px);
+      border-radius: 20px; padding: 32px;
+      text-align: center;
+      border: 1px dashed var(--accent, #c41e3a); margin-top: 24px;
+    }
+    .result-box .big-line {
+      font-size: 1.4rem; font-weight: 700; line-height: 1.5; margin-bottom: 8px;
+    }
+    .roadmap-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .roadmap-item:last-child { border-bottom: none; }
+    .roadmap-num {
+      width: 40px; height: 40px;
+      border-radius: 50%; background: var(--accent, #c41e3a);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .roadmap-num.gray { background: #bbb; }
+    @media (max-width: 640px) {
+      .checklist { padding: 20px 18px; }
+      .checklist ol { padding-left: 16px; }
+      .roadmap-item { flex-direction: column; gap: 8px; }
+    }
+  
+    @media (max-width: 767px) {
+      body { font-size:15px; }
+      .wrap { width:94%!important; }
+      .nav { padding:8px 0!important; }
+      .nav .wrap { flex-direction:column!important;gap:4px!important;align-items:center!important; }
+      .nav-links { display:flex!important;flex-wrap:wrap!important;gap:4px 10px!important;font-size:11px!important;justify-content:center!important;width:100%!important;padding:4px 0!important; }
+      .nav-links a { white-space:nowrap!important;padding:2px 4px!important; }
+      .brand .name { font-size:16px!important; }
+      .brand .mono { width:28px!important;height:28px!important;font-size:13px!important; }
+      .chapter { padding:100px 0 20px!important; }
+      .chapter-title { font-size:22px!important; }
+      h1 { font-size:24px!important;line-height:1.35!important; }
+      .svc-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-card { padding:16px!important; }
+      .trust-card h3 { font-size:15px!important; }
+      .trust-card p { font-size:13px!important; }
+      .trust-quote { font-size:14px!important;padding:16px!important; }
+      .final { padding:50px 0 100px!important; }
+      .final h2 { font-size:22px!important; }
+      .modal { width:94vw!important;max-height:85vh!important;padding:16px!important; }
+      .article-card { padding:14px 16px!important; }
+      .article-card h3 { font-size:15px!important; }
+      .article-card .desc { font-size:13px!important; }
+      .article-detail { padding:20px 14px!important;font-size:14px!important; }
+      .article-detail h1 { font-size:22px!important; }
+      .article-detail h2 { font-size:18px!important; }
+      .blob { filter:none!important;opacity:0.35!important; }
+      .gradient-bg { opacity:1!important; }
+      .checklist { padding:16px!important; }
+      .checklist textarea { font-size:14px!important;min-height:80px!important; }
+      .btn { font-size:13px!important;padding:10px 18px!important; }
+    }
+
+  
+    @media (max-width: 767px) {
+      body { font-size:15px; }
+      .wrap { width:94%!important; }
+      .nav { padding:8px 0!important; }
+      .nav .wrap { flex-direction:column!important;gap:4px!important;align-items:center!important; }
+      .nav-links { display:flex!important;flex-wrap:wrap!important;gap:4px 10px!important;font-size:11px!important;justify-content:center!important;width:100%!important;padding:4px 0!important; }
+      .nav-links a { white-space:nowrap!important;padding:2px 4px!important; }
+      .brand .name { font-size:16px!important; }
+      .brand .mono { width:28px!important;height:28px!important;font-size:13px!important; }
+      .chapter { padding:100px 0 20px!important; }
+      .chapter-title { font-size:22px!important; }
+      h1 { font-size:24px!important;line-height:1.35!important; }
+      .svc-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-card { padding:16px!important; }
+      .trust-card h3 { font-size:15px!important; }
+      .trust-card p { font-size:13px!important; }
+      .trust-quote { font-size:14px!important;padding:16px!important; }
+      .final { padding:50px 0 100px!important; }
+      .final h2 { font-size:22px!important; }
+      .modal { width:94vw!important;max-height:85vh!important;padding:16px!important; }
+      .article-card { padding:14px 16px!important; }
+      .article-card h3 { font-size:15px!important; }
+      .article-card .desc { font-size:13px!important; }
+      .article-detail { padding:20px 14px!important;font-size:14px!important; }
+      .blob { filter:none!important;opacity:0.35!important; }
+      .gradient-bg { opacity:1!important; }
+      .checklist { padding:16px!important; }
+      .checklist textarea { font-size:14px!important;min-height:80px!important; }
+      .btn { font-size:13px!important;padding:10px 18px!important; }
+    }
+
+  </style>
+  <style>
+/* ============================================================
+   北大燕姐 · 個人品牌站 v6 — 玻璃擬態 / 柔和漸變 / 中英雙語
+   ============================================================ */
+
+:root {
+  /* 背景 */
+  --bg: #f7f6fa;
+  --bg-2: #f0eef5;
+  --surface: rgba(255, 255, 255, 0.62);
+  --surface-2: rgba(255, 255, 255, 0.38);
+
+  /* 漸變色彩 */
+  --grad-1: #a78bfa; /* 紫 */
+  --grad-2: #f472b6; /* 粉 */
+  --grad-3: #60a5fa; /* 藍 */
+  --grad-4: #fbbf24; /* 暖金點綴 */
+
+  /* 文字 */
+  --text: #1f1f2e;
+  --text-2: #4b5563;
+  --text-3: #9ca3af;
+
+  /* 玻璃邊框/陰影 */
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-stroke: rgba(255, 255, 255, 0.55);
+  --shadow: 0 8px 32px rgba(31, 31, 46, 0.06);
+  --shadow-lg: 0 20px 60px rgba(31, 31, 46, 0.1);
+
+  /* 字體 */
+  --sans: "Noto Sans SC", "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --serif: "Noto Serif SC", "Songti SC", serif;
+  --latin: "Cinzel", "Inter", sans-serif;
+
+  /* 圓角 */
+  --radius-sm: 16px;
+  --radius: 28px;
+  --radius-lg: 40px;
+
+  --max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .blob { animation: none !important; }
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* 鍵盤焦點 */
+:focus-visible {
+  outline: 2px solid var(--grad-1);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 背景氛圍 */
+.gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+}
+
+.blob-1 {
+  width: 60vw; height: 60vw;
+  max-width: 800px; max-height: 800px;
+  background: radial-gradient(circle, var(--grad-1), transparent 70%);
+  top: -15%; right: -10%;
+  animation: float 14s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 50vw; height: 50vw;
+  max-width: 650px; max-height: 650px;
+  background: radial-gradient(circle, var(--grad-2), transparent 70%);
+  bottom: 10%; left: -15%;
+  animation: float 16s ease-in-out infinite reverse;
+}
+
+.blob-3 {
+  width: 40vw; height: 40vw;
+  max-width: 520px; max-height: 520px;
+  background: radial-gradient(circle, var(--grad-3), transparent 70%);
+  top: 40%; left: 35%;
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -30px) scale(1.05); }
+}
+
+/* 滾動進度條 */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3));
+  z-index: 999;
+  transition: width 0.08s linear;
+  border-radius: 0 3px 3px 0;
+}
+
+/* 玻璃卡片基礎 */
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+}
+
+.wrap {
+  width: min(92%, var(--max-width));
+  margin: 0 auto;
+}
+
+/* 導航 */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 0;
+  transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-stroke);
+  box-shadow: var(--shadow);
+}
+
+.nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(94%, var(--max-width));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+}
+
+.brand .mono {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  color: #fff;
+  font-size: 15px;
+  font-family: var(--serif);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 11px;
+  color: var(--text-2);
+}
+
+.nav-links a {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; left: 50%;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--grad-1), var(--grad-2));
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-links a.active { color: var(--text); font-weight: 600; }
+.nav-links a.active::after { width: 100%; }
+
+/* 導航右側區域 */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 語言切換器 */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 3px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.03em;
+  font-family: var(--sans);
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(167, 139, 250, 0.3);
+}
+
+.lang-btn:not(.active):hover {
+  color: var(--text);
+}
+
+/* 按鈕 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: var(--sans);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.32);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(167, 139, 250, 0.42);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+.btn-sm { padding: 10px 22px; font-size: 13px; }
+
+/* 首屏 */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 110px 0 40px;
+  overflow: visible;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../img/hero-bg.jpg') no-repeat center center / cover;
+  z-index: 0;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+  align-items: end;
+  width: 100%;
+}
+
+.hero-content {
+  order: 2;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius);
+  padding: clamp(22px, 5vw, 44px);
+  box-shadow: 0 16px 48px rgba(31, 31, 46, 0.08);
+}
+
+.hero-visual {
+  order: 1;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-height: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--latin);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px; height: 1px;
+  background: linear-gradient(90deg, var(--grad-1), var(--grad-2));
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(34px, 8vw, 64px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 22px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+h1 .accent {
+  background: linear-gradient(135deg, #7c3aed, #db2777);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-facts {
+  font-size: 17px;
+  color: var(--text);
+  max-width: 46ch;
+  margin: 0 0 34px;
+  font-weight: 500;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.hero-portrait {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom left;
+  filter: drop-shadow(0 20px 40px rgba(31, 31, 46, 0.18));
+}
+
+/* 形象照容器 */
+.portrait-wrap {
+  position: relative;
+  width: min(80vw, 360px);
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.portrait-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 30% 30%, var(--grad-3), transparent 50%),
+              radial-gradient(circle at 70% 70%, var(--grad-2), transparent 45%);
+  opacity: 0.35;
+  z-index: -1;
+  filter: blur(40px);
+}
+
+.portrait-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* 章節通用 */
+.chapter {
+  padding: 90px 0;
+  position: relative;
+}
+
+.chapter-head {
+  margin-bottom: 48px;
+}
+
+.chapter-title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 6vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.chapter-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 關於區 */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.about-card {
+  border-radius: var(--radius);
+  padding: 34px;
+}
+
+.about-text p {
+  margin-bottom: 18px;
+  font-size: 16px;
+  color: var(--text-2);
+}
+
+.about-text p:last-child { margin-bottom: 0; }
+.about-text strong { color: var(--text); font-weight: 600; }
+
+.about-closing {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, var(--grad-1), var(--grad-2)) 1;
+  padding-left: 16px;
+  margin-top: 6px;
+}
+
+.about-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.about-visual .portrait-wrap {
+  width: min(85vw, 320px);
+  aspect-ratio: 3/4;
+}
+
+/* 數據卡 */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-top: 52px;
+}
+
+.stat {
+  border-radius: var(--radius-sm);
+  padding: 28px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat:hover { transform: translateY(-4px); }
+
+.stat .num {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+.stat .num small {
+  font-size: 18px;
+  margin-left: 2px;
+}
+
+.stat .label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.stat .sub {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+/* 服務卡 */
+.svc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.svc-card {
+  border-radius: var(--radius);
+  padding: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+.svc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(167, 139, 250, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.svc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.svc-card:hover::before { opacity: 1; }
+
+.svc-card .tag {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.12), rgba(244, 114, 182, 0.12));
+  color: var(--grad-1);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  letter-spacing: 0.05em;
+}
+
+.svc-card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.svc-card p {
+  font-size: 15px;
+  color: var(--text-2);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.svc-card .svc-gold {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: transparent;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: 18px;
+}
+
+.svc-btn {
+  align-self: flex-start;
+}
+
+/* 信任區 */
+.trust-quote {
+  font-family: var(--serif);
+  font-size: clamp(22px, 5vw, 32px);
+  line-height: 1.7;
+  color: var(--text);
+  padding: 24px 34px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--grad-1);
+  margin-bottom: 36px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.trust-card {
+  border-radius: var(--radius);
+  padding: 34px;
+  transition: transform 0.3s ease;
+}
+
+.trust-card:hover { transform: translateY(-4px); }
+
+.trust-card-num {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.trust-card-num small { font-size: 24px; }
+
+.trust-card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.trust-card p {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.85;
+}
+
+/* 聯繫我 */
+.final {
+  position: relative;
+  padding: 110px 0 90px;
+  text-align: center;
+}
+
+.final-inner h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 6vw, 52px);
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.final-inner h2 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.final-inner .sub {
+  color: var(--text-2);
+  font-size: 17px;
+  margin-bottom: 42px;
+}
+
+.wechat-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.qr {
+  width: 90px; height: 90px;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed var(--text-3);
+  color: var(--text-3);
+  font-size: 12px;
+  text-align: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.qr img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.wx-id {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.wx-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+
+/* 頁腳 */
+.footer {
+  padding: 36px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-3);
+  border-top: 1px solid var(--glass-stroke);
+}
+
+.f-brand {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+/* 返回頂部 */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-2);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 98;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.32);
+}
+
+/* 移動端 sticky CTA */
+.mobile-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 99;
+  display: flex;
+  gap: 10px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-stroke);
+  transform: translateY(120%);
+  transition: transform 0.4s ease;
+}
+
+.mobile-cta.show { transform: translateY(0); }
+.mobile-cta .btn { flex: 1; }
+
+/* 彈窗 */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(31, 31, 46, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  width: min(92%, 420px);
+  border-radius: var(--radius);
+  padding: 34px;
+  position: relative;
+  transform: translateY(20px) scale(0.96);
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-2);
+  font-size: 22px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.modal-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--text-2);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.modal-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.qr-modal {
+  width: 180px; height: 180px;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+
+.qr-modal img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.radar-placeholder {
+  width: 100%; height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  color: var(--text-3);
+  text-align: center;
+  padding: 12px;
+  line-height: 1.7;
+}
+
+/* 複製提示 */
+.copy-tip {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(31, 31, 46, 0.88);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 13px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.copy-tip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 入場動畫 */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.d1 { transition-delay: 0.12s; }
+.d2 { transition-delay: 0.22s; }
+.d3 { transition-delay: 0.32s; }
+
+/* 響應式 - 桌面端 */
+@media (min-width: 768px) {
+  .nav-links { display: flex; gap: 32px; font-size: 14px; }
+  .nav .btn-wechat { display: inline-flex; }
+
+  .hero-grid {
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    text-align: left;
+    align-items: end;
+  }
+
+  .hero-content {
+    order: 2;
+    text-align: left;
+    margin: 0;
+    max-width: 620px;
+  }
+
+  .hero-visual {
+    order: 1;
+    min-height: auto;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  .hero-facts { margin: 0 0 34px; }
+  .hero-cta { justify-content: flex-start; }
+
+  .hero-portrait {
+    width: 100%;
+    max-width: 220px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    object-position: bottom left;
+  }
+
+  .about-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 60px;
+  }
+
+  .about-visual { order: 2; }
+  .about-card { order: 1; }
+
+  .stats { grid-template-columns: repeat(3, 1fr); }
+
+  .svc-grid { grid-template-columns: repeat(3, 1fr); }
+  .svc-card:nth-child(4),
+  .svc-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .mobile-cta { display: none; }
+  .back-to-top { bottom: 30px; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .svc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 小屏手機 */
+@media (max-width: 380px) {
+  h1 { font-size: 30px; }
+  .chapter-title { font-size: 26px; }
+  .portrait-wrap { width: 78vw; }
+  .nav-right { gap: 8px; }
+  .lang-btn { padding: 5px 9px; }
+}
+
+/* 列印 */
+@media print {
+  .nav, .mobile-cta, .back-to-top, .scroll-progress, .gradient-bg,
+  .modal-overlay, .copy-tip { display: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  body { background: #fff; color: #000; }
+  .glass { background: #fff !important; border: 1px solid #ddd; box-shadow: none; }
+}
+
+  
+    @media (max-width: 767px) {
+      body { font-size:15px; }
+      .wrap { width:94%!important; }
+      .nav { padding:8px 0!important; }
+      .nav .wrap { flex-direction:column!important;gap:4px!important;align-items:center!important; }
+      .nav-links { display:flex!important;flex-wrap:wrap!important;gap:4px 10px!important;font-size:11px!important;justify-content:center!important;width:100%!important;padding:4px 0!important; }
+      .nav-links a { white-space:nowrap!important;padding:2px 4px!important; }
+      .brand .name { font-size:16px!important; }
+      .brand .mono { width:28px!important;height:28px!important;font-size:13px!important; }
+      .chapter { padding:100px 0 20px!important; }
+      .chapter-title { font-size:22px!important; }
+      h1 { font-size:24px!important;line-height:1.35!important; }
+      .svc-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-card { padding:16px!important; }
+      .trust-card h3 { font-size:15px!important; }
+      .trust-card p { font-size:13px!important; }
+      .trust-quote { font-size:14px!important;padding:16px!important; }
+      .final { padding:50px 0 100px!important; }
+      .final h2 { font-size:22px!important; }
+      .modal { width:94vw!important;max-height:85vh!important;padding:16px!important; }
+      .article-card { padding:14px 16px!important; }
+      .article-card h3 { font-size:15px!important; }
+      .article-card .desc { font-size:13px!important; }
+      .article-detail { padding:20px 14px!important;font-size:14px!important; }
+      .article-detail h1 { font-size:22px!important; }
+      .article-detail h2 { font-size:18px!important; }
+      .blob { filter:none!important;opacity:0.35!important; }
+      .gradient-bg { opacity:1!important; }
+      .checklist { padding:16px!important; }
+      .checklist textarea { font-size:14px!important;min-height:80px!important; }
+      .btn { font-size:13px!important;padding:10px 18px!important; }
+    }
+
+  
+    @media (max-width: 767px) {
+      body { font-size:15px; }
+      .wrap { width:94%!important; }
+      .nav { padding:8px 0!important; }
+      .nav .wrap { flex-direction:column!important;gap:4px!important;align-items:center!important; }
+      .nav-links { display:flex!important;flex-wrap:wrap!important;gap:4px 10px!important;font-size:11px!important;justify-content:center!important;width:100%!important;padding:4px 0!important; }
+      .nav-links a { white-space:nowrap!important;padding:2px 4px!important; }
+      .brand .name { font-size:16px!important; }
+      .brand .mono { width:28px!important;height:28px!important;font-size:13px!important; }
+      .chapter { padding:100px 0 20px!important; }
+      .chapter-title { font-size:22px!important; }
+      h1 { font-size:24px!important;line-height:1.35!important; }
+      .svc-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-grid { display:flex!important;flex-direction:column!important;gap:12px!important; }
+      .trust-card { padding:16px!important; }
+      .trust-card h3 { font-size:15px!important; }
+      .trust-card p { font-size:13px!important; }
+      .trust-quote { font-size:14px!important;padding:16px!important; }
+      .final { padding:50px 0 100px!important; }
+      .final h2 { font-size:22px!important; }
+      .modal { width:94vw!important;max-height:85vh!important;padding:16px!important; }
+      .article-card { padding:14px 16px!important; }
+      .article-card h3 { font-size:15px!important; }
+      .article-card .desc { font-size:13px!important; }
+      .article-detail { padding:20px 14px!important;font-size:14px!important; }
+      .blob { filter:none!important;opacity:0.35!important; }
+      .gradient-bg { opacity:1!important; }
+      .checklist { padding:16px!important; }
+      .checklist textarea { font-size:14px!important;min-height:80px!important; }
+      .btn { font-size:13px!important;padding:10px 18px!important; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- 導航 -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="北大燕姐">
+        <span class="mono">燕</span>
+        <span class="name">北大燕姐</span>
+      </a>
+      <nav class="nav-links" aria-label="主導航">
+        <a href="index.html#about">我是誰</a>
+        <a href="index.html#services">我能給你什麼</a>
+        <a href="radar.html">IP定位</a>
+        <a href="geo.html">GEO增長</a>
+        <a href="articles.html">文章</a>
+        <a href="index.html#trust">信任的底氣</a>
+        <a href="index.html#contact">聯繫我</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-primary btn-sm btn-wechat" href="index.html#contact">加微信</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section class="chapter" id="radar-hero" style="padding-top:130px;">
+    <div class="wrap">
+      <div class="chapter-head" style="text-align:center;">
+        <div class="eyebrow reveal">🆓 免費自測 · 10分鐘 · 持續更新</div>
+        <h1 class="chapter-title reveal d1" style="font-size:clamp(1.7rem,3.2vw,2.4rem);">
+          市面上的IP定位，大多是AI生成的。<br>這個是<em>品牌操盤手</em>做的。
+        </h1>
+        <p class="sub reveal d2" style="max-width:680px;margin:0 auto;font-size:1.05rem;line-height:1.8;">
+          AI會問你一堆通用問題，吐一套模板給你。<br>
+          做完之後：「嗯，好像挺對的。<strong>然後呢？</strong>」<br><br>
+          我跟它們<strong>兩處根本不同</strong>：<br>
+          ① 我不是在"問你問題"。我是在用<strong>幫產品做定位的方法，幫人做定位</strong>。從0做到品牌過億，這套動作我做了15年。<br>
+          ② 我不只幫你"找到定位"。我還會告訴你：<strong>找到之後往哪打、怎麼打</strong>。<br><br>
+          <span style="color:var(--accent, #c41e3a);font-weight:600;">下面這份自測清單，不花錢。但它的底層邏輯，是我幫品牌做到破億的那一套。</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 品牌操盤手 vs AI ====== -->
+  <section class="chapter" id="radar-vs" style="padding-bottom:20px;">
+    <div class="wrap">
+      <div class="trust-block reveal">
+        <p class="trust-quote glass" style="font-size:1rem;text-align:center;">
+          <strong>品牌操盤手看定位，跟AI看定位，是兩套邏輯：</strong><br><br>
+          AI看的是"你有什麼標籤"→ 給你分類。<br>
+          我看的是"你有什麼<strong>能打仗的東西</strong>"→ 給你武器。<br><br>
+          分類只能告訴你「你大概是這類人」。<br>
+          武器能告訴你「你往哪個方向打、用什麼打、第一槍開在哪裡」。<br><br>
+          下面三步，就是幫產品做定位的流程，搬過來幫你做。<br>
+          拿張紙，或者在頁面上直接寫。做完你就知道這個不一樣在哪。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 第一步 ====== -->
+  <section class="chapter" id="radar-step1">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="eyebrow reveal">Step 1</div>
+        <h2 class="chapter-title reveal d1">不是"你有什麼經歷"。<br>是<em>哪段經歷能打仗</em>。</h2>
+      </div>
+
+      <div class="checklist reveal d1">
+        <div class="prompt">寫下你能想到的所有"做過且有結果"的事。別篩選，全寫：</div>
+        <ol>
+          <li>你做出過什麼<strong>有數字、有反饋、有認可</strong>的結果？（不限於工作，任何領域都算）</li>
+          <li>哪件事你做起來<strong>比別人輕鬆</strong>，效果還更好？</li>
+          <li>別人<strong>反覆誇你什麼</strong>？（就是你聽多了覺得"這有什麼"的那種）</li>
+        </ol>
+        <textarea id="radar-input-step1" placeholder="✍️ 直接寫。別謙虛。這一步不是面試，是給自己盤點家底。寫完往下滑。"></textarea>
+
+        <div class="tip-box" style="margin-bottom:6px;">
+          🎯 <strong>協助你分析的兩個重點：</strong><br>
+          ① 不要只寫"職位"和"職責"，寫<strong>具體的事和具體的數字</strong>。比如別寫"負責銷售"，寫"半年把區域銷售額從80萬拉到300萬"。數字一出來，家底就清楚了。<br>
+          ② 被你忽略的小事往往最值錢。比如"同事做PPT都來找我"——這可能意味著你的<strong>結構化表達能力</strong>是稀缺的。把這類小事也寫上。
+        </div>
+
+        <div class="insight-box">
+          🔍 <strong>燕姐的獨家視角：</strong>AI會把你寫的每一條都當成"等價值的標籤"。但品牌操盤手知道——<strong>不是所有經歷都有市場價值</strong>。你上面寫的這些，哪些能成為你跟別人拉開差距的武器？關鍵看三點：有沒有結果、能不能複製、別人能不能輕易做到。如果三樣都佔，那就是你的彈藥。圈出來。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 第二步 ====== -->
+  <section class="chapter" id="radar-step2">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="eyebrow reveal">Step 2</div>
+        <h2 class="chapter-title reveal d1">不是"你有什麼優勢"。<br>是<em>什麼優勢別人越不過去</em>。</h2>
+      </div>
+
+      <div class="checklist reveal d1">
+        <div class="prompt">把你第一步圈出來的"彈藥"，換個視角看：</div>
+        <ol>
+          <li>你的<strong>經歷組合</strong>，市場上常見嗎？（比如"做過銷售+會寫內容+懂AI"，三樣都有的比你想像中少得多）</li>
+          <li>你<strong>以為大家都有的能力</strong>，去招聘網站搜搜看——實際多少人具備？</li>
+          <li>你的<strong>"弱項"</strong>換個角度看，是不是差異化？（"不夠專業"可能等於"普通人聽得懂"）</li>
+        </ol>
+        <textarea id="radar-input-step2" placeholder="✍️ 用聊天語言重新描述自己。不是簡歷。是跟朋友說：'其實我最拿手的是……因為別人做這個要X步，我只要Y步。'"></textarea>
+
+        <div class="tip-box" style="margin-bottom:6px;">
+          🎯 <strong>協助你分析的兩個重點：</strong><br>
+          ① 去招聘網站搜一下你寫的每一項能力關鍵詞，看<strong>崗位數量和薪資區間</strong>。市場在替你做驗證——搜出來需求量越大的，你的組合越值錢。<br>
+          ② 把你覺得"這誰都會吧"的事情說給一個外行朋友聽，<strong>看他的第一反應</strong>。如果他眼睛亮了、追問了、說"你能教我嗎"——恭喜，你找到了一個你以為普通但其實稀缺的能力。
+        </div>
+
+        <div class="insight-box">
+          🔍 <strong>燕姐的獨家視角：</strong>AI會幫你把優勢列成一張表——整齊、乾淨、毫無殺傷力。但品牌操盤手知道：<strong>優勢不是給自己看的，是給競爭對手看的</strong>。真正能打的定位，是別人看完之後說："這個我做不到。"你的優勢組合裡，哪一個最讓對方沉默？那才是你的定位錨點。標出來。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 第三步 ====== -->
+  <section class="chapter" id="radar-step3">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="eyebrow reveal">Step 3</div>
+        <h2 class="chapter-title reveal d1">不是"寫得好看"。<br>是<em>能拉出去打仗的一句話</em>。</h2>
+      </div>
+
+      <div class="checklist reveal d1">
+        <div class="prompt">把你第二步標出來的"錨點"，壓成一句話：</div>
+        <ol>
+          <li>如果只能用<strong>一句話</strong>介紹自己，它必須讓人聽完<strong>知道該不該找你</strong>。</li>
+          <li>不是"我是品牌顧問"。是"我幫<strong>____</strong>的人解決<strong>____</strong>的問題"。</li>
+          <li>你自己<strong>說出來舒服嗎</strong>？不舒服就不是真的定位。真的定位，你說出口的時候，自己先信了。</li>
+        </ol>
+        <textarea id="radar-input-step3" placeholder="✍️ 來：我是幫______解決______的______。比如：我是幫想做IP但找不到方向的人，從他們自己身上挖出別人越不過去的核心武器的定位操盤手。"></textarea>
+
+        <div class="tip-box" style="margin-bottom:6px;">
+          🎯 <strong>協助你分析的兩個重點：</strong><br>
+          ① 把上面那句話讀出來，用手機錄一下。<strong>聽回放的時候，你覺得這個人在跟自己說話，還是在對別人說話？</strong>對別人說話的那種"我在幫你解決一個問題"的語氣，才是對的。自說自話的語氣，推倒重寫。<br>
+          ② 把你寫的定位句發給你最信任的一個朋友，問他：<strong>"聽完這句話，你覺得我該去找什麼樣的人？"</strong>如果他說的跟你心裡想的一致——對了。如果不一致——你的定位還差一層翻譯。
+        </div>
+
+        <div class="insight-box">
+          🔍 <strong>燕姐的獨家視角：</strong>AI會幫你潤色這句話——讓它更順、更專業、更"像那麼回事"。但品牌操盤手知道：<strong>一句能打的定位，不是好聽的，是能用的。</strong>它必須能直接變成你的第一條內容標題、你的微信籤名、你見客戶時的第一句自我介紹。試試看：把上面那句話讀出來。如果讀完了你覺得自己都想加自己微信——對了。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 匯總生成 ====== -->
+  <section class="chapter" id="radar-result">
+    <div class="wrap">
+      <div class="result-box reveal" style="text-align:center;">
+        <p style="font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent, #c41e3a);margin-bottom:8px;">Step 4</p>
+        <div class="big-line">
+          上面三個框，就是你的<strong>定位彈藥庫</strong>。
+        </div>
+        <p style="margin-top:12px;color:#555;line-height:1.8;">
+          點擊下方按鈕，把它匯總成一份文檔。<br>打賞後即可下載帶走，也可直接發給燕姐作為後續諮詢的基礎。
+        </p>
+
+        <button id="generateSummaryBtn" class="btn btn-primary reveal d1" style="margin-top:20px;font-size:1.1rem;padding:14px 32px;">
+          📋 匯總生成我的定位彈藥庫
+        </button>
+
+        <!-- 打賞區域（初始隱藏） -->
+        <div id="donateSection" class="checklist reveal" style="display:none;margin-top:28px;text-align:center;border:2px solid var(--accent, #c41e3a);">
+          <h4 style="color:var(--accent, #c41e3a);">💝 打賞後即可下載</h4>
+          <p style="margin:10px 0;font-size:0.95rem;color:#555;">
+            這份文檔包含你剛剛梳理的完整定位素材<br>你的經歷、優勢和定位句，一鍵下載帶走
+          </p>
+          <div style="margin:14px 0;">
+            <img src="assets/img/wechat-pay.jpg" alt="微信收款碼" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
+          </div>
+          <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">掃碼打賞，金額隨意 ☕</p>
+          <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">
+            ✅ 我已打賞，下載文檔
+          </button>
+          <p style="font-size:0.78rem;color:#999;margin-top:10px;">下載後可直接發給燕姐(cheny2806)，作為1對1諮詢的基礎</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 定位之後怎麼走？（直接回應用戶反饋） ====== -->
+  <section class="chapter" id="radar-next-steps">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="eyebrow reveal">定位做完了，然後呢？</div>
+        <h2 class="chapter-title reveal d1">這個問題，<em>我來回答</em>。</h2>
+        <p style="max-width:600px;margin-top:8px;color:#666;">
+          之前有人跟我說：燕姐，我在別的平臺也做了IP定位，挺準的，但我不知道下一步怎麼辦。<br>
+          所以這裡給你兩條路——<strong>自己走也能走，跟我走會更快</strong>。你自己選。
+        </p>
+      </div>
+
+      <!-- 路線A：自己走 -->
+      <div class="checklist reveal d1" style="margin-top:0;">
+        <h4 style="color:#555;">🆓 路線A：自己走（完全免費，馬上能做）</h4>
+        <div class="roadmap-item">
+          <div class="roadmap-num">1</div>
+          <div>
+            <strong>用你的定位句，寫三條不同角度的內容標題。</strong><br>
+            <span style="color:#888;font-size:0.9rem;">比如你的定位是"幫想做IP的人挖出核心競爭力"——寫一條講案例的、一條講方法的、一條講反常識觀點的。三條就夠了。</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-num">2</div>
+          <div>
+            <strong>找三個對標帳號，看他們怎麼表達類似定位。</strong><br>
+            <span style="color:#888;font-size:0.9rem;">不是抄，是看：他們的定位句是什麼？第一條內容發的是什麼？評論區在討論什麼？你要找的是"表達方式"的參考，不是定位本身的參考。</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-num">3</div>
+          <div>
+            <strong>先發一條內容。48小時後回來看數據。</strong><br>
+            <span style="color:#888;font-size:0.9rem;">不要等"完全準備好"。用你剛寫的那句話做第一條內容，發出去。數據不是終點，是路標——它會告訴你方向對不對。</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 路線B：跟我走 -->
+      <div class="checklist reveal d2" style="border:2px solid var(--accent, #c41e3a);">
+        <h4>🎯 路線B：跟燕姐1對1做定位（¥500-600，總投入約1小時）</h4>
+
+        <div class="roadmap-item">
+          <div class="roadmap-num">1</div>
+          <div>
+            <strong>你填一份深度問卷（25分鐘）</strong><br>
+            <span style="color:#888;font-size:0.9rem;">不是AI生成的5個泛泛問題。18道題，品牌操盤手視角——每題都在追問"你的什麼經歷能變成武器"。比網站自測深3倍，比市面上的AI模板準10倍。</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-num">2</div>
+          <div>
+            <strong>我們約30分鐘微信語音（你來定時間）</strong><br>
+            <span style="color:#888;font-size:0.9rem;">基於你的問卷內容，我追問關鍵點、幫你濾掉噪音、試讀定位句看你的反應。不做陪跑，不賣課程——就是幫你找到那句話。</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-num">3</div>
+          <div>
+            <strong>48小時內收到定位結果包（6大模塊）</strong><br>
+            <span style="color:#888;font-size:0.9rem;">
+            ① 定位分析報告：一句話定位+為什麼<br>
+            ② IP定位卡完整版：目標人群·核心價值·差異化亮點·故事鉤子<br>
+            ③ 帳號系統：名稱×3套 + 簡介×3套 + 頭圖方向<br>
+            ④ 內容戰略：3條主線+每條3個選題+GEO關鍵詞<br>
+            ⑤ 對標參考：2-3個同類IP·學什麼·不學什麼<br>
+            ⑥ 第一步行動：第一條內容標題+發布建議
+            </span>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:16px;">
+          <span style="font-size:0.95rem;font-weight:700;color:var(--accent, #c41e3a);">¥500 – 600 · 一次交付，管你一整年的方向</span>
+          <br>
+          <a class="btn btn-primary" href="index.html#contact" data-copy style="margin-top:10px;">加微信 · 發我你的三個框 cheny2806</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 選擇 ====== -->
+  <section class="chapter" id="radar-choose">
+    <div class="wrap">
+      <div class="chapter-head" style="text-align:center;">
+        <div class="eyebrow reveal">Your Choice</div>
+        <h2 class="chapter-title reveal d1">三條路，你選<em>。</em></h2>
+      </div>
+
+      <div class="svc-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="svc-card glass reveal">
+          <h3 style="margin-bottom:8px;">🆓 自己試</h3>
+          <p>按路線A走。如果哪天通了，恭喜你。如果卡住了——你知道在哪找我。</p>
+          <p style="font-size:0.8rem;color:#999;margin-top:8px;">適合：喜歡自己摸索的人</p>
+        </div>
+        <div class="svc-card glass reveal d1" style="border:2px solid var(--accent, #c41e3a);">
+          <div style="display:inline-block;background:var(--accent, #c41e3a);color:#fff;padding:2px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:10px;">👈 推薦</div>
+          <h3 style="margin-bottom:8px;">🎯 跟燕姐做</h3>
+          <p>把三個框發我。1對1出定位+標籤+第一條內容。</p>
+          <p style="font-size:0.9rem;font-weight:700;color:var(--accent, #c41e3a);margin-top:8px;">¥500 – 600</p>
+          <a class="btn btn-primary svc-btn" href="index.html#contact" data-copy>加微信發我</a>
+        </div>
+        <div class="svc-card glass reveal d2" style="overflow:visible;">
+          <h3 style="margin-bottom:8px;">💝 先打賞</h3>
+          <p>如果這份清單幫到你了，請我喝杯咖啡。我會持續更新它。</p>
+          <div style="margin:12px 0;">
+            <img src="assets/img/wechat-pay.jpg" alt="微信收款碼" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
+          </div>
+          <p style="font-size:0.78rem;color:#999;margin-top:6px;">掃碼打賞，金額隨意</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 持續迭代聲明 ====== -->
+  <section class="chapter" id="radar-evergreen">
+    <div class="wrap">
+      <div class="trust-block reveal">
+        <p class="trust-quote glass" style="font-size:0.95rem;">
+          <strong>趨勢判斷：</strong>AI工具每個月都在進化。今天一個模板能做的事，下個月AI自己就能做。<br><br>
+          但有一件事AI做不了：<strong>用15年品牌實戰經驗，幫你做判斷。</strong><br>
+          AI能告訴你"你是什麼"。但只有實戰過的人，才能告訴你"你該往哪打"。<br><br>
+          這個頁面我會持續迭代。你收藏它，每次回來都有更新。因為我在一線，每天在變。AI變，我也變。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="final" id="radar-contact">
+    <div class="wrap final-inner">
+      <div class="eyebrow reveal" style="justify-content:center;">Let's Go</div>
+      <h2 class="reveal d1" style="text-align:center;">
+        你能剪出一個大概，<br>但剪不出最利落的<em>那一刀</em>。
+      </h2>
+      <p class="sub reveal d2" style="text-align:center;">
+        把三個框的內容截圖，加微信發我。<br>
+        我幫你做你自己做不了的那一步。
+      </p>
+
+      <div class="hero-cta reveal d3" style="justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="index.html#contact" data-copy>加微信 · cheny2806</a>
+      </div>
+      <div style="text-align:center;margin-top:16px;">
+        <p style="font-size:0.9rem;color:#888;">覺得有用先打賞，隨意金額</p>
+        <img src="assets/img/wechat-pay.jpg" alt="收款碼" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" />
+      </div>
+
+      <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:#999;">
+        ⚡ 此頁面持續更新。收藏它，每次回來都有迭代。<br>
+        最近更新：2026年7月 · 燕姐在一線實戰中持續迭代方法論
+      </p>
+    </div>
+  </section>
+
+  <!-- 頁腳 -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-brand">北大燕姐 · AI定位與GEO增長</div>
+      <div class="f-wx">WeChat: cheny2806</div>
+      <div>© 2026 北大燕姐 · 個人品牌站</div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="返回頂部">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+
+  <script>
+/* ============================================================
+   北大燕姐 · 個人品牌站 v6 — 交互邏輯 + 中英雙語 i18n
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var WECHAT = 'cheny2806';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ============================================================
+     中英雙語翻譯字典
+     ============================================================ */
+  var I18N = {
+    zh: {
+      'brand.name': '北大燕姐',
+      'nav.about': '我是誰',
+      'nav.services': '我能給你什麼',
+      'nav.trust': '信任的底氣',
+      'nav.radar': 'IP定位',
+      'nav.geo': 'GEO增長',
+      'nav.articles': '文章',
+      'nav.contact': '聯繫我',
+      'nav.wechat': '加微信',
+
+      'hero.eyebrow': '北大燕姐 · AI定位與GEO增長',
+      'hero.title': '放大企業<span class="accent">鋒芒</span>，<br>擦亮個人<span class="accent">光芒</span>',
+      'hero.facts': '用AI定位與GEO增長，幫你被搜到、被選擇、被信任。',
+      'hero.cta1': '加微信 · cheny2806',
+      'hero.cta2': '看服務',
+
+      'about.eyebrow': '01 — About',
+      'about.title': '我是誰<em>。</em>',
+      'about.p1': '15 年世界 500 強品牌操盤手。從零起步，把一款產品做到年銷破億，跑通了品牌從萌芽到爆發的每一道坎。有段時間，白天泡經銷商倉庫對庫存，晚上回酒店改方案到凌晨三點，早上七點又站在培訓講臺上。就這麼死磕過來的。',
+      'about.p2': '2026 年，一位創業者坐在我對面，花 30 萬做了一套品牌定位，打開就是一堆 PPT。他說："燕姐，看完我還是不知道我的 IP 在哪裡。"',
+      'about.p3': '那一刻我確認了一件事：品牌這盤棋，規則已經翻篇了。不是誰有錢誰說了算，是 AI 把信息差抹平了，流量路口換了方向。老地圖找不到新大陸。',
+      'about.p4': '於是我轉身創業。把 15 年品牌經驗、10 年培訓表達功力，和 AI 這個新引擎熔在一起 —— 幫企業和個人做 IP 精準定位，做 GEO 內容增長。被搜到，被選擇，被信任。',
+      'about.p5': '不講虛的。我走過的每一步，都算數。',
+
+      'stat1.num': '15<small>年</small>',
+      'stat1.label': '世界500強品牌運營與管理',
+      'stat1.sub': '長期紮根品牌運營與品牌管理一線',
+      'stat2.num': '10<small>年+</small>',
+      'stat2.label': '企業培訓與職業培訓師',
+      'stat2.sub': '練就能把實戰講清楚的能力',
+      'stat3.num': '0<small>→億</small>',
+      'stat3.label': '從零做到品牌過億',
+      'stat3.sub': '跑通產品從0到破億的完整成長路徑',
+
+      'svc.eyebrow': '02 — Services',
+      'svc.title': '我能給你什麼<em>。</em>',
+      'svc1.tag': 'Free · 隨喜打賞',
+      'svc1.title': 'AI + IP 定位工具包',
+      'svc1.desc': '我整理的AI+IP定位工具，拿去直接用。覺得有用就打個賞。',
+      'svc1.btn': '獲取工具包',
+      'svc2.tag': '￥500 – 600',
+      'svc2.title': 'AI + IP 定位雷達',
+      'svc2.desc': '三步走：幫你理清過往優勢 → 發現你自己都沒意識到的亮點 → 萃取別人越不過去的核心競爭力。',
+      'svc2.btn': '立即使用',
+      'svc3.tag': '￥1,500 – 3,000',
+      'svc3.title': '10–15天內容交付',
+      'svc3.desc': '基於你的品牌定位，幫你產出10到15天的帳號內容。定位幫你定，內容幫你出。',
+      'svc3.btn': '立即諮詢',
+      'svc4.tag': 'Offline',
+      'svc4.title': '線下半天·行業資源碰撞',
+      'svc4.desc': '面對面深度互動，深入了解你的真實需求。更難得的，是這裡匯聚了品牌操盤手、企業決策者之間的資源連結與深度對接——一場真正稀缺的資源碰撞。',
+      'svc4.btn': '預約諮詢',
+      'svc5.tag': 'Custom',
+      'svc5.title': '深度合作',
+      'svc5.desc': '基於深度信任與渠道深耕，我們以共創共榮的方式，一起開發屬於你的新生態。',
+      'svc5.gold': '以信任立本，以結果立鋒。',
+      'svc5.btn': '加微信聊',
+
+      'trust.eyebrow': '03 — Trust',
+      'trust.title': '信任的底氣<em>。</em>',
+      'trust.q1': '燕姐只講真話，只講自己做過的事情。走過的每一步，都算數。',
+      'trust.q2': '在AI領域學習與成長的每一步，做給你看、告訴你怎麼做。',
+      'trust1.num': '0 → 億',
+      'trust1.title': '從零到品牌破億',
+      'trust1.desc': '從零起步，把一個品牌做到年營業額破億。規劃、構建、推動、落地——品牌從萌芽到爆發的每一個關鍵節點，我全程參與。這條路，實打實從頭走到了尾。',
+      'trust2.num': '300<small>萬</small>',
+      'trust2.title': '一場活動拉爆一座城',
+      'trust2.desc': '瞄準一個戰略重點城市，從策劃到客戶意向、活動細節、反覆協同業務團隊調研市場與競品、深挖用戶需求與消費路徑、跟渠道經銷商團隊一輪輪復盤腦暴——最終一次活動拉爆市場，<strong>單場完成300萬實際銷售</strong>。合作方從頭到尾讚不絕口：活動前的召集令培訓、過程中的細緻對接復盤、快速的執行力，給他們留下了極深的印象和極好的口碑。',
+
+      'contact.eyebrow': "04 — Let's Talk",
+      'contact.title': '把你的品牌，<br>交給<em>真正操盤過</em>的人。',
+      'contact.sub': '加微信，聊聊你的品牌。基於信任，我們一起找到答案。',
+      'contact.copy': '複製微信號',
+      'contact.cta1': '加微信 · cheny2806',
+      'contact.cta2': '了解服務',
+
+      'footer.brand': '北大燕姐 · AI定位與GEO增長',
+      'footer.copy': '© 2026 北大燕姐 · 個人品牌站',
+
+      'mcta.services': '服務',
+      'mcta.wechat': '加微信 cheny2806',
+
+      'copytip': '已複製微信號 cheny2806',
+
+      'modal.toolkit.title': 'AI + IP 定位工具包',
+      'modal.toolkit.desc': '工具包內容正在打磨中。<br>二維碼區域已預留，內容就緒後直接替換。',
+      'modal.toolkit.note': '覺得有用，隨心打賞',
+      'modal.consult.title': '服務諮詢',
+      'modal.consult.desc': '添加微信，詳細溝通你的需求，我給你具體的建議和方案。',
+      'modal.consult.btn': '複製微信號',
+      'modal.radar.title': 'AI + IP 定位雷達',
+      'modal.radar.desc': '掃描下方二維碼，進入智能體頁面，直接開始你的IP定位診斷。',
+      'modal.radar.placeholder': '定位雷達智能體<br>二維碼待提供<br><br><small style="font-size:11px;">智能體開發完成後<br>替換此二維碼即可</small>',
+      'modal.radar.note': '¥500 – 600 · 掃碼後直接使用',
+
+      '_title': '北大燕姐 · AI定位與GEO增長 | 放大企業鋒芒，擦亮個人光芒',
+      '_desc': '用AI定位與GEO增長，幫你被搜到、被選擇、被信任。15年世界500強品牌運營與管理，10年+企業培訓與職業培訓師，從0做到品牌過億。'
+    },
+
+    en: {
+      'brand.name': 'PKU Yan',
+      'nav.about': 'About',
+      'nav.services': 'Services',
+      'nav.trust': 'Trust',
+      'nav.radar': 'IP Radar',
+      'nav.geo': 'GEO Growth',
+      'nav.articles': 'Articles',
+      'nav.contact': 'Contact',
+      'nav.wechat': 'WeChat',
+
+      'hero.eyebrow': 'PKU Yan · AI Positioning & GEO Growth',
+      'hero.title': 'Amplify your brand <span class="accent">edge</span>.<br>Polish your personal <span class="accent">shine</span>.',
+      'hero.facts': 'AI positioning and GEO growth — get found, get chosen, get trusted.',
+      'hero.cta1': 'Add WeChat · cheny2806',
+      'hero.cta2': 'View Services',
+
+      'about.eyebrow': '01 — About',
+      'about.title': 'Who I Am<em>.</em>',
+      'about.p1': '15 years as a Fortune 500 brand operator. Started from zero, took a product to over 100M in annual sales, and cleared every hurdle from brand inception to breakthrough. There was a stretch where I\'d spend days in distributor warehouses counting inventory, nights back at the hotel rewriting plans until 3 AM, and by 7 AM I\'d be standing on a training podium. That\'s how I ground it out.',
+      'about.p2': 'In 2026, a founder sat across from me. He\'d spent 300,000 RMB on a brand positioning exercise and got a pile of PPTs. He said, "Yan, after all that, I still don\'t know where my IP is."',
+      'about.p3': 'That moment confirmed something for me: the rules of branding have been rewritten. It\'s no longer about who has the deepest pockets — AI has flattened the information gap, and the traffic intersections have shifted. Old maps don\'t find new continents.',
+      'about.p4': 'So I pivoted. I fused 15 years of brand experience, 10 years of training and communication chops, with the new engine of AI — helping enterprises and individuals nail their IP positioning and drive GEO content growth. Get found, get chosen, get trusted.',
+      'about.p5': 'No fluff. Every step I\'ve walked counts.',
+
+      'stat1.num': '15<small>yrs</small>',
+      'stat1.label': 'Fortune 500 Brand Operations',
+      'stat1.sub': 'Deeply rooted in frontline brand management',
+      'stat2.num': '10<small>+</small>',
+      'stat2.label': 'Years Corporate Training & Coaching',
+      'stat2.sub': 'Turning real practice into clear teaching',
+      'stat3.num': '0<small>→100M</small>',
+      'stat3.label': 'Built a Brand from Zero to 100M+',
+      'stat3.sub': 'Ran the full path from 0 to breakthrough revenue',
+
+      'svc.eyebrow': '02 — Services',
+      'svc.title': 'What I Offer<em>.</em>',
+      'svc1.tag': 'Free · Pay What You Want',
+      'svc1.title': 'AI + IP Positioning Toolkit',
+      'svc1.desc': 'My curated AI + IP positioning tools — take them and use them directly. Tip if you find them helpful.',
+      'svc1.btn': 'Get Toolkit',
+      'svc2.tag': '¥500 – 600',
+      'svc2.title': 'AI + IP Positioning Radar',
+      'svc2.desc': "Three steps: clarify your past strengths → discover highlights you didn't even know you had → extract the core competitiveness others can't replicate.",
+      'svc2.btn': 'Start Now',
+      'svc3.tag': '¥1,500 – 3,000',
+      'svc3.title': '10–15 Day Content Delivery',
+      'svc3.desc': 'Based on your brand positioning, I produce 10–15 days of account content. Positioning sorted, content delivered.',
+      'svc3.btn': 'Consult Now',
+      'svc4.tag': 'Offline',
+      'svc4.title': 'Half-Day Offline · Industry Networking',
+      'svc4.desc': "Face-to-face deep interaction to understand your real needs. What's rarer is the resource connections and deep matchmaking among brand operators and business decision-makers — a truly scarce collision of resources.",
+      'svc4.btn': 'Book a Session',
+      'svc5.tag': 'Custom',
+      'svc5.title': 'Deep Collaboration',
+      'svc5.desc': 'Built on deep trust and channel cultivation, we co-create and co-prosper — developing your new ecosystem together.',
+      'svc5.gold': 'Trust as foundation. Results as edge.',
+      'svc5.btn': "Let's Talk",
+
+      'trust.eyebrow': '03 — Trust',
+      'trust.title': 'Why Trust Me<em>.</em>',
+      'trust.q1': "I only speak the truth, only about things I've actually done. Every step counts.",
+      'trust.q2': 'Every step of learning and growing in AI — I show you, then tell you how.',
+      'trust1.num': '0 → 100M',
+      'trust1.title': 'From Zero to 100M Brand',
+      'trust1.desc': 'Starting from scratch, I grew a brand to over 100M in annual revenue. Strategy, construction, execution, landing — every critical node from inception to breakthrough, I was there. This path, walked end to end for real.',
+      'trust2.num': '3M<small>+</small>',
+      'trust2.title': 'One Event Ignited a City',
+      'trust2.desc': 'Targeting a strategic city, from planning to customer intent, event details, repeatedly coordinating with business teams to research the market and competitors, digging into user needs and consumption paths, brainstorming with channel distributor teams round after round — ultimately one event ignited the market, <strong>achieving 3M in actual sales in a single event</strong>. Partners praised it throughout: the pre-event mobilization training, meticulous coordination and reviews during the process, and rapid execution left a deep impression and excellent word-of-mouth.',
+
+      'contact.eyebrow': "04 — Let's Talk",
+      'contact.title': "Put your brand in the hands of<br>someone who's <em>actually done it</em>.",
+      'contact.sub': "Add WeChat, let's talk about your brand. Built on trust, we'll find the answers together.",
+      'contact.copy': 'Copy WeChat ID',
+      'contact.cta1': 'Add WeChat · cheny2806',
+      'contact.cta2': 'View Services',
+
+      'footer.brand': 'PKU Yan · AI Positioning & GEO Growth',
+      'footer.copy': '© 2026 PKU Yan · Personal Brand',
+
+      'mcta.services': 'Services',
+      'mcta.wechat': 'WeChat cheny2806',
+
+      'copytip': 'WeChat ID cheny2806 copied',
+
+      'modal.toolkit.title': 'AI + IP Positioning Toolkit',
+      'modal.toolkit.desc': 'Toolkit content is being polished.<br>QR code area is reserved — swap in once ready.',
+      'modal.toolkit.note': 'Found it useful? Tip any amount',
+      'modal.consult.title': 'Service Consultation',
+      'modal.consult.desc': "Add WeChat to discuss your needs in detail. I'll give you specific advice and solutions.",
+      'modal.consult.btn': 'Copy WeChat ID',
+      'modal.radar.title': 'AI + IP Positioning Radar',
+      'modal.radar.desc': 'Scan the QR code below to enter the AI agent page and start your IP positioning diagnosis.',
+      'modal.radar.placeholder': 'Positioning Radar Agent<br>QR code pending<br><br><small style="font-size:11px;">Replace this QR code<br>once the agent is ready</small>',
+      'modal.radar.note': '¥500 – 600 · Scan to start',
+
+      '_title': 'PKU Yan · AI Positioning & GEO Growth | Amplify Your Brand Edge',
+      '_desc': 'AI positioning and GEO growth — get found, get chosen, get trusted. 15 years in Fortune 500 brand operations, 10+ years corporate training, built a brand from zero to 100M+.'
+    }
+  };
+
+  /* ============================================================
+     語言切換
+     ============================================================ */
+  var currentLang = 'zh';
+  try { currentLang = localStorage.getItem('lang') || 'zh'; } catch (e) {}
+
+  function applyLang(lang) {
+    if (!I18N[lang]) lang = 'zh';
+    currentLang = lang;
+    var dict = I18N[lang];
+
+    // 更新 html lang 屬性
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    // 更新 title 和 meta description
+    if (dict['_title']) document.title = dict['_title'];
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && dict['_desc']) metaDesc.setAttribute('content', dict['_desc']);
+
+    // 更新所有帶 data-i18n 的元素
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    // 更新語言按鈕狀態
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // 持久化
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  // 綁定語言切換按鈕
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var lang = btn.getAttribute('data-lang');
+      if (lang !== currentLang) applyLang(lang);
+    });
+  });
+
+  // 初始化語言
+  applyLang(currentLang);
+
+  /* ============================================================
+     導航滾動狀態 + 滾動進度條 + 返回頂部
+     ============================================================ */
+  var nav = document.getElementById('nav');
+  var scrollProgress = document.getElementById('scrollProgress');
+  var backToTop = document.getElementById('backToTop');
+  var mobileCta = document.getElementById('mobileCta');
+
+  function onScroll() {
+    var sy = window.scrollY;
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+
+    // 導航欄
+    if (nav) {
+      if (sy > 30) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+
+    // 滾動進度條
+    if (scrollProgress) {
+      var pct = docH > 0 ? (sy / docH) * 100 : 0;
+      scrollProgress.style.width = pct + '%';
+    }
+
+    // 移動端 CTA
+    if (mobileCta) {
+      if (sy > window.innerHeight * 0.6) mobileCta.classList.add('show');
+      else mobileCta.classList.remove('show');
+    }
+
+    // 返回頂部按鈕
+    if (backToTop) {
+      if (sy > window.innerHeight * 0.5) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // 返回頂部點擊
+  if (backToTop) {
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  /* ============================================================
+     導航高亮當前章節
+     ============================================================ */
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  if ('IntersectionObserver' in window && navLinks.length) {
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var id = e.target.getAttribute('id');
+          navLinks.forEach(function (link) {
+            var href = link.getAttribute('href');
+            link.classList.toggle('active', href === '#' + id);
+          });
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '-20% 0px -50% 0px' });
+
+    sections.forEach(function (s) { navObserver.observe(s); });
+  }
+
+  /* ============================================================
+     入場動畫
+     ============================================================ */
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ============================================================
+     複製微信號
+     ============================================================ */
+  var tip = document.getElementById('copyTip');
+  var tipTimer = null;
+
+  function showTip() {
+    if (!tip) return;
+    tip.classList.add('show');
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(function () { tip.classList.remove('show'); }, 2000);
+  }
+
+  function copyWechat(e) {
+    if (e) e.preventDefault();
+    var done = function () { showTip(); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(WECHAT).then(done).catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+    function fallbackCopy() {
+      try {
+        var t = document.createElement('textarea');
+        t.value = WECHAT;
+        t.style.position = 'fixed';
+        t.style.opacity = '0';
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand('copy');
+        document.body.removeChild(t);
+        done();
+      } catch (err) { done(); }
+    }
+  }
+
+  document.querySelectorAll('[data-copy]').forEach(function (el) {
+    el.addEventListener('click', copyWechat);
+  });
+
+  /* ============================================================
+     平滑滾動錨點
+     ============================================================ */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var href = a.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - 10;
+      window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* ============================================================
+     工具包打賞彈窗
+     ============================================================ */
+  var modal = document.getElementById('toolkitModal');
+  var modalClose = document.getElementById('modalClose');
+  var toolkitBtn = document.getElementById('toolkitBtn');
+
+  function openModal() {
+    if (!modal) return;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (toolkitBtn) toolkitBtn.addEventListener('click', openModal);
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  /* ============================================================
+     諮詢彈窗
+     ============================================================ */
+  var consultModal = document.getElementById('consultModal');
+  var consultTitle = document.getElementById('consultTitle');
+  var consultClose = document.querySelector('.consult-close');
+
+  function openConsult(serviceKey) {
+    if (!consultModal) return;
+    // 用 i18n key 查找翻譯後的服務名
+    if (consultTitle && serviceKey && I18N[currentLang][serviceKey]) {
+      consultTitle.textContent = I18N[currentLang][serviceKey];
+    }
+    consultModal.classList.add('open');
+    consultModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeConsult() {
+    if (!consultModal) return;
+    consultModal.classList.remove('open');
+    consultModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.consult-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var key = btn.getAttribute('data-service-key') || null;
+      openConsult(key);
+    });
+  });
+
+  if (consultClose) consultClose.addEventListener('click', closeConsult);
+  if (consultModal) {
+    consultModal.addEventListener('click', function (e) {
+      if (e.target === consultModal) closeConsult();
+    });
+  }
+
+  /* ============================================================
+     定位雷達彈窗
+     ============================================================ */
+  var radarModal = document.getElementById('radarModal');
+  var radarClose = document.querySelector('.radar-close');
+
+  function openRadar() {
+    if (!radarModal) return;
+    radarModal.classList.add('open');
+    radarModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeRadar() {
+    if (!radarModal) return;
+    radarModal.classList.remove('open');
+    radarModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.radar-trigger').forEach(function (btn) {
+    btn.addEventListener('click', openRadar);
+  });
+
+  if (radarClose) radarClose.addEventListener('click', closeRadar);
+  if (radarModal) {
+    radarModal.addEventListener('click', function (e) {
+      if (e.target === radarModal) closeRadar();
+    });
+  }
+
+  /* ============================================================
+     統一 ESC 關閉彈窗
+     ============================================================ */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (modal && modal.classList.contains('open')) closeModal();
+      if (consultModal && consultModal.classList.contains('open')) closeConsult();
+      if (radarModal && radarModal.classList.contains('open')) closeRadar();
+    }
+  });
+
+  /* ============================================================
+     彈窗內複製按鈕
+     ============================================================ */
+  document.querySelectorAll('.copy-in-modal').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      copyWechat(e);
+      setTimeout(function () {
+        if (consultModal && consultModal.classList.contains('open')) closeConsult();
+      }, 1500);
+    });
+  });
+
+  /* ============================================================
+     文章朗讀功能（Web Speech API）
+     ============================================================ */
+  var articleBody = document.querySelector('.article-detail');
+  if (articleBody) {
+    var ttsBtn = document.createElement('button');
+    ttsBtn.textContent = '🔊 朗讀';
+    ttsBtn.style.cssText = 'position:fixed;top:100px;left:16px;z-index:999;padding:8px 14px;border-radius:20px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.8);backdrop-filter:blur(8px);cursor:pointer;font-size:0.85rem;font-family:inherit;';
+    ttsBtn.setAttribute('aria-label', '朗讀文章');
+    document.body.appendChild(ttsBtn);
+
+    var speaking = false;
+    var utterance = null;
+
+    ttsBtn.addEventListener('click', function () {
+      if (speaking) {
+        window.speechSynthesis.cancel();
+        speaking = false;
+        ttsBtn.textContent = '🔊 朗讀';
+        return;
+      }
+      var text = articleBody.textContent.replace(/\s+/g, ' ').trim();
+      if (!text) return;
+      utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-CN';
+      utterance.rate = 0.95;
+      utterance.onstart = function () { speaking = true; ttsBtn.textContent = '⏹ 停止'; };
+      utterance.onend = function () { speaking = false; ttsBtn.textContent = '🔊 朗讀'; };
+      utterance.onerror = function () { speaking = false; ttsBtn.textContent = '🔊 朗讀'; };
+      window.speechSynthesis.speak(utterance);
+    });
+  }
+
+})();
+  </script>
+  <script>
+    /* ====== 匯總生成 + 打賞下載 ====== */
+    (function() {
+      var btn = document.getElementById('generateSummaryBtn');
+      var donate = document.getElementById('donateSection');
+      var downloadBtn = document.getElementById('downloadSummaryBtn');
+      if (!btn || !donate || !downloadBtn) return;
+
+      btn.addEventListener('click', function() {
+        donate.style.display = 'block';
+        donate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      downloadBtn.addEventListener('click', function() {
+        var step1 = (document.getElementById('radar-input-step1') || {}).value || '(未填寫)';
+        var step2 = (document.getElementById('radar-input-step2') || {}).value || '(未填寫)';
+        var step3 = (document.getElementById('radar-input-step3') || {}).value || '(未填寫)';
+
+        var now = new Date();
+        var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+
+        var text = '北大燕姐 · IP定位雷達 · 定位彈藥庫\n';
+        text += '生成日期：' + dateStr + '\n';
+        text += '========================================\n\n';
+        text += '【第一步：我的經歷彈藥】\n' + step1 + '\n\n';
+        text += '【第二步：我的核心優勢】\n' + step2 + '\n\n';
+        text += '【第三步：我的一句話定位】\n' + step3 + '\n\n';
+        text += '========================================\n';
+        text += '這份文檔由你在 pkuyan.com 的IP定位雷達頁面完成。\n';
+        text += '如需1對1深度定位諮詢，加微信 cheny2806，把這份文檔發給我。\n';
+
+        var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = '北大燕姐-IP定位彈藥庫-' + dateStr + '.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    })();
+  </script>
+</body>
+</html>
+

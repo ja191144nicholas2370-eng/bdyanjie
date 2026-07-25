@@ -337,9 +337,47 @@
   document.querySelectorAll('.lang-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var lang = btn.getAttribute('data-lang');
-      if (lang !== currentLang) applyLang(lang);
+      if (lang !== currentLang) switchLang(lang);
     });
   });
+
+  // 语言切换 + 页面跳转
+  function switchLang(lang) {
+    // 首页用 i18n 动态切换，不跳转
+    var isHome = location.pathname.endsWith('/') || location.pathname.endsWith('index.html') || location.pathname.endsWith('home.html');
+    if (isHome) {
+      applyLang(lang);
+      return;
+    }
+    // 子页面：跳转到对应语言文件
+    var path = location.pathname;
+    // 去掉已有的语言后缀
+    path = path.replace(/-zh-tw\.html/, '.html').replace(/-en\.html/, '.html');
+    if (lang === 'zh-tw') {
+      path = path.replace(/\.html$/, '-zh-tw.html');
+    } else if (lang === 'en') {
+      path = path.replace(/\.html$/, '-en.html');
+    }
+    location.href = path;
+  }
+
+  // 给没有语言按钮的页面加浮动切换器
+  if (!document.getElementById('langSwitch')) {
+    var floatLang = document.createElement('div');
+    floatLang.id = 'floatLang';
+    floatLang.style.cssText = 'position:fixed;top:90px;right:12px;z-index:999;display:flex;flex-direction:column;gap:6px;';
+    var labels = {zh:'中', 'zh-tw':'繁', en:'EN'};
+    Object.keys(labels).forEach(function(l) {
+      var b = document.createElement('button');
+      b.textContent = labels[l];
+      b.setAttribute('data-lang', l);
+      b.style.cssText = 'width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,0.12);background:rgba(255,255,255,0.75);backdrop-filter:blur(8px);cursor:pointer;font-size:11px;font-weight:600;color:#333;';
+      if (l === currentLang) b.style.background = '#6c5ce7'; b.style.color = '#fff';
+      b.addEventListener('click', function() { switchLang(l); });
+      floatLang.appendChild(b);
+    });
+    document.body.appendChild(floatLang);
+  }
 
   // 初始化语言
   applyLang(currentLang);
