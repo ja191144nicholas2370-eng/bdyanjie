@@ -2210,6 +2210,10 @@ h1 .accent {
   <script>
   /* 微信环境检测：切换打赏界面 */
   (function(){
+    // 恢复本地保存的内容
+    ['radar-input-step1','radar-input-step2','radar-input-step3'].forEach(function(id,i){
+      try { var v = localStorage.getItem('radar_step'+(i+1)); if (v) document.getElementById(id).value = v; } catch(e) {}
+    });
     var ua = navigator.userAgent.toLowerCase();
     var isWx = ua.indexOf('micromessenger') !== -1;
     if (isWx) {
@@ -2240,6 +2244,9 @@ h1 .accent {
 
         if (!step1 && !step2 && !step3) { alert('请至少填写一个步骤的内容'); return; }
 
+        // 自动保存到本地，防止失败后丢失
+        try { localStorage.setItem('radar_step1', step1); localStorage.setItem('radar_step2', step2); localStorage.setItem('radar_step3', step3); } catch(e) {}
+
         downloadBtn.textContent = '⏳ 燕姐正在为你生成深度分析报告...';
         downloadBtn.disabled = true;
 
@@ -2269,12 +2276,12 @@ h1 .accent {
               a.download = '北大燕姐-IP定位分析报告-' + dateStr + '.txt';
               document.body.appendChild(a); a.click(); document.body.removeChild(a);
             }
-          } else { alert('生成失败，请稍后重试。或加微信 cheny2806 直接获取。'); }
+          } else { alert('生成失败。你填写的内容已自动保存，刷新页面后还在。可加微信 cheny2806 发给燕姐手动生成。'); downloadBtn.textContent = '🔄 重新生成'; downloadBtn.disabled = false; }
         })
         .catch(function() {
-          downloadBtn.textContent = '✅ 我已打赏，下载文档';
+          downloadBtn.textContent = '🔄 重新生成';
           downloadBtn.disabled = false;
-          alert('网络异常，请稍后重试。或加微信 cheny2806，燕姐手动帮你生成。');
+          alert('网络异常。你填写的内容已自动保存，刷新页面后还在。可加微信 cheny2806，燕姐手动帮你生成。');
         });
       });
 
