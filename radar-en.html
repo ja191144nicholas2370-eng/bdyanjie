@@ -221,4 +221,445 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
 });</script>
 <script src="assets/js/main.js"></script>
 </body>
+</html>/* ====== Summarize + Tip & Download ====== */
+    (function() {
+      var btn = document.getElementById('generateSummaryBtn');
+      var donate = document.getElementById('donateSection');
+      var downloadBtn = document.getElementById('downloadSummaryBtn');
+      if (!btn || !donate || !downloadBtn) return;
+
+      btn.addEventListener('click', function() {
+        donate.style.display = 'block';
+        donate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      downloadBtn.addEventListener('click', function() {
+        var step1 = (document.getElementById('radar-input-step1') || {}).value || '';
+        var step2 = (document.getElementById('radar-input-step2') || {}).value || '';
+        var step3 = (document.getElementById('radar-input-step3') || {}).value || '';
+
+        if (!step1 && !step2 && !step3) { alert('Please fill at least one step'); return; }
+
+        // 自动保存到本地，防止失败后丢失
+        try { localStorage.setItem('radar_step1', step1); localStorage.setItem('radar_step2', step2); localStorage.setItem('radar_step3', step3); } catch(e) {}
+
+        downloadBtn.textContent = '⏳ Generating your IP positioning report...';
+        downloadBtn.disabled = true;
+
+        // 显示加载提示
+        var loadingBox = document.createElement('div');
+        loadingBox.id = 'reportLoading';
+        loadingBox.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:rgba(255,255,255,0.95);padding:28px 36px;border-radius:16px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.12);';
+        loadingBox.innerHTML = '<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">IP Positioning Report Generating</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">Deep analysis takes ~30 seconds...</p>';
+        document.body.appendChild(loadingBox);
+
+        // 直接调用DeepSeek API生成报告
+        var prompt = 'You are IP Positioning Radar. Based on用户填写的三步骤内容，生成一份IP定位深度诊断报告。结构：①凭什么是你（找出用户自己没意识到的优势）②你是谁（三句话定位：共鸣型+反常识型+独家型）③现在做什么（三条可执行路径）。不说教、不居高临下。2000字以内。\\n\\n用户填写内容：\\n步骤1：' + step1 + '\\n步骤2：' + step2 + '\\n步骤3：' + step3;
+
+        fetch('https://api.deepseek.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
+          body: JSON.stringify({model:'deepseek-v4-pro', messages:[{role:'system',content:'You are IP Positioning Radar agent.'},{role:'user',content:prompt}], temperature:0.65, max_tokens:3000})
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+          downloadBtn.textContent = '✅ Tipped - Download';
+          downloadBtn.disabled = false;
+          if (data.choices && data.choices[0]) {
+            var msg = data.choices[0].message; var text = msg.content || msg.reasoning_content || '';
+            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
+
+            var now = new Date();
+            var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+            var ua = navigator.userAgent.toLowerCase();
+            var isWx = ua.indexOf('micromessenger') !== -1;
+            if (isWx) { copyTextToUser(text, dateStr); }
+            else {
+              var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+              var a = document.createElement('a');
+              a.href = URL.createObjectURL(blob);
+              a.download = 'BeiDa-Yan-IP-Report-' + dateStr + '.txt';
+              document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            }
+          } else { alert('Generation failed. Content auto-saved. Add cheny2806 on WeChat for manual generation.'); downloadBtn.textContent = '🔄 Retry'; downloadBtn.disabled = false; }
+        })
+        .catch(function() {
+          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+          downloadBtn.textContent = '🔄 Retry';
+          downloadBtn.disabled = false;
+          alert('Network error. Content auto-saved. Add cheny2806 on WeChat.');
+        });
+      });
+
+      /* ====== 智能IP定位报告生成 ====== */
+      function generateIPReport(s1, s2, s3, dateStr) {
+        var combined = (s1 + ' ' + s2 + ' ' + s3).toLowerCase();
+
+        // 行业识别
+        var industries = [];
+        if (/销售|客户|业绩|营收|订单|谈判|渠道|经销商|门店/.test(combined)) industries.push('商业/销售');
+        if (/技术|开发|编程|代码|架构|系统|数据|算法|AI|人工智能/.test(combined)) industries.push('技术/互联网');
+        if (/教育|培训|老师|学生|课程|教学|讲师/.test(combined)) industries.push('教育/培训');
+        if (/产品|需求|用户|体验|设计|交互|UX/.test(combined)) industries.push('产品/设计');
+        if (/运营|内容|创作|写作|文案|自媒体|短视频|直播/.test(combined)) industries.push('内容/自媒体');
+        if (/管理|团队|领导|战略|决策|项目/.test(combined)) industries.push('管理/咨询');
+        if (/品牌|营销|市场|推广|广告/.test(combined)) industries.push('品牌/营销');
+        if (industries.length === 0) industries.push('综合跨界');
+
+        // 技能组合识别
+        var skills = [];
+        if (/从0|从零|起步|从无到有|搭建|创建|开创/.test(combined)) skills.push('从0到1搭建能力');
+        if (/数字|万|亿|倍|%|增长|提升|翻|突破/.test(combined)) skills.push('结果导向（有数据支撑）');
+        if (/带团队|管理|领导|培养|辅导|mentor/.test(combined)) skills.push('团队领导力');
+        if (/沟通|表达|演讲|汇报|谈判|说服/.test(combined)) skills.push('高影响力表达');
+        if (/分析|拆解|逻辑|框架|方法|体系/.test(combined)) skills.push('结构化思维');
+        if (/创意|设计|策划|构思|想法|创新/.test(combined)) skills.push('创意策划力');
+        if (/执行|落地|推进|完成|交付|上线/.test(combined)) skills.push('强执行力');
+        if (skills.length === 0) skills = ['复合型能力（待深度挖掘）', '潜在差异化优势（需1对1萃取）'];
+
+        // 生成定位句优化（基于用户step3 + 行业）
+        var positioningLines = [];
+        var industry = industries[0];
+        if (s3 && s3.length > 5) {
+          positioningLines.push('方向A（专业权威型）：' + polishPositioning(s3, 'authority', industry));
+          positioningLines.push('方向B（亲和共鸣型）：' + polishPositioning(s3, 'empathy', industry));
+          positioningLines.push('方向C（反常识型）：' + polishPositioning(s3, 'contrarian', industry));
+        } else {
+          var defaultBase = '帮你把多年积累变成别人越不过去的核心竞争力';
+          positioningLines.push('方向A（专业权威型）：我帮' + industry + '领域的从业者，把碎片化经验变成可复制的系统方法论');
+          positioningLines.push('方向B（亲和共鸣型）：我专治"明明很有料但说不清楚自己值钱在哪"的' + industry + '人');
+          positioningLines.push('方向C（反常识型）：别人在追风口，我帮你在自己的经历里挖金矿——' + industry + '赛道尤甚');
+        }
+
+        // 组装报告
+        var r = '';
+        r += '══════════════════════════════════════\n';
+        r += '  北大燕姐 · IP定位雷达 · 个人IP定位分析报告\n';
+        r += '  生成日期：' + dateStr + '\n';
+        r += '══════════════════════════════════════\n\n';
+
+        r += '━━━ 第一部分：你的原始素材 ━━━\n\n';
+        r += '【经历弹药】\n' + (s1 || '（待补充）') + '\n\n';
+        r += '【核心优势】\n' + (s2 || '（待补充）') + '\n\n';
+        r += '【定位初稿】\n' + (s3 || '（待补充）') + '\n\n';
+
+        r += '━━━ 第二部分：燕姐分析 · 核心优势萃取 ━━━\n\n';
+        r += '基于你提供的信息，我用15年品牌操盘手的视角，帮你做了三层萃取：\n\n';
+        r += '① 你的行业基底：' + industries.join('、') + '\n';
+        r += '   这意味着你的经验在至少' + industries.length + '个领域有交叉价值，\n';
+        r += '   而「跨界组合」恰恰是个人IP最稀缺的护城河。\n\n';
+        r += '② 你的能力武器库：\n';
+        for (var i = 0; i < skills.length; i++) {
+          r += '   · ' + skills[i] + '\n';
+        }
+        r += '\n   以上能力的排列组合，就是AI生成不了的「你之所以是你」的答案。\n\n';
+        r += '③ 你以为普通但实际稀缺的：\n';
+        r += '   大多数人在写自己的优势时，会把自己最厉害的东西当成「这谁不会啊」。\n';
+        r += '   但品牌操盘手看了你的素材之后，能闻到「弹药味」——\n';
+        r += '   你写下的那段经历里，至少有1-2个点是同类IP复制不了的。\n';
+        if (industries.length >= 2) {
+          r += '   尤其是你横跨' + industries[0] + '和' + industries[1] + '的经验组合，市场上同时具备这两样的人比你想象中少得多。\n';
+        }
+        r += '\n';
+
+        r += '━━━ 第三部分：一句话定位（优化版） ━━━\n\n';
+        r += '以下三个方向，挑一个你说出来最舒服的：\n\n';
+        for (var j = 0; j < positioningLines.length; j++) {
+          r += positioningLines[j] + '\n\n';
+        }
+        r += '💡 燕姐建议：读出来。录下来听回放。哪个版本让你觉得"这就是我"——那就是它。\n\n';
+
+        r += '━━━ 第四部分：差异化方向 ━━━\n\n';
+        r += '跟同类' + industry + 'IP相比，你的差异化可以打这三张牌：\n';
+        r += '1. 你的经历组合（' + (skills.length >= 2 ? skills[0] + ' + ' + skills[1] : '跨界经验') + '）本身就是护城河\n';
+        r += '2. 你不是"讲方法论"的人，你是"把方法用自己身上验证过"的人——这层信任，AI给不了\n';
+        r += '3. 你的弱项换个角度看就是差异化——"太实在不会包装"=真诚，"太细节"=交付靠谱\n\n';
+
+        r += '━━━ 第五部分：对标参考 ━━━\n\n';
+        r += '找2-3个' + industry + '领域你欣赏的IP，做三件事：\n';
+        r += '① 看他们的定位句是怎么写的（不是抄，是拆结构）\n';
+        r += '② 看他们第一条爆款内容讲的是什么故事\n';
+        r += '③ 看评论区用户在讨论什么——那是未被满足的需求\n\n';
+        r += '⚠️ 重要：对标是为了学「表达方式」，不是为了学「定位本身」。你的定位已经在上面的三个方向里了。\n\n';
+
+        r += '━━━ 第六部分：下一步行动 ━━━\n\n';
+        r += '第一周：从上面三个定位方向中选一个，用它写三条不同角度的内容标题\n';
+        r += '第二周：选一条标题发出去。48小时后回来，只看三个数据：阅读量、收藏量、评论内容\n';
+        r += '第三周：根据数据反馈，微调定位句的措辞，再发一条，再测\n';
+        r += '第四周：如果数据在涨但方向还不够锋利，把这份报告发给我，我们30分钟语音把它定下来\n\n';
+
+        r += '══════════════════════════════════════\n';
+        r += '本报告由北大燕姐IP定位雷达自动生成\n';
+        r += '基于15年品牌操盘方法论 · 非AI通用模板\n';
+        r += '如需1对1深度定位（¥500-600），加微信 cheny2806\n';
+        r += '══════════════════════════════════════\n';
+
+        return r;
+      }
+
+      function polishPositioning(base, style, industry) {
+        // 简单的定位句优化：基于用户原文做风格化改写
+        var clean = base.replace(/^我是|^我帮|^帮/g, '').replace(/。|，/g, '，').trim();
+        if (clean.length < 5) clean = '帮' + industry + '人挖掘核心竞争力';
+        switch(style) {
+          case 'authority':
+            return '我帮' + clean.split('，')[0] + '——用一套经过验证的方法，而不是拍脑袋的建议';
+          case 'empathy':
+            return '如果你也在' + industry + '领域，明明很有料却说不出自己值钱在哪——我是那个帮你把金子挖出来的人';
+          case 'contrarian':
+            return '大多数定位告诉你"分析市场"，我告诉你的恰恰相反——先挖自己。尤其是' + industry + '人，最锋利的武器不在市场报告里，在你的经历里';
+          default:
+            return '我帮' + clean;
+        }
+      }
+
+      function copyTextToUser(text, dateStr) {
+        // 移除旧弹窗
+        var old = document.getElementById('summaryPopup');
+        if (old) old.remove();
+        var popup = document.createElement('div');
+        popup.id = 'summaryPopup';
+        popup.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;';
+        popup.innerHTML = '<div style="background:#fff;border-radius:16px;padding:24px;max-width:90vw;max-height:80vh;overflow-y:auto;margin:20px;box-shadow:0 20px 60px rgba(0,0,0,0.2);">' +
+          '<h3 style="margin:0 0 12px;font-size:1.1rem;">📋 Your IP Positioning Report</h3>' +
+          '<textarea readonly style="width:100%;height:300px;border:1px solid #ddd;border-radius:8px;padding:12px;font-size:0.82rem;font-family:inherit;line-height:1.6;resize:none;">' + text.replace(/</g,'&lt;') + '</textarea>' +
+          '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">' +
+          '<button id="copySummaryBtn" style="flex:1;padding:12px;background:#6c5ce7;color:#fff;border:none;border-radius:24px;font-size:1rem;cursor:pointer;">📋 Copy All</button>' +
+          '<button onclick="this.parentElement.parentElement.parentElement.remove()" style="padding:12px 20px;background:#eee;border:none;border-radius:24px;font-size:0.9rem;cursor:pointer;">Close</button>' +
+          '</div></div>';
+        document.body.appendChild(popup);
+        document.getElementById('copySummaryBtn').addEventListener('click', function() {
+          var ta = popup.querySelector('textarea');
+          ta.select();
+          document.execCommand('copy');
+          this.textContent = '✅ Copied！';
+          setTimeout(function() { popup.remove(); }, 1500);
+        });
+        popup.addEventListener('click', function(e) { if (e.target === popup) popup.remove(); });
+      }
+    })();
+  </script>E html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f6fa" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pkuyan.com/radar" />
+  <title>IP Positioning Radar · BeiDa Yan | Free Self-Assessment Tool</title>
+  <meta name="description" content="Not an AI-generated template. A 15-year brand strategist's positioning method — now free to try. Find your positioning and your next move." />
+  <meta property="og:title" content="IP Positioning Radar · BeiDa Yan" />
+  <meta property="og:description" content="Find your positioning. Know where to strike next." />
+  <meta property="og:image" content="assets/img/portrait-web.png" />
+  <link rel="stylesheet" href="assets/css/core.css" />
+  <style>
+    .checklist { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border-radius: 16px; padding: 28px 32px; margin-top: 20px; border: 1px solid rgba(0,0,0,0.06); }
+    .checklist h4 { font-size: 1.05rem; margin: 0 0 8px; color: var(--accent, #c41e3a); font-weight: 600; }
+    .checklist .prompt { font-size: 1.15rem; font-weight: 600; margin-bottom: 16px; line-height: 1.6; }
+    .checklist ol { padding-left: 20px; line-height: 2.2; color: var(--text-secondary, #444); }
+    .checklist ol li { margin-bottom: 4px; font-size: 0.98rem; }
+    .checklist textarea { width: 100%; min-height: 120px; border: 1px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 14px; font-family: inherit; font-size: 0.95rem; resize: vertical; background: rgba(255,255,255,0.6); margin-top: 14px; }
+    @media (max-width: 640px) { .checklist { padding: 20px 18px; } .checklist ol { padding-left: 16px; } }
+  </style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="gradient-bg" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mono">燕</span><span class="name">BeiDa Yan</span></a>
+    <nav class="nav-links" aria-label="Main nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="articles-en.html">Articles</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-right"><a class="btn btn-primary btn-sm btn-wechat" href="index.html#contact">WeChat</a></div>
+  </div>
+</header>
+
+<!-- Step 1 -->
+<section class="chapter" id="radar-step1">
+  <div class="wrap">
+    <div class="chapter-head">
+      <div class="eyebrow reveal">Step 1</div>
+      <h2 class="chapter-title reveal d1">Not "what have you done."<br>It's <em>which experience can fight</em>.</h2>
+    </div>
+    <div class="checklist reveal d1">
+      <div class="prompt">Write down everything you've ever done that got results. Don't filter. Write it all:</div>
+      <ol>
+        <li>What results have you achieved with <strong>numbers, feedback, or recognition</strong>? (Any field counts)</li>
+        <li>What do you do <strong>more easily than others</strong>, with better results?</li>
+        <li>What do people <strong>keep praising you for</strong>? (The kind you hear so often you think "that's nothing")</li>
+      </ol>
+      <textarea id="radar-input-step1" placeholder="✍️ Just write. Don't be modest. This isn't an interview — it's taking inventory of your assets."></textarea>
+      <div class="tip-box"><strong>Two focus points:</strong><br>① Don't list titles and duties — write <strong>specific actions and numbers</strong>. Not "handled sales" but "grew regional sales from 800K to 3M in six months."<br>② Small things you overlook are often the most valuable. "Colleagues always come to me for PPTs" might mean your <strong>structured communication</strong> is rare. Write those down too.</div>
+      <div class="insight-box"><strong>Yan's perspective:</strong> AI treats every line you write as an equal-value label. But a brand strategist knows — <strong>not all experience has market value</strong>. Which of the above can become weapons that set you apart? Three tests: did it produce results, can it be replicated, can others easily do the same? If all three, that's your ammunition. Circle it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 2 -->
+<section class="chapter" id="radar-step2">
+  <div class="wrap">
+    <div class="chapter-head">
+      <div class="eyebrow reveal">Step 2</div>
+      <h2 class="chapter-title reveal d1">Not "what are your strengths."<br>It's <em>what strength can no one surpass</em>.</h2>
+    </div>
+    <div class="checklist reveal d1">
+      <div class="prompt">Take what you circled in Step 1 and look from a different angle:</div>
+      <ol>
+        <li>Your <strong>combination of experiences</strong> — is it common in the market? (e.g. "sales + content creation + AI" — far fewer people have all three than you think)</li>
+        <li>The abilities you <strong>assume everyone has</strong> — search job sites and see how many people actually have them.</li>
+        <li>Your <strong>"weakness"</strong> from another angle — could it be differentiation? ("Not professional enough" might mean "ordinary people can understand you")</li>
+      </ol>
+      <textarea id="radar-input-step2" placeholder="✍️ Describe yourself in conversation language. Not a resume. Like telling a friend: 'What I'm actually best at is... because others need X steps, I only need Y.'"></textarea>
+      <div class="tip-box"><strong>Two focus points:</strong><br>① Search each ability keyword on job sites. Look at <strong>demand volume and salary range</strong>. The market validates for you.<br>② Tell an outsider something you think "everyone can do." <strong>Watch their first reaction.</strong> If their eyes light up, they ask questions, they say "can you teach me" — congratulations, you found a skill you thought was ordinary but is actually rare.</div>
+      <div class="insight-box"><strong>Yan's perspective:</strong> AI will list your strengths in a table — neat, clean, and utterly harmless. But a brand strategist knows: <strong>strengths aren't for yourself, they're for your competitors</strong>. A positioning that truly hits is one where others read it and think: "I can't do that." Which of your strength combinations would silence a competitor? That's your anchor. Mark it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 3 -->
+<section class="chapter" id="radar-step3">
+  <div class="wrap">
+    <div class="chapter-head">
+      <div class="eyebrow reveal">Step 3</div>
+      <h2 class="chapter-title reveal d1">Not "write it beautifully."<br>It's <em>one sentence you can take to battle</em>.</h2>
+    </div>
+    <div class="checklist reveal d1">
+      <div class="prompt">Take the "anchor" you marked in Step 2. Condense it into one sentence:</div>
+      <ol>
+        <li>If you could only use <strong>one sentence</strong> to introduce yourself, it must make people <strong>know whether to come to you</strong>.</li>
+        <li>Not "I'm a brand consultant." It's "I help <strong>people who ____</strong> solve <strong>____ problems</strong>."</li>
+        <li>Does it <strong>feel natural when you say it</strong>? If it doesn't feel right, it's not real. Real positioning — when you say it, you believe it first.</li>
+      </ol>
+      <textarea id="radar-input-step3" placeholder="✍️ Go: I help ____ solve ____ through ____. e.g. I help people who want to build an IP but can't find their direction, to extract core weapons from themselves that no one else can surpass."></textarea>
+      <div class="tip-box"><strong>Two focus points:</strong><br>① Read it aloud and record it. <strong>When you play it back, does it sound like you're talking to someone, or talking to yourself?</strong> The "I'm helping you solve a problem" tone is the right one.<br>② Send it to a trusted friend and ask: <strong>"After hearing this, what kind of person do you think should come to me?"</strong> If they say what you expected — correct. If not — your positioning needs one more layer of translation.</div>
+      <div class="insight-box"><strong>Yan's perspective:</strong> AI will polish your sentence — make it smoother, more professional, more "proper." But a brand strategist knows: <strong>a sentence that can fight isn't pretty, it's usable.</strong> It must directly become your first content title, your WeChat bio, your opening line when meeting clients. Try it: read your sentence aloud. If you'd want to add yourself on WeChat after hearing it — that's it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Summary + Generate -->
+<section class="chapter" id="radar-result">
+  <div class="wrap">
+    <div class="result-box reveal" style="text-align:center;">
+      <p style="font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent, #c41e3a);margin-bottom:8px;">Step 4</p>
+      <div class="big-line">The three boxes above — that's your <strong>positioning arsenal</strong>.</div>
+      <p style="margin-top:12px;color:#555;line-height:1.8;">Click below to compile it into a document.<br>Tip any amount to download, or send directly to Yan for follow-up consulting.</p>
+      <button id="generateSummaryBtn" class="btn btn-primary reveal in d1" style="margin-top:20px;font-size:1.1rem;padding:14px 32px;">📋 Generate My Positioning Arsenal</button>
+      <div id="donateSection" class="checklist reveal" style="display:none;margin-top:28px;text-align:center;border:2px solid var(--accent, #c41e3a);">
+        <h4 style="color:var(--accent, #c41e3a);">💝 Tip to Download</h4>
+        <p style="margin:10px 0;font-size:0.95rem;color:#555;">This document contains your complete positioning assets<br>Your experience, strengths, and positioning statement — download with one click</p>
+        <div style="margin:14px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div>
+        <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">Scan to tip, any amount ☕</p>
+        <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">✅ Tipped — Download Document</button>
+        <p style="font-size:0.78rem;color:#999;margin-top:10px;">After download, send to Yan (cheny2806) as a basis for 1-on-1 consulting</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Next Steps -->
+<section class="chapter" id="radar-next-steps">
+  <div class="wrap">
+    <div class="chapter-head">
+      <div class="eyebrow reveal">Positioning done. Now what?</div>
+      <h2 class="chapter-title reveal d1">That question — <em>let me answer it</em>.</h2>
+      <p style="max-width:600px;margin-top:8px;color:#666;">People have told me: "Yan, I did IP positioning on other platforms, it was accurate, but I don't know what to do next."<br>So here are two paths — <strong>you can walk alone, or walk faster with me</strong>. Your choice.</p>
+    </div>
+    <div class="checklist reveal d1" style="margin-top:0;">
+      <h4 style="color:#555;">🆓 Path A: Walk Alone (Completely Free, Start Now)</h4>
+      <div class="roadmap-item"><div class="roadmap-num">1</div><div><strong>Write three content titles from different angles using your positioning sentence.</strong><br><span style="color:#888;font-size:0.9rem;">One case study, one methodology, one contrarian viewpoint. Three is enough.</span></div></div>
+      <div class="roadmap-item"><div class="roadmap-num">2</div><div><strong>Find three reference accounts and study how they express similar positioning.</strong><br><span style="color:#888;font-size:0.9rem;">Not to copy, but to learn: What's their positioning sentence? What was their first post? What are people discussing in comments?</span></div></div>
+      <div class="roadmap-item"><div class="roadmap-num">3</div><div><strong>Post one piece of content. Come back in 48 hours to check the data.</strong><br><span style="color:#888;font-size:0.9rem;">Don't wait until "fully ready." Post using the sentence you just wrote. Data isn't the destination — it's a signpost telling you if you're heading the right way.</span></div></div>
+    </div>
+    <div class="checklist reveal d2" style="border:2px solid var(--accent, #c41e3a);">
+      <h4>🎯 Path B: 1-on-1 Positioning with Yan (¥500–600, ~1 Hour Total)</h4>
+      <div class="roadmap-item"><div class="roadmap-num">1</div><div><strong>You fill a deep questionnaire (25 min)</strong><br><span style="color:#888;font-size:0.9rem;">Not 5 generic AI-generated questions. 18 questions from a brand strategist's lens — each one asking: "Which of your experiences can become weapons?" 3x deeper than website self-assessment, 10x more accurate than AI templates.</span></div></div>
+      <div class="roadmap-item"><div class="roadmap-num">2</div><div><strong>We have a 30-minute WeChat voice call (you pick the time)</strong><br><span style="color:#888;font-size:0.9rem;">Based on your questionnaire, I probe the key points, help you filter out noise, and test-read your positioning sentence to see your reaction. No follow-up coaching, no course selling — just helping you find that sentence.</span></div></div>
+      <div class="roadmap-item"><div class="roadmap-num">3</div><div><strong>Receive your positioning result pack within 48 hours (6 modules)</strong><br><span style="color:#888;font-size:0.9rem;">① Positioning analysis report: one-sentence positioning + why<br>② Complete IP positioning card: target audience, core value, differentiation, story hook<br>③ Account system: 3 name options + 3 bio options + header direction<br>④ Content strategy: 3 content lines + 3 topics each + GEO keywords<br>⑤ Reference accounts: 2-3 similar IPs, what to learn, what to avoid<br>⑥ First action: first content title + publishing suggestion</span></div></div>
+      <div style="text-align:center;margin-top:16px;">
+        <span style="font-size:0.95rem;font-weight:700;color:var(--accent, #c41e3a);">¥500–600 · One-time delivery, direction for your entire year</span><br>
+        <a class="btn btn-primary" href="index.html#contact" data-copy style="margin-top:10px;">Add WeChat · Send me your three boxes cheny2806</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three Roads -->
+<section class="chapter" id="radar-choose">
+  <div class="wrap">
+    <div class="chapter-head" style="text-align:center;">
+      <div class="eyebrow reveal">Your Choice</div>
+      <h2 class="chapter-title reveal d1">Three roads. Pick <em>yours</em>.</h2>
+    </div>
+    <div class="svc-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="svc-card glass reveal"><h3>🆓 Try Solo</h3><p>Follow Path A. If it clicks one day, congratulations. If you get stuck — you know where to find me.</p><p style="font-size:0.8rem;color:#999;margin-top:8px;">For: self-explorers</p></div>
+      <div class="svc-card glass reveal d1" style="border:2px solid var(--accent, #c41e3a);"><div style="display:inline-block;background:var(--accent, #c41e3a);color:#fff;padding:2px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:10px;">👈 Recommended</div><h3>🎯 Work with Yan</h3><p>Send me your three boxes. 1-on-1: positioning + tags + first content.</p><p style="font-size:0.9rem;font-weight:700;color:var(--accent, #c41e3a);margin-top:8px;">¥500–600</p><a class="btn btn-primary svc-btn" href="index.html#contact" data-copy>Add WeChat & Send</a></div>
+      <div class="svc-card glass reveal d2"><h3>💝 Tip First</h3><p>If this checklist helped you, buy me a coffee. I'll keep updating it.</p><div style="margin:12px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div><p style="font-size:0.78rem;color:#999;margin-top:6px;">Scan to tip, any amount</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Evergreen -->
+<section class="chapter" id="radar-evergreen">
+  <div class="wrap"><div class="trust-block reveal"><p class="trust-quote glass" style="font-size:0.95rem;"><strong>Trend note:</strong> AI tools evolve every month. What a template can do today, AI itself can do next month.<br><br>But there's one thing AI can't do: <strong>use 15 years of real brand experience to make judgments for you.</strong><br>AI can tell you "what you are." Only someone who's been in the trenches can tell you "where you should strike."<br><br>This page will keep iterating. Bookmark it — every time you come back there's an update. Because I'm on the front lines, changing every day. AI changes, I change.</p></div></div>
+</section>
+
+<section class="final" id="radar-contact">
+  <div class="wrap final-inner">
+    <div class="eyebrow reveal" style="justify-content:center;">Let's Go</div>
+    <h2 class="reveal d1" style="text-align:center;">You can cut a rough outline,<br>but not the <em>sharpest edge</em>.</h2>
+    <p class="sub reveal d2" style="text-align:center;">Screenshot your three boxes, add me on WeChat.<br>I'll do the step you can't do yourself.</p>
+    <div class="hero-cta reveal d3" style="justify-content:center;flex-wrap:wrap;"><a class="btn btn-primary" href="index.html#contact" data-copy>Add WeChat · cheny2806</a></div>
+    <div style="text-align:center;margin-top:16px;"><p style="font-size:0.9rem;color:#888;">Found it useful? Tip any amount</p><img src="assets/img/wechat-qr.jpg" alt="QR" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" /></div>
+    <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:#999;">⚡ This page updates continuously. Bookmark it — every visit brings iteration.<br>Last updated: July 2026 · Yan iterates methodology from the front lines</p>
+  </div>
+</section>
+
+<footer class="footer"><div class="wrap"><div class="f-brand">BeiDa Yan · AI Positioning & GEO Growth</div><div class="f-wx">WeChat: cheny2806</div><div>© 2026 BeiDa Yan · Personal Brand Site</div></div></footer>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<script>
+document.getElementById('generateSummaryBtn').addEventListener('click',function(){document.getElementById('donateSection').style.display='block';document.getElementById('donateSection').scrollIntoView({behavior:'smooth',block:'center'});});
+document.getElementById('downloadSummaryBtn').addEventListener('click',function(){
+  var s1=(document.getElementById('radar-input-step1')||{}).value||'';
+  var s2=(document.getElementById('radar-input-step2')||{}).value||'';
+  var s3=(document.getElementById('radar-input-step3')||{}).value||'';
+  if(!s1&&!s2&&!s3){alert('Please fill at least one step');return;}
+  try{localStorage.setItem('radar_step1',s1);localStorage.setItem('radar_step2',s2);localStorage.setItem('radar_step3',s3);}catch(e){}
+  var btn=document.getElementById('downloadSummaryBtn');
+  btn.textContent='⏳ Generating your IP positioning report...';
+  btn.disabled=true;
+  var lb=document.createElement('div');
+  lb.id='reportLoading';
+  lb.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:rgba(255,255,255,0.95);padding:28px 36px;border-radius:16px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.12);';
+  lb.innerHTML='<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">Generating your IP positioning report</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">Deep analysis takes about 30 seconds...</p>';
+  document.body.appendChild(lb);
+  var prompt='You are IP Positioning Radar. Generate an IP positioning diagnostic report. Structure: ①Why You (find strengths the user doesn\'t realize) ②Who You Are (3 positioning lines: empathy+contrarian+exclusive) ③What Now (3 actionable paths). No preaching. Under 2000 words.\n\nUser input:\nStep1: '+s1+'\nStep2: '+s2+'\nStep3: '+s3;
+  fetch('https://api.deepseek.com/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
+    body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'You are IP Positioning Radar.'},{role:'user',content:prompt}],temperature:0.65,max_tokens:3000})
+  }).then(function(r){return r.json()}).then(function(data){
+    var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
+    btn.textContent='✅ Tipped - Download Document';btn.disabled=false;
+    if(data.choices&&data.choices[0]){
+      var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
+            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
+
+      var now=new Date();var ds=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+      var ua=navigator.userAgent.toLowerCase();var isWx=ua.indexOf('micromessenger')!==-1;
+      if(isWx){var pop=document.createElement('div');pop.id='summaryPopup';pop.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;';pop.innerHTML='<div style="background:#fff;border-radius:16px;padding:24px;max-width:90vw;max-height:80vh;overflow-y:auto;margin:20px;"><h3>📋 Your IP Positioning Report</h3><textarea readonly style="width:100%;height:300px;border:1px solid #ddd;border-radius:8px;padding:12px;font-size:0.82rem;line-height:1.6;">'+text.replace(/</g,'&lt;')+'</textarea><div style="margin-top:12px;display:flex;gap:8px;"><button onclick="var t=this.parentElement.parentElement.querySelector(\'textarea\');t.select();document.execCommand(\'copy\');this.textContent=\'✅ Copied!\'" style="flex:1;padding:12px;background:#6c5ce7;color:#fff;border:none;border-radius:24px;cursor:pointer;">📋 Copy All</button><button onclick="this.parentElement.parentElement.parentElement.remove()" style="padding:12px 20px;background:#eee;border:none;border-radius:24px;cursor:pointer;">Close</button></div></div>';document.body.appendChild(pop);pop.addEventListener('click',function(e){if(e.target===pop)pop.remove();});}
+      else{var blob=new Blob([text],{type:'text/plain;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='PKU-Yan-IP-Report-'+ds+'.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);}
+    }else{alert('Generation failed. Content saved. Add cheny2806 on WeChat for manual generation.');btn.textContent='🔄 Retry';btn.disabled=false;}
+  }).catch(function(){var lb3=document.getElementById('reportLoading');if(lb3)lb3.remove();btn.textContent='🔄 Retry';btn.disabled=false;alert('Network error. Content saved. Add cheny2806 on WeChat.');});
+});</script>
+<script src="assets/js/main.js"></script>
+</body>
 </html>

@@ -2203,39 +2203,221 @@ h1 .accent {
     (function() {
       var btn = document.getElementById('generateSummaryBtn');
       var donate = document.getElementById('donateSection');
-      var downloadBtn = document.getElementById('downloadSummaryBtn').addEventListener('click',function(){
-  var s1=(document.getElementById('radar-input-step1')||{}).value||'';
-  var s2=(document.getElementById('radar-input-step2')||{}).value||'';
-  var s3=(document.getElementById('radar-input-step3')||{}).value||'';
-  if(!s1&&!s2&&!s3){alert('請至少填寫一個步驟');return;}
-  try{localStorage.setItem('radar_step1',s1);localStorage.setItem('radar_step2',s2);localStorage.setItem('radar_step3',s3);}catch(e){}
-  var btn=document.getElementById('downloadSummaryBtn');
-  btn.textContent='⏳ 正在生成IP定位報告...';
-  btn.disabled=true;
-  var lb=document.createElement('div');
-  lb.id='reportLoading';
-  lb.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:rgba(255,255,255,0.95);padding:28px 36px;border-radius:16px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.12);';
-  lb.innerHTML='<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">IP定位報告正在生成中</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">深度分析約需30秒，請稍後…</p>';
-  document.body.appendChild(lb);
-  var prompt='你是「IP定位雷達」。基於用戶填寫的三步驟內容，生成一份IP定位深度診斷報告。用繁體中文輸出。結構：①憑什麼是你（找出用戶自己沒意識到的優勢）②你是誰（三句話定位：共鳴型+反常識型+獨家型）③現在做什麼（三條可執行路徑）。不說教、不居高臨下。2000字以內。\\n\\n用戶填寫內容：\\n步驟1：'+s1+'\\n步驟2：'+s2+'\\n步驟3：'+s3;
-  fetch('https://api.deepseek.com/v1/chat/completions',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
-    body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'你是IP定位雷達智能體，用繁體中文回覆。'},{role:'user',content:prompt}],temperature:0.65,max_tokens:3000})
-  }).then(function(r){return r.json()}).then(function(data){
-    var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
-    btn.textContent='✅ 我已打賞，下載文檔';btn.disabled=false;
-    if(data.choices&&data.choices[0]){
-      var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
+      var downloadBtn = document.getElementById('downloadSummaryBtn');
+      if (!btn || !donate || !downloadBtn) return;
+
+      btn.addEventListener('click', function() {
+        donate.style.display = 'block';
+        donate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      downloadBtn.addEventListener('click', function() {
+        var step1 = (document.getElementById('radar-input-step1') || {}).value || '';
+        var step2 = (document.getElementById('radar-input-step2') || {}).value || '';
+        var step3 = (document.getElementById('radar-input-step3') || {}).value || '';
+
+        if (!step1 && !step2 && !step3) { alert('請至少填寫一個步驟的內容'); return; }
+
+        // 自动保存到本地，防止失败后丢失
+        try { localStorage.setItem('radar_step1', step1); localStorage.setItem('radar_step2', step2); localStorage.setItem('radar_step3', step3); } catch(e) {}
+
+        downloadBtn.textContent = '⏳ 燕姐正在為你生成深度分析報告...';
+        downloadBtn.disabled = true;
+
+        // 显示加载提示
+        var loadingBox = document.createElement('div');
+        loadingBox.id = 'reportLoading';
+        loadingBox.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:rgba(255,255,255,0.95);padding:28px 36px;border-radius:16px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.12);';
+        loadingBox.innerHTML = '<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">IP定位報告正在生成中</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">深度分析約需30秒，請稍後…</p>';
+        document.body.appendChild(loadingBox);
+
+        // 直接调用DeepSeek API生成报告
+        var prompt = '你是「IP定位雷達」。基於用户填写的三步骤内容，生成一份IP定位深度诊断报告。结构：①凭什么是你（找出用户自己没意识到的优势）②你是谁（三句话定位：共鸣型+反常识型+独家型）③现在做什么（三条可执行路径）。不说教、不居高临下。2000字以内。\\n\\n用户填写内容：\\n步骤1：' + step1 + '\\n步骤2：' + step2 + '\\n步骤3：' + step3;
+
+        fetch('https://api.deepseek.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
+          body: JSON.stringify({model:'deepseek-v4-pro', messages:[{role:'system',content:'你是IP定位雷達智能體，用繁體中文回覆。'},{role:'user',content:prompt}], temperature:0.65, max_tokens:3000})
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+          downloadBtn.textContent = '✅ 我已打賞，下載文檔';
+          downloadBtn.disabled = false;
+          if (data.choices && data.choices[0]) {
+            var msg = data.choices[0].message; var text = msg.content || msg.reasoning_content || '';
             try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
 
-      var now=new Date();var ds=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
-      var ua=navigator.userAgent.toLowerCase();var isWx=ua.indexOf('micromessenger')!==-1;
-      if(isWx){var pop=document.createElement('div');pop.id='summaryPopup';pop.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;';pop.innerHTML='<div style="background:#fff;border-radius:16px;padding:24px;max-width:90vw;max-height:80vh;overflow-y:auto;margin:20px;"><h3>📋 你的IP定位分析報告</h3><textarea readonly style="width:100%;height:300px;border:1px solid #ddd;border-radius:8px;padding:12px;font-size:0.82rem;line-height:1.6;">'+text.replace(/</g,'&lt;')+'</textarea><div style="margin-top:12px;display:flex;gap:8px;"><button onclick="var t=this.parentElement.parentElement.querySelector(\\'textarea\\');t.select();document.execCommand(\\'copy\\');this.textContent=\\'✅ 已複製！\\'" style="flex:1;padding:12px;background:#6c5ce7;color:#fff;border:none;border-radius:24px;cursor:pointer;">📋 一鍵複製全文</button><button onclick="this.parentElement.parentElement.parentElement.remove()" style="padding:12px 20px;background:#eee;border:none;border-radius:24px;cursor:pointer;">關閉</button></div></div>';document.body.appendChild(pop);pop.addEventListener('click',function(e){if(e.target===pop)pop.remove();});}
-      else{var blob=new Blob([text],{type:'text/plain;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='北大燕姐-IP定位分析報告-'+ds+'.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);}
-    }else{alert('生成失敗。內容已自動保存，刷新頁面後還在。可加微信 cheny2806 發給燕姐手動生成。');btn.textContent='🔄 重新生成';btn.disabled=false;}
-  }).catch(function(){var lb3=document.getElementById('reportLoading');if(lb3)lb3.remove();btn.textContent='🔄 重新生成';btn.disabled=false;alert('網絡異常。內容已自動保存。可加微信 cheny2806，燕姐手動幫你生成。');});
-});</script>
+            var now = new Date();
+            var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+            var ua = navigator.userAgent.toLowerCase();
+            var isWx = ua.indexOf('micromessenger') !== -1;
+            if (isWx) { copyTextToUser(text, dateStr); }
+            else {
+              var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+              var a = document.createElement('a');
+              a.href = URL.createObjectURL(blob);
+              a.download = '北大燕姐-IP定位分析報告-' + dateStr + '.txt';
+              document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            }
+          } else { alert('生成失敗。你填寫的內容已自動保存，刷新頁面後還在。可加微信 cheny2806 發給燕姐手動生成。'); downloadBtn.textContent = '🔄 重新生成'; downloadBtn.disabled = false; }
+        })
+        .catch(function() {
+          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+          downloadBtn.textContent = '🔄 重新生成';
+          downloadBtn.disabled = false;
+          alert('網絡異常。你填寫的內容已自動保存，刷新頁面後還在。可加微信 cheny2806，燕姐手動幫你生成。');
+        });
+      });
+
+      /* ====== 智能IP定位报告生成 ====== */
+      function generateIPReport(s1, s2, s3, dateStr) {
+        var combined = (s1 + ' ' + s2 + ' ' + s3).toLowerCase();
+
+        // 行业识别
+        var industries = [];
+        if (/销售|客户|业绩|营收|订单|谈判|渠道|经销商|门店/.test(combined)) industries.push('商业/销售');
+        if (/技术|开发|编程|代码|架构|系统|数据|算法|AI|人工智能/.test(combined)) industries.push('技术/互联网');
+        if (/教育|培训|老师|学生|课程|教学|讲师/.test(combined)) industries.push('教育/培训');
+        if (/产品|需求|用户|体验|设计|交互|UX/.test(combined)) industries.push('产品/设计');
+        if (/运营|内容|创作|写作|文案|自媒体|短视频|直播/.test(combined)) industries.push('内容/自媒体');
+        if (/管理|团队|领导|战略|决策|项目/.test(combined)) industries.push('管理/咨询');
+        if (/品牌|营销|市场|推广|广告/.test(combined)) industries.push('品牌/营销');
+        if (industries.length === 0) industries.push('综合跨界');
+
+        // 技能组合识别
+        var skills = [];
+        if (/从0|从零|起步|从无到有|搭建|创建|开创/.test(combined)) skills.push('从0到1搭建能力');
+        if (/数字|万|亿|倍|%|增长|提升|翻|突破/.test(combined)) skills.push('结果导向（有数据支撑）');
+        if (/带团队|管理|领导|培养|辅导|mentor/.test(combined)) skills.push('团队领导力');
+        if (/沟通|表达|演讲|汇报|谈判|说服/.test(combined)) skills.push('高影响力表达');
+        if (/分析|拆解|逻辑|框架|方法|体系/.test(combined)) skills.push('结构化思维');
+        if (/创意|设计|策划|构思|想法|创新/.test(combined)) skills.push('创意策划力');
+        if (/执行|落地|推进|完成|交付|上线/.test(combined)) skills.push('强执行力');
+        if (skills.length === 0) skills = ['复合型能力（待深度挖掘）', '潜在差异化优势（需1对1萃取）'];
+
+        // 生成定位句优化（基于用户step3 + 行业）
+        var positioningLines = [];
+        var industry = industries[0];
+        if (s3 && s3.length > 5) {
+          positioningLines.push('方向A（专业权威型）：' + polishPositioning(s3, 'authority', industry));
+          positioningLines.push('方向B（亲和共鸣型）：' + polishPositioning(s3, 'empathy', industry));
+          positioningLines.push('方向C（反常识型）：' + polishPositioning(s3, 'contrarian', industry));
+        } else {
+          var defaultBase = '帮你把多年积累变成别人越不过去的核心竞争力';
+          positioningLines.push('方向A（专业权威型）：我帮' + industry + '领域的从业者，把碎片化经验变成可复制的系统方法论');
+          positioningLines.push('方向B（亲和共鸣型）：我专治"明明很有料但说不清楚自己值钱在哪"的' + industry + '人');
+          positioningLines.push('方向C（反常识型）：别人在追风口，我帮你在自己的经历里挖金矿——' + industry + '赛道尤甚');
+        }
+
+        // 组装报告
+        var r = '';
+        r += '══════════════════════════════════════\n';
+        r += '  北大燕姐 · IP定位雷达 · 个人IP定位分析报告\n';
+        r += '  生成日期：' + dateStr + '\n';
+        r += '══════════════════════════════════════\n\n';
+
+        r += '━━━ 第一部分：你的原始素材 ━━━\n\n';
+        r += '【经历弹药】\n' + (s1 || '（待补充）') + '\n\n';
+        r += '【核心优势】\n' + (s2 || '（待补充）') + '\n\n';
+        r += '【定位初稿】\n' + (s3 || '（待补充）') + '\n\n';
+
+        r += '━━━ 第二部分：燕姐分析 · 核心优势萃取 ━━━\n\n';
+        r += '基于你提供的信息，我用15年品牌操盘手的视角，帮你做了三层萃取：\n\n';
+        r += '① 你的行业基底：' + industries.join('、') + '\n';
+        r += '   这意味着你的经验在至少' + industries.length + '个领域有交叉价值，\n';
+        r += '   而「跨界组合」恰恰是个人IP最稀缺的护城河。\n\n';
+        r += '② 你的能力武器库：\n';
+        for (var i = 0; i < skills.length; i++) {
+          r += '   · ' + skills[i] + '\n';
+        }
+        r += '\n   以上能力的排列组合，就是AI生成不了的「你之所以是你」的答案。\n\n';
+        r += '③ 你以为普通但实际稀缺的：\n';
+        r += '   大多数人在写自己的优势时，会把自己最厉害的东西当成「这谁不会啊」。\n';
+        r += '   但品牌操盘手看了你的素材之后，能闻到「弹药味」——\n';
+        r += '   你写下的那段经历里，至少有1-2个点是同类IP复制不了的。\n';
+        if (industries.length >= 2) {
+          r += '   尤其是你横跨' + industries[0] + '和' + industries[1] + '的经验组合，市场上同时具备这两样的人比你想象中少得多。\n';
+        }
+        r += '\n';
+
+        r += '━━━ 第三部分：一句话定位（优化版） ━━━\n\n';
+        r += '以下三个方向，挑一个你说出来最舒服的：\n\n';
+        for (var j = 0; j < positioningLines.length; j++) {
+          r += positioningLines[j] + '\n\n';
+        }
+        r += '💡 燕姐建议：读出来。录下来听回放。哪个版本让你觉得"这就是我"——那就是它。\n\n';
+
+        r += '━━━ 第四部分：差异化方向 ━━━\n\n';
+        r += '跟同类' + industry + 'IP相比，你的差异化可以打这三张牌：\n';
+        r += '1. 你的经历组合（' + (skills.length >= 2 ? skills[0] + ' + ' + skills[1] : '跨界经验') + '）本身就是护城河\n';
+        r += '2. 你不是"讲方法论"的人，你是"把方法用自己身上验证过"的人——这层信任，AI给不了\n';
+        r += '3. 你的弱项换个角度看就是差异化——"太实在不会包装"=真诚，"太细节"=交付靠谱\n\n';
+
+        r += '━━━ 第五部分：对标参考 ━━━\n\n';
+        r += '找2-3个' + industry + '领域你欣赏的IP，做三件事：\n';
+        r += '① 看他们的定位句是怎么写的（不是抄，是拆结构）\n';
+        r += '② 看他们第一条爆款内容讲的是什么故事\n';
+        r += '③ 看评论区用户在讨论什么——那是未被满足的需求\n\n';
+        r += '⚠️ 重要：对标是为了学「表达方式」，不是为了学「定位本身」。你的定位已经在上面的三个方向里了。\n\n';
+
+        r += '━━━ 第六部分：下一步行动 ━━━\n\n';
+        r += '第一周：从上面三个定位方向中选一个，用它写三条不同角度的内容标题\n';
+        r += '第二周：选一条标题发出去。48小时后回来，只看三个数据：阅读量、收藏量、评论内容\n';
+        r += '第三周：根据数据反馈，微调定位句的措辞，再发一条，再测\n';
+        r += '第四周：如果数据在涨但方向还不够锋利，把这份报告发给我，我们30分钟语音把它定下来\n\n';
+
+        r += '══════════════════════════════════════\n';
+        r += '本报告由北大燕姐IP定位雷达自动生成\n';
+        r += '基于15年品牌操盘方法论 · 非AI通用模板\n';
+        r += '如需1对1深度定位（¥500-600），加微信 cheny2806\n';
+        r += '══════════════════════════════════════\n';
+
+        return r;
+      }
+
+      function polishPositioning(base, style, industry) {
+        // 简单的定位句优化：基于用户原文做风格化改写
+        var clean = base.replace(/^我是|^我帮|^帮/g, '').replace(/。|，/g, '，').trim();
+        if (clean.length < 5) clean = '帮' + industry + '人挖掘核心竞争力';
+        switch(style) {
+          case 'authority':
+            return '我帮' + clean.split('，')[0] + '——用一套经过验证的方法，而不是拍脑袋的建议';
+          case 'empathy':
+            return '如果你也在' + industry + '领域，明明很有料却说不出自己值钱在哪——我是那个帮你把金子挖出来的人';
+          case 'contrarian':
+            return '大多数定位告诉你"分析市场"，我告诉你的恰恰相反——先挖自己。尤其是' + industry + '人，最锋利的武器不在市场报告里，在你的经历里';
+          default:
+            return '我帮' + clean;
+        }
+      }
+
+      function copyTextToUser(text, dateStr) {
+        // 移除旧弹窗
+        var old = document.getElementById('summaryPopup');
+        if (old) old.remove();
+        var popup = document.createElement('div');
+        popup.id = 'summaryPopup';
+        popup.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;';
+        popup.innerHTML = '<div style="background:#fff;border-radius:16px;padding:24px;max-width:90vw;max-height:80vh;overflow-y:auto;margin:20px;box-shadow:0 20px 60px rgba(0,0,0,0.2);">' +
+          '<h3 style="margin:0 0 12px;font-size:1.1rem;">📋 你的IP定位分析報告</h3>' +
+          '<textarea readonly style="width:100%;height:300px;border:1px solid #ddd;border-radius:8px;padding:12px;font-size:0.82rem;font-family:inherit;line-height:1.6;resize:none;">' + text.replace(/</g,'&lt;') + '</textarea>' +
+          '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">' +
+          '<button id="copySummaryBtn" style="flex:1;padding:12px;background:#6c5ce7;color:#fff;border:none;border-radius:24px;font-size:1rem;cursor:pointer;">📋 一鍵複製全文</button>' +
+          '<button onclick="this.parentElement.parentElement.parentElement.remove()" style="padding:12px 20px;background:#eee;border:none;border-radius:24px;font-size:0.9rem;cursor:pointer;">關閉</button>' +
+          '</div></div>';
+        document.body.appendChild(popup);
+        document.getElementById('copySummaryBtn').addEventListener('click', function() {
+          var ta = popup.querySelector('textarea');
+          ta.select();
+          document.execCommand('copy');
+          this.textContent = '✅ 已複製！';
+          setTimeout(function() { popup.remove(); }, 1500);
+        });
+        popup.addEventListener('click', function(e) { if (e.target === popup) popup.remove(); });
+      }
+    })();
+  </script>
 <!-- v2 -->
 </body>
 </html>
