@@ -1923,7 +1923,7 @@ h1 .accent {
 
   document.querySelectorAll('.radar-trigger').forEach(function (btn) {
     btn.addEventListener('click', function() {
-      var lang = currentLang || 'zh';
+      var lang = (localStorage.getItem('lang')) || 'zh';
       if (lang === 'en') { location.href = 'radar-en.html'; return; }
       if (lang === 'zh-tw') { location.href = 'radar-zh-tw.html'; return; }
       openRadar();

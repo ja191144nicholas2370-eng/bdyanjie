@@ -311,10 +311,12 @@
      ============================================================ */
   var currentLang = 'zh';
   try { currentLang = localStorage.getItem('lang') || 'zh'; } catch (e) {}
+  window.currentLang = currentLang;
 
   function applyLang(lang) {
     if (!I18N[lang]) lang = 'zh';
     currentLang = lang;
+    window.currentLang = lang;
     var dict = I18N[lang];
 
     // 更新 html lang 属性
