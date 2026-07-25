@@ -1365,7 +1365,7 @@ h1 .accent {
           <li>哪件事你做起来<strong>比别人轻松</strong>，效果还更好？</li>
           <li>别人<strong>反复夸你什么</strong>？（就是你听多了觉得"这有什么"的那种）</li>
         </ol>
-        <textarea placeholder="✍️ 直接写。别谦虚。这一步不是面试，是给自己盘点家底。写完往下滑。"></textarea>
+        <textarea id="radar-input-step1" placeholder="✍️ 直接写。别谦虚。这一步不是面试，是给自己盘点家底。写完往下滑。"></textarea>
 
         <div class="tip-box" style="margin-bottom:6px;">
           🎯 <strong>协助你分析的两个重点：</strong><br>
@@ -1395,7 +1395,7 @@ h1 .accent {
           <li>你<strong>以为大家都有的能力</strong>，去招聘网站搜搜看——实际多少人具备？</li>
           <li>你的<strong>"弱项"</strong>换个角度看，是不是差异化？（"不够专业"可能等于"普通人听得懂"）</li>
         </ol>
-        <textarea placeholder="✍️ 用聊天语言重新描述自己。不是简历。是跟朋友说：'其实我最拿手的是……因为别人做这个要X步，我只要Y步。'"></textarea>
+        <textarea id="radar-input-step2" placeholder="✍️ 用聊天语言重新描述自己。不是简历。是跟朋友说：'其实我最拿手的是……因为别人做这个要X步，我只要Y步。'"></textarea>
 
         <div class="tip-box" style="margin-bottom:6px;">
           🎯 <strong>协助你分析的两个重点：</strong><br>
@@ -1425,7 +1425,7 @@ h1 .accent {
           <li>不是"我是品牌顾问"。是"我帮<strong>____</strong>的人解决<strong>____</strong>的问题"。</li>
           <li>你自己<strong>说出来舒服吗</strong>？不舒服就不是真的定位。真的定位，你说出口的时候，自己先信了。</li>
         </ol>
-        <textarea placeholder="✍️ 来：我是帮______解决______的______。比如：我是帮想做IP但找不到方向的人，从他们自己身上挖出别人越不过去的核心武器的定位操盘手。"></textarea>
+        <textarea id="radar-input-step3" placeholder="✍️ 来：我是帮______解决______的______。比如：我是帮想做IP但找不到方向的人，从他们自己身上挖出别人越不过去的核心武器的定位操盘手。"></textarea>
 
         <div class="tip-box" style="margin-bottom:6px;">
           🎯 <strong>协助你分析的两个重点：</strong><br>
@@ -1440,21 +1440,37 @@ h1 .accent {
     </div>
   </section>
 
-  <!-- ====== 你完成了什么 ====== -->
+  <!-- ====== 汇总生成 ====== -->
   <section class="chapter" id="radar-result">
     <div class="wrap">
-      <div class="result-box reveal">
-        <p style="font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent, #c41e3a);margin-bottom:8px;">What You Just Built</p>
+      <div class="result-box reveal" style="text-align:center;">
+        <p style="font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent, #c41e3a);margin-bottom:8px;">Step 4</p>
         <div class="big-line">
           上面三个框，就是你的<strong>定位弹药库</strong>。
         </div>
         <p style="margin-top:12px;color:#555;line-height:1.8;">
-          你有了<strong>原材料</strong>（经历过什么）、<strong>弹药</strong>（哪些能打）、<strong>武器</strong>（一句话定位）。<br>
-          你已经走了一半的路，有了原材料、弹药、和一句初稿。<br>
-          但一半不是全部。自己给自己做定位，就像自己给自己剪头发——<br>
-          你能剪出一个轮廓，但你剪不出最利落的型。<br>
-          因为你离自己太近了。你分不清哪个是真正的弹药，哪个只是你舍不得放下的过去。
+          点击下方按钮，把它汇总成一份文档。<br>打赏后即可下载带走，也可直接发给燕姐作为后续咨询的基础。
         </p>
+
+        <button id="generateSummaryBtn" class="btn btn-primary reveal d1" style="margin-top:20px;font-size:1.1rem;padding:14px 32px;">
+          📋 汇总生成我的定位弹药库
+        </button>
+
+        <!-- 打赏区域（初始隐藏） -->
+        <div id="donateSection" class="checklist reveal" style="display:none;margin-top:28px;text-align:center;border:2px solid var(--accent, #c41e3a);">
+          <h4 style="color:var(--accent, #c41e3a);">💝 打赏后即可下载</h4>
+          <p style="margin:10px 0;font-size:0.95rem;color:#555;">
+            这份文档包含你刚刚梳理的完整定位素材<br>你的经历、优势和定位句，一键下载带走
+          </p>
+          <div style="margin:14px 0;">
+            <img src="assets/img/wechat-pay.jpg" alt="微信收款码" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
+          </div>
+          <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">扫码打赏，金额随意 ☕</p>
+          <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">
+            ✅ 我已打赏，下载文档
+          </button>
+          <p style="font-size:0.78rem;color:#999;margin-top:10px;">下载后可直接发给燕姐(cheny2806)，作为1对1咨询的基础</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2181,6 +2197,49 @@ h1 .accent {
   }
 
 })();
+  </script>
+  <script>
+    /* ====== 汇总生成 + 打赏下载 ====== */
+    (function() {
+      var btn = document.getElementById('generateSummaryBtn');
+      var donate = document.getElementById('donateSection');
+      var downloadBtn = document.getElementById('downloadSummaryBtn');
+      if (!btn || !donate || !downloadBtn) return;
+
+      btn.addEventListener('click', function() {
+        donate.style.display = 'block';
+        donate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      downloadBtn.addEventListener('click', function() {
+        var step1 = (document.getElementById('radar-input-step1') || {}).value || '(未填写)';
+        var step2 = (document.getElementById('radar-input-step2') || {}).value || '(未填写)';
+        var step3 = (document.getElementById('radar-input-step3') || {}).value || '(未填写)';
+
+        var now = new Date();
+        var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+
+        var text = '北大燕姐 · IP定位雷达 · 定位弹药库\n';
+        text += '生成日期：' + dateStr + '\n';
+        text += '========================================\n\n';
+        text += '【第一步：我的经历弹药】\n' + step1 + '\n\n';
+        text += '【第二步：我的核心优势】\n' + step2 + '\n\n';
+        text += '【第三步：我的一句话定位】\n' + step3 + '\n\n';
+        text += '========================================\n';
+        text += '这份文档由你在 pkuyan.com 的IP定位雷达页面完成。\n';
+        text += '如需1对1深度定位咨询，加微信 cheny2806，把这份文档发给我。\n';
+
+        var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = '北大燕姐-IP定位弹药库-' + dateStr + '.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    })();
   </script>
 </body>
 </html>
