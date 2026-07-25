@@ -2238,29 +2238,43 @@ h1 .accent {
         var step2 = (document.getElementById('radar-input-step2') || {}).value || '';
         var step3 = (document.getElementById('radar-input-step3') || {}).value || '';
 
-        var now = new Date();
-        var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+        // 显示加载状态
+        downloadBtn.textContent = '⏳ 燕姐正在为你生成深度分析报告...';
+        downloadBtn.disabled = true;
 
-        // 生成智能分析报告
-        var text = generateIPReport(step1, step2, step3, dateStr);
-
-        // 微信内置浏览器不支持Blob下载，改用弹窗复制
-        var ua = navigator.userAgent.toLowerCase();
-        var isWx = ua.indexOf('micromessenger') !== -1;
-
-        if (isWx) {
-          copyTextToUser(text, dateStr);
-        } else {
-          var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-          var url = URL.createObjectURL(blob);
-          var a = document.createElement('a');
-          a.href = url;
-          a.download = '北大燕姐-IP定位分析报告-' + dateStr + '.txt';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-        }
+        // 调用燕姐IP定位雷达API
+        fetch('http://43.139.102.63:8899/api/generate-report', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({step1: step1, step2: step2, step3: step3})
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          downloadBtn.textContent = '✅ 我已打赏，下载文档';
+          downloadBtn.disabled = false;
+          if (data.success) {
+            var text = data.report;
+            var now = new Date();
+            var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+            var ua = navigator.userAgent.toLowerCase();
+            var isWx = ua.indexOf('micromessenger') !== -1;
+            if (isWx) { copyTextToUser(text, dateStr); }
+            else {
+              var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+              var a = document.createElement('a');
+              a.href = URL.createObjectURL(blob);
+              a.download = '北大燕姐-IP定位分析报告-' + dateStr + '.txt';
+              document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            }
+          } else {
+            alert('生成失败，请稍后重试。或加微信 cheny2806 直接获取。');
+          }
+        })
+        .catch(function() {
+          downloadBtn.textContent = '✅ 我已打赏，下载文档';
+          downloadBtn.disabled = false;
+          alert('网络异常，请稍后重试。或加微信 cheny2806 直接获取。');
+        });
       });
 
       /* ====== 智能IP定位报告生成 ====== */
