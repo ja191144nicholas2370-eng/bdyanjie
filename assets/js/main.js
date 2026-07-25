@@ -97,7 +97,9 @@
       'copytip': '已复制微信号 cheny2806',
 
       'modal.toolkit.title': 'AI + IP 定位工具包',
-      'modal.toolkit.desc': '工具包内容正在打磨中。<br>二维码区域已预留，内容就绪后直接替换。',
+      'modal.toolkit.desc': '10分钟，三步挖出你的核心竞争力。<br>品牌操盘手的方法，跟AI生成的不一样。做完觉得值，页面底部可以打赏。',
+      'modal.toolkit.btn': '打开免费自测 →',
+      'modal.toolkit.href': 'radar.html',
       'modal.toolkit.note': '觉得有用，随心打赏',
       'modal.consult.title': '服务咨询',
       'modal.consult.desc': '添加微信，详细沟通你的需求，我给你具体的建议和方案。',
@@ -186,7 +188,9 @@
       'mcta.wechat': '加微信 cheny2806',
       'copytip': '已複製微信號 cheny2806',
       'modal.toolkit.title': 'AI + IP 定位工具包',
-      'modal.toolkit.desc': '工具包內容正在打磨中。<br>二維碼區域已預留，內容就緒後直接替換。',
+      'modal.toolkit.desc': '10分鐘，三步挖出你的核心競爭力。<br>品牌操盤手的方法，跟AI生成的不一樣。做完覺得值，頁面底部可以打賞。',
+      'modal.toolkit.btn': '打開免費自測 →',
+      'modal.toolkit.href': 'radar-zh-tw.html',
       'modal.toolkit.note': '覺得有用，隨心打賞',
       'modal.consult.title': '服務諮詢',
       'modal.consult.desc': '添加微信，詳細溝通你的需求，我給你具體的建議和方案。',
@@ -284,7 +288,9 @@
       'copytip': 'WeChat ID cheny2806 copied',
 
       'modal.toolkit.title': 'AI + IP Positioning Toolkit',
-      'modal.toolkit.desc': 'Toolkit content is being polished.<br>QR code area is reserved — swap in once ready.',
+      'modal.toolkit.desc': '10 minutes. Three steps to uncover your core competitive edge.<br>A brand strategist\'s method — not the same as AI-generated. Find it useful? Tip at the bottom of the page.',
+      'modal.toolkit.btn': 'Start Free Self-Assessment →',
+      'modal.toolkit.href': 'radar-en.html',
       'modal.toolkit.note': 'Found it useful? Tip any amount',
       'modal.consult.title': 'Service Consultation',
       'modal.consult.desc': "Add WeChat to discuss your needs in detail. I'll give you specific advice and solutions.",
@@ -322,6 +328,25 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    // 更新带 data-i18n-href 的链接
+    document.querySelectorAll('[data-i18n-href]').forEach(function (el) {
+      var hrefKey = el.getAttribute('data-i18n-href');
+      if (dict[hrefKey + '.href']) el.href = dict[hrefKey + '.href'];
+    });
+
+    // 更新导航链接指向对应语言版本
+    var suffix = lang === 'en' ? '-en' : (lang === 'zh-tw' ? '-zh-tw' : '');
+    var navMap = { 'IP定位': 'radar', 'GEO增长': 'geo', '文章': 'articles', 'GEO Growth': 'geo', 'Articles': 'articles', 'IP Positioning': 'radar', 'GEO增長': 'geo' };
+    document.querySelectorAll('.nav-links a, [href*="radar.html"], [href*="geo.html"], [href*="articles.html"]').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      Object.keys(navMap).forEach(function (label) {
+        if (href.indexOf(navMap[label]) !== -1 && href.indexOf('.html') !== -1) {
+          var base = navMap[label];
+          a.href = base + suffix + '.html' + (href.split('.html')[1] || '');
+        }
+      });
     });
 
     // 更新语言按钮状态
