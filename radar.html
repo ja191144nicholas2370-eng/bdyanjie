@@ -1462,15 +1462,23 @@ h1 .accent {
           <p style="margin:10px 0;font-size:0.95rem;color:#555;">
             这份文档包含你刚刚梳理的完整定位素材<br>你的经历、优势和定位句，一键下载带走
           </p>
-          <div style="margin:14px 0;">
+          <div style="margin:14px 0;" id="donateQRWrap">
             <img src="assets/img/wechat-pay.jpg" alt="微信收款码" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
           </div>
-          <p style="font-size:0.9rem;color:#e74c3c;font-weight:700;margin-bottom:8px;">📌 长按二维码 → 识别图中二维码 → 支付</p>
-          <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">扫码打赏，金额随意 ☕</p>
+          <p style="font-size:0.82rem;color:#999;margin-bottom:4px;" id="donateScanTip">📌 长按二维码 → 识别图中二维码 → 支付</p>
+          <div id="donateWxInner" style="display:none;margin:14px 0;padding:16px;background:#f8f7ff;border-radius:12px;text-align:center;">
+            <p style="font-size:1rem;font-weight:700;color:#333;margin-bottom:8px;">💡 微信内支付方式</p>
+            <p style="font-size:0.9rem;color:#555;margin-bottom:12px;">复制下方微信号，打开微信加好友直接转账</p>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:1.1rem;font-weight:700;color:#6c5ce7;">cheny2806</span>
+              <button onclick="navigator.clipboard.writeText('cheny2806');this.textContent='✅ 已复制'" style="padding:8px 16px;background:#6c5ce7;color:#fff;border:none;border-radius:20px;font-size:0.85rem;cursor:pointer;">复制微信号</button>
+            </div>
+            <p style="font-size:0.78rem;color:#999;margin-top:10px;">复制后打开微信 → 添加朋友 → 粘贴 → 转账打赏</p>
+          </div>
+          <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">打赏金额随意 ☕</p>
           <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">
             ✅ 我已打赏，下载文档
           </button>
-          <p style="font-size:0.78rem;color:#999;margin-top:10px;">或加微信转账：<span style="color:#6c5ce7;font-weight:600;" id="payWxCopy">cheny2806</span> <button onclick="navigator.clipboard.writeText('cheny2806');this.textContent='已复制'" style="font-size:0.7rem;padding:2px 8px;border:1px solid #6c5ce7;background:transparent;color:#6c5ce7;border-radius:10px;cursor:pointer;">复制</button></p>
         </div>
       </div>
     </div>
@@ -2200,6 +2208,19 @@ h1 .accent {
 })();
   </script>
   <script>
+  /* 微信环境检测：切换打赏界面 */
+  (function(){
+    var ua = navigator.userAgent.toLowerCase();
+    var isWx = ua.indexOf('micromessenger') !== -1;
+    if (isWx) {
+      var qr = document.getElementById('donateQRWrap');
+      var tip = document.getElementById('donateScanTip');
+      var wx = document.getElementById('donateWxInner');
+      if (qr) qr.style.display = 'none';
+      if (tip) tip.textContent = '📱 微信内无法扫码，请用下方方式打赏';
+      if (wx) wx.style.display = 'block';
+    }
+  })();
     /* ====== 汇总生成 + 打赏下载 ====== */
     (function() {
       var btn = document.getElementById('generateSummaryBtn');
