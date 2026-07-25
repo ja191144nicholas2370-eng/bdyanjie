@@ -319,9 +319,6 @@
     window.currentLang = lang;
     var dict = I18N[lang];
 
-    // 调试：切换时标题加标记
-    document.title = '[' + lang + '] ' + (dict['_title'] || document.title);
-
     // 更新 html lang 属性
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'zh-tw' ? 'zh-TW' : 'en');
 
@@ -380,7 +377,6 @@
       applyLang(lang);
       return;
     }
-    // 子页面：跳转到对应语言文件
     var path = location.pathname;
     // 去掉已有的语言后缀
     path = path.replace(/-zh-tw\.html/, '.html').replace(/-en\.html/, '.html');
@@ -391,6 +387,7 @@
     }
     location.href = path;
   }
+  window.switchLang = switchLang;
 
   // 给没有语言按钮的页面加浮动切换器
   if (!document.getElementById('langSwitch')) {
