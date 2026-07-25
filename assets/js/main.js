@@ -203,7 +203,7 @@
       '_desc': '用AI定位與GEO增長，幫你被搜到、被選擇、被信任。15年世界500強品牌運營與管理，10年+企業培訓與職業培訓師，從0做到品牌過億。',
     },
     en: {
-      'brand.name': 'PKU Yan',
+      'brand.name': 'BeiDa Yan',
       'nav.about': 'About',
       'nav.services': 'Services',
       'nav.trust': 'Trust',
@@ -213,7 +213,7 @@
       'nav.contact': 'Contact',
       'nav.wechat': 'WeChat',
 
-      'hero.eyebrow': 'PKU Yan · AI Positioning & GEO Growth',
+      'hero.eyebrow': 'BeiDa Yan · AI Positioning & GEO Growth',
       'hero.title': 'Amplify your brand <span class="accent">edge</span>.<br>Polish your personal <span class="accent">shine</span>.',
       'hero.facts': 'AI positioning and GEO growth — get found, get chosen, get trusted.',
       'hero.cta1': 'Add WeChat · cheny2806',
@@ -279,8 +279,8 @@
       'contact.cta1': 'Add WeChat · cheny2806',
       'contact.cta2': 'View Services',
 
-      'footer.brand': 'PKU Yan · AI Positioning & GEO Growth',
-      'footer.copy': '© 2026 PKU Yan · Personal Brand',
+      'footer.brand': 'BeiDa Yan · AI Positioning & GEO Growth',
+      'footer.copy': '© 2026 BeiDa Yan · Personal Brand',
 
       'mcta.services': 'Services',
       'mcta.wechat': 'WeChat cheny2806',
@@ -300,7 +300,7 @@
       'modal.radar.placeholder': 'Positioning Radar Agent<br>QR code pending<br><br><small style="font-size:11px;">Replace this QR code<br>once the agent is ready</small>',
       'modal.radar.note': '¥500 – 600 · Scan to start',
 
-      '_title': 'PKU Yan · AI Positioning & GEO Growth | Amplify Your Brand Edge',
+      '_title': 'BeiDa Yan · AI Positioning & GEO Growth | Amplify Your Brand Edge',
       '_desc': 'AI positioning and GEO growth — get found, get chosen, get trusted. 15 years in Fortune 500 brand operations, 10+ years corporate training, built a brand from zero to 100M+.'
     }
   };
