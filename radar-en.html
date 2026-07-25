@@ -210,7 +210,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     btn.textContent='✅ Tipped - Download Document';btn.disabled=false;
     if(data.choices&&data.choices[0]){
       var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
-            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
+            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,lang:'en',report:text}) }); } catch(e) {}
 
       var now=new Date();var ds=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
       var ua=navigator.userAgent.toLowerCase();var isWx=ua.indexOf('micromessenger')!==-1;
