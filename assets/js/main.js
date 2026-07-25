@@ -319,6 +319,9 @@
     window.currentLang = lang;
     var dict = I18N[lang];
 
+    // 调试：切换时标题加标记
+    document.title = '[' + lang + '] ' + (dict['_title'] || document.title);
+
     // 更新 html lang 属性
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'zh-tw' ? 'zh-TW' : 'en');
 
