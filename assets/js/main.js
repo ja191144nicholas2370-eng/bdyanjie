@@ -518,36 +518,7 @@
   });
 
   /* ============================================================
-     文章朗读功能（Web Speech API）
+     文章朗读功能已移除
      ============================================================ */
-  var articleBody = document.querySelector('.article-detail');
-  if (articleBody) {
-    var ttsBtn = document.createElement('button');
-    ttsBtn.textContent = '🔊 朗读';
-    ttsBtn.style.cssText = 'position:fixed;top:100px;left:16px;z-index:999;padding:8px 14px;border-radius:20px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.8);backdrop-filter:blur(8px);cursor:pointer;font-size:0.85rem;font-family:inherit;';
-    ttsBtn.setAttribute('aria-label', '朗读文章');
-    document.body.appendChild(ttsBtn);
-
-    var speaking = false;
-    var utterance = null;
-
-    ttsBtn.addEventListener('click', function () {
-      if (speaking) {
-        window.speechSynthesis.cancel();
-        speaking = false;
-        ttsBtn.textContent = '🔊 朗读';
-        return;
-      }
-      var text = articleBody.textContent.replace(/\s+/g, ' ').trim();
-      if (!text) return;
-      utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'zh-CN';
-      utterance.rate = 0.95;
-      utterance.onstart = function () { speaking = true; ttsBtn.textContent = '⏹ 停止'; };
-      utterance.onend = function () { speaking = false; ttsBtn.textContent = '🔊 朗读'; };
-      utterance.onerror = function () { speaking = false; ttsBtn.textContent = '🔊 朗读'; };
-      window.speechSynthesis.speak(utterance);
-    });
-  }
 
 })();
