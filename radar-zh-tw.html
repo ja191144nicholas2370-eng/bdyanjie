@@ -2220,13 +2220,13 @@ h1 .accent {
   var prompt='你是「IP定位雷達」。基於用戶填寫的三步驟內容，生成一份IP定位深度診斷報告。用繁體中文輸出。結構：①憑什麼是你（找出用戶自己沒意識到的優勢）②你是誰（三句話定位：共鳴型+反常識型+獨家型）③現在做什麼（三條可執行路徑）。不說教、不居高臨下。2000字以內。\\n\\n用戶填寫內容：\\n步驟1：'+s1+'\\n步驟2：'+s2+'\\n步驟3：'+s3;
   fetch('https://api.deepseek.com/v1/chat/completions',{
     method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a23438e1c24ef19b7e61bbc9e08ec1'},
+    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
     body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'你是IP定位雷達智能體，用繁體中文回覆。'},{role:'user',content:prompt}],temperature:0.65,max_tokens:3000})
   }).then(function(r){return r.json()}).then(function(data){
     var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
     btn.textContent='✅ 我已打賞，下載文檔';btn.disabled=false;
     if(data.choices&&data.choices[0]){
-      var text=data.choices[0].message.content;
+      var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
       var now=new Date();var ds=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
       var ua=navigator.userAgent.toLowerCase();var isWx=ua.indexOf('micromessenger')!==-1;
       if(isWx){var pop=document.createElement('div');pop.id='summaryPopup';pop.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;';pop.innerHTML='<div style="background:#fff;border-radius:16px;padding:24px;max-width:90vw;max-height:80vh;overflow-y:auto;margin:20px;"><h3>📋 你的IP定位分析報告</h3><textarea readonly style="width:100%;height:300px;border:1px solid #ddd;border-radius:8px;padding:12px;font-size:0.82rem;line-height:1.6;">'+text.replace(/</g,'&lt;')+'</textarea><div style="margin-top:12px;display:flex;gap:8px;"><button onclick="var t=this.parentElement.parentElement.querySelector(\\'textarea\\');t.select();document.execCommand(\\'copy\\');this.textContent=\\'✅ 已複製！\\'" style="flex:1;padding:12px;background:#6c5ce7;color:#fff;border:none;border-radius:24px;cursor:pointer;">📋 一鍵複製全文</button><button onclick="this.parentElement.parentElement.parentElement.remove()" style="padding:12px 20px;background:#eee;border:none;border-radius:24px;cursor:pointer;">關閉</button></div></div>';document.body.appendChild(pop);pop.addEventListener('click',function(e){if(e.target===pop)pop.remove();});}

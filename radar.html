@@ -2269,7 +2269,7 @@ h1 .accent {
           downloadBtn.textContent = '✅ 我已打赏，下载文档';
           downloadBtn.disabled = false;
           if (data.choices && data.choices[0]) {
-            var text = data.choices[0].message.content;
+            var msg = data.choices[0].message; var text = msg.content || msg.reasoning_content || '';
             var now = new Date();
             var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
             var ua = navigator.userAgent.toLowerCase();
