@@ -14,8 +14,8 @@
     zh: {
       'brand.name': '北大燕姐',
       'nav.about': '我是谁',
-      'nav.services': '我能给你什么',
-      'nav.trust': '信任的底气',
+      'nav.services': '我的服务',
+      'nav.trust': '为什么是我',
       'nav.radar': 'IP定位',
       'nav.geo': 'GEO增长',
       'nav.articles': '文章',
@@ -47,7 +47,7 @@
       'stat3.sub': '跑通产品从0到破亿的完整成长路径',
 
       'svc.eyebrow': '02 — Services',
-      'svc.title': '我能给你什么<em>。</em>',
+      'svc.title': '我的服务<em>。</em>',
       'svc1.tag': 'Free · 随喜打赏',
       'svc1.title': 'AI + IP 定位工具包',
       'svc1.desc': '我整理的AI+IP定位工具，拿去直接用。觉得有用就打个赏。',
@@ -71,7 +71,7 @@
       'svc5.btn': '加微信聊',
 
       'trust.eyebrow': '03 — Trust',
-      'trust.title': '信任的底气<em>。</em>',
+      'trust.title': '为什么是我<em>。</em>',
       'trust.q1': '燕姐只讲真话，只讲自己做过的事情。走过的每一步，都算数。',
       'trust.q2': '在AI领域学习与成长的每一步，做给你看、告诉你怎么做。',
       'trust1.num': '0 → 亿',
@@ -116,8 +116,8 @@
     'zh-tw': {
       'brand.name': '北大燕姐',
       'nav.about': '我是誰',
-      'nav.services': '我能給你什麼',
-      'nav.trust': '信任的底氣',
+      'nav.services': '我的服務',
+      'nav.trust': '為什麼是我',
       'nav.radar': 'IP定位',
       'nav.geo': 'GEO增長',
       'nav.articles': '文章',
@@ -206,7 +206,7 @@
       'brand.name': 'PKU Yan',
       'nav.about': 'About',
       'nav.services': 'Services',
-      'nav.trust': 'Trust',
+      'nav.trust': 'Why Me',
       'nav.radar': 'IP Radar',
       'nav.geo': 'GEO Growth',
       'nav.articles': 'Articles',
@@ -238,7 +238,7 @@
       'stat3.sub': 'Ran the full path from 0 to breakthrough revenue',
 
       'svc.eyebrow': '02 — Services',
-      'svc.title': 'What I Offer<em>.</em>',
+      'svc.title': 'Services<em>.</em>',
       'svc1.tag': 'Free · Pay What You Want',
       'svc1.title': 'AI + IP Positioning Toolkit',
       'svc1.desc': 'My curated AI + IP positioning tools — take them and use them directly. Tip if you find them helpful.',
@@ -262,7 +262,7 @@
       'svc5.btn': "Let's Talk",
 
       'trust.eyebrow': '03 — Trust',
-      'trust.title': 'Why Trust Me<em>.</em>',
+      'trust.title': 'Why Me<em>.</em>',
       'trust.q1': "I only speak the truth, only about things I've actually done. Every step counts.",
       'trust.q2': 'Every step of learning and growing in AI — I show you, then tell you how.',
       'trust1.num': '0 → 100M',
