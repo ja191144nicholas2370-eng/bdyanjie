@@ -262,7 +262,7 @@
       'svc5.btn': "Let's Talk",
 
       'trust.eyebrow': '03 — Trust',
-      'trust.title': 'Trust'<em>.</em>',
+      'trust.title': 'Trust<em>.</em>',
       'trust.q1': "I only speak the truth, only about things I've actually done. Every step counts.",
       'trust.q2': 'Every step of learning and growing in AI — I show you, then tell you how.',
       'trust1.num': '0 → 100M',
