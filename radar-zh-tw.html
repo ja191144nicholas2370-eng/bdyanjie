@@ -1300,11 +1300,11 @@ h1 .accent {
       </a>
       <nav class="nav-links" aria-label="主導航">
         <a href="index.html#about">我是誰</a>
-        <a href="index.html#services">我能給你什麼</a>
+        <a href="index.html#services">我的服務</a>
         <a href="radar.html">IP定位</a>
         <a href="geo.html">GEO增長</a>
         <a href="articles.html">文章</a>
-        <a href="index.html#trust">信任的底氣</a>
+        <a href="index.html#trust">信任背書</a>
         <a href="index.html#contact">聯繫我</a>
       </nav>
       <div class="nav-right">
@@ -1463,7 +1463,7 @@ h1 .accent {
             這份文檔包含你剛剛梳理的完整定位素材<br>你的經歷、優勢和定位句，一鍵下載帶走
           </p>
           <div style="margin:14px 0;">
-            <img src="assets/img/wechat-pay.jpg" alt="微信收款碼" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
+            <img src="assets/img/wechat-qr.jpg" alt="微信二維碼" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
           </div>
           <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">掃碼打賞，金額隨意 ☕</p>
           <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">
@@ -1580,7 +1580,7 @@ h1 .accent {
           <h3 style="margin-bottom:8px;">💝 先打賞</h3>
           <p>如果這份清單幫到你了，請我喝杯咖啡。我會持續更新它。</p>
           <div style="margin:12px 0;">
-            <img src="assets/img/wechat-pay.jpg" alt="微信收款碼" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
+            <img src="assets/img/wechat-qr.jpg" alt="微信二維碼" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
           </div>
           <p style="font-size:0.78rem;color:#999;margin-top:6px;">掃碼打賞，金額隨意</p>
         </div>
@@ -1619,7 +1619,7 @@ h1 .accent {
       </div>
       <div style="text-align:center;margin-top:16px;">
         <p style="font-size:0.9rem;color:#888;">覺得有用先打賞，隨意金額</p>
-        <img src="assets/img/wechat-pay.jpg" alt="收款碼" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" />
+        <img src="assets/img/wechat-qr.jpg" alt="微信二維碼" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" />
       </div>
 
       <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:#999;">
@@ -1660,8 +1660,8 @@ h1 .accent {
     zh: {
       'brand.name': '北大燕姐',
       'nav.about': '我是誰',
-      'nav.services': '我能給你什麼',
-      'nav.trust': '信任的底氣',
+      'nav.services': '我的服務',
+      'nav.trust': '信任背書',
       'nav.radar': 'IP定位',
       'nav.geo': 'GEO增長',
       'nav.articles': '文章',
@@ -1693,7 +1693,7 @@ h1 .accent {
       'stat3.sub': '跑通產品從0到破億的完整成長路徑',
 
       'svc.eyebrow': '02 — Services',
-      'svc.title': '我能給你什麼<em>。</em>',
+      'svc.title': '我的服務<em>。</em>',
       'svc1.tag': 'Free · 隨喜打賞',
       'svc1.title': 'AI + IP 定位工具包',
       'svc1.desc': '我整理的AI+IP定位工具，拿去直接用。覺得有用就打個賞。',
@@ -1717,7 +1717,7 @@ h1 .accent {
       'svc5.btn': '加微信聊',
 
       'trust.eyebrow': '03 — Trust',
-      'trust.title': '信任的底氣<em>。</em>',
+      'trust.title': '信任背書<em>。</em>',
       'trust.q1': '燕姐只講真話，只講自己做過的事情。走過的每一步，都算數。',
       'trust.q2': '在AI領域學習與成長的每一步，做給你看、告訴你怎麼做。',
       'trust1.num': '0 → 億',
@@ -2203,44 +2203,37 @@ h1 .accent {
     (function() {
       var btn = document.getElementById('generateSummaryBtn');
       var donate = document.getElementById('donateSection');
-      var downloadBtn = document.getElementById('downloadSummaryBtn');
-      if (!btn || !donate || !downloadBtn) return;
-
-      btn.addEventListener('click', function() {
-        donate.style.display = 'block';
-        donate.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-
-      downloadBtn.addEventListener('click', function() {
-        var step1 = (document.getElementById('radar-input-step1') || {}).value || '(未填寫)';
-        var step2 = (document.getElementById('radar-input-step2') || {}).value || '(未填寫)';
-        var step3 = (document.getElementById('radar-input-step3') || {}).value || '(未填寫)';
-
-        var now = new Date();
-        var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
-
-        var text = '北大燕姐 · IP定位雷達 · 定位彈藥庫\n';
-        text += '生成日期：' + dateStr + '\n';
-        text += '========================================\n\n';
-        text += '【第一步：我的經歷彈藥】\n' + step1 + '\n\n';
-        text += '【第二步：我的核心優勢】\n' + step2 + '\n\n';
-        text += '【第三步：我的一句話定位】\n' + step3 + '\n\n';
-        text += '========================================\n';
-        text += '這份文檔由你在 pkuyan.com 的IP定位雷達頁面完成。\n';
-        text += '如需1對1深度定位諮詢，加微信 cheny2806，把這份文檔發給我。\n';
-
-        var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = '北大燕姐-IP定位彈藥庫-' + dateStr + '.txt';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      });
-    })();
-  </script>
+      var downloadBtn = document.getElementById('downloadSummaryBtn').addEventListener('click',function(){
+  var s1=(document.getElementById('radar-input-step1')||{}).value||'';
+  var s2=(document.getElementById('radar-input-step2')||{}).value||'';
+  var s3=(document.getElementById('radar-input-step3')||{}).value||'';
+  if(!s1&&!s2&&!s3){alert('請至少填寫一個步驟');return;}
+  try{localStorage.setItem('radar_step1',s1);localStorage.setItem('radar_step2',s2);localStorage.setItem('radar_step3',s3);}catch(e){}
+  var btn=document.getElementById('downloadSummaryBtn');
+  btn.textContent='⏳ 正在生成IP定位報告...';
+  btn.disabled=true;
+  var lb=document.createElement('div');
+  lb.id='reportLoading';
+  lb.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:rgba(255,255,255,0.95);padding:28px 36px;border-radius:16px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.12);';
+  lb.innerHTML='<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">IP定位報告正在生成中</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">深度分析約需30秒，請稍後…</p>';
+  document.body.appendChild(lb);
+  var prompt='你是「IP定位雷達」。基於用戶填寫的三步驟內容，生成一份IP定位深度診斷報告。用繁體中文輸出。結構：①憑什麼是你（找出用戶自己沒意識到的優勢）②你是誰（三句話定位：共鳴型+反常識型+獨家型）③現在做什麼（三條可執行路徑）。不說教、不居高臨下。2000字以內。\\n\\n用戶填寫內容：\\n步驟1：'+s1+'\\n步驟2：'+s2+'\\n步驟3：'+s3;
+  fetch('https://api.deepseek.com/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a23438e1c24ef19b7e61bbc9e08ec1'},
+    body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'你是IP定位雷達智能體，用繁體中文回覆。'},{role:'user',content:prompt}],temperature:0.65,max_tokens:3000})
+  }).then(function(r){return r.json()}).then(function(data){
+    var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
+    btn.textContent='✅ 我已打賞，下載文檔';btn.disabled=false;
+    if(data.choices&&data.choices[0]){
+      var text=data.choices[0].message.content;
+      var now=new Date();var ds=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
+      var ua=navigator.userAgent.toLowerCase();var isWx=ua.indexOf('micromessenger')!==-1;
+      if(isWx){var pop=document.createElement('div');pop.id='summaryPopup';pop.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;';pop.innerHTML='<div style="background:#fff;border-radius:16px;padding:24px;max-width:90vw;max-height:80vh;overflow-y:auto;margin:20px;"><h3>📋 你的IP定位分析報告</h3><textarea readonly style="width:100%;height:300px;border:1px solid #ddd;border-radius:8px;padding:12px;font-size:0.82rem;line-height:1.6;">'+text.replace(/</g,'&lt;')+'</textarea><div style="margin-top:12px;display:flex;gap:8px;"><button onclick="var t=this.parentElement.parentElement.querySelector(\\'textarea\\');t.select();document.execCommand(\\'copy\\');this.textContent=\\'✅ 已複製！\\'" style="flex:1;padding:12px;background:#6c5ce7;color:#fff;border:none;border-radius:24px;cursor:pointer;">📋 一鍵複製全文</button><button onclick="this.parentElement.parentElement.parentElement.remove()" style="padding:12px 20px;background:#eee;border:none;border-radius:24px;cursor:pointer;">關閉</button></div></div>';document.body.appendChild(pop);pop.addEventListener('click',function(e){if(e.target===pop)pop.remove();});}
+      else{var blob=new Blob([text],{type:'text/plain;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='北大燕姐-IP定位分析報告-'+ds+'.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);}
+    }else{alert('生成失敗。內容已自動保存，刷新頁面後還在。可加微信 cheny2806 發給燕姐手動生成。');btn.textContent='🔄 重新生成';btn.disabled=false;}
+  }).catch(function(){var lb3=document.getElementById('reportLoading');if(lb3)lb3.remove();btn.textContent='🔄 重新生成';btn.disabled=false;alert('網絡異常。內容已自動保存。可加微信 cheny2806，燕姐手動幫你生成。');});
+});</script>
 </body>
 </html>
 
