@@ -1462,7 +1462,11 @@ h1 .accent {
           <p style="font-size:0.82rem;color:#999;margin-bottom:4px;" id="donateScanTip">📌 长按二维码 → 识别图中二维码 → 加微信打赏</p>
           <div id="donateWxInner" style="display:none;margin:14px 0;padding:16px;background:#f8f7ff;border-radius:12px;text-align:center;">
             <p style="font-size:1rem;font-weight:700;color:#333;margin-bottom:8px;">💡 微信内打赏方式</p>
-            <p style="font-size:0.9rem;color:#555;margin-bottom:12px;">复制下方微信号，打开微信加好友转账</p>
+            <div style="margin:10px 0;">
+              <img src="assets/img/wechat-qr.jpg" alt="微信二维码" style="width:140px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
+            </div>
+            <p style="font-size:0.82rem;color:#999;margin-bottom:8px;">长按识别二维码添加好友 → 转账打赏</p>
+            <p style="font-size:0.9rem;color:#555;margin-bottom:12px;">或复制下方微信号：</p>
             <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
               <span style="font-size:1.1rem;font-weight:700;color:#6c5ce7;">cheny2806</span>
               <button onclick="navigator.clipboard.writeText('cheny2806');this.textContent='✅ 已复制'" style="padding:8px 16px;background:#6c5ce7;color:#fff;border:none;border-radius:20px;font-size:0.85rem;cursor:pointer;">复制微信号</button>
@@ -1583,9 +1587,9 @@ h1 .accent {
           <h3 style="margin-bottom:8px;">💝 先打赏</h3>
           <p>如果这份清单帮到你了，请我喝杯咖啡。我会持续更新它。</p>
           <div style="margin:12px 0;">
-            <img src="assets/img/wechat-pay.jpg" alt="微信收款码" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
+            <img src="assets/img/wechat-qr.jpg" alt="微信二维码" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" />
           </div>
-          <p style="font-size:0.78rem;color:#999;margin-top:6px;">觉得值，随心支持</p>
+          <p style="font-size:0.78rem;color:#999;margin-top:6px;">加微信好友后打赏，金额随意</p>
         </div>
       </div>
     </div>
@@ -2215,7 +2219,7 @@ h1 .accent {
       var tip = document.getElementById('donateScanTip');
       var wx = document.getElementById('donateWxInner');
       if (qr) qr.style.display = 'none';
-      if (tip) tip.textContent = '📱 微信内无法扫码，请用下方方式打赏';
+      if (tip) tip.textContent = '';
       if (wx) wx.style.display = 'block';
     }
   })();
