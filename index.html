@@ -1996,5 +1996,111 @@ h1 .accent {
 })();
   </script>
   <script src="assets/js/main.js"></script>
+  <script>
+  /* ====== 燕姐智库 · AI客服 ====== */
+  (function(){
+    var faq = {
+      zh: {
+        1:{q:/燕姐|做什么/,a:'AI+IP精准定位 + GEO内容增长。帮个人和企业被搜到、被信任、被选择。15年品牌操盘手，从0做到破亿。'},
+        2:{q:/工具包|免费/,a:'是的，随喜打赏。三步自测，AI生成你的IP定位诊断报告。做完觉得值，请燕姐喝杯咖啡 ☕'},
+        3:{q:/雷达|怎么用/,a:'填完三个步骤，DeepSeek生成一份深度定位诊断报告。想进一步可以加微信，¥500-600一次1对1深度萃取。'},
+        4:{q:/量产舱|内容/,a:'定位做完，内容帮你出。10天高质量账号内容交付，拿到就能发。¥1500-3000。'},
+        5:{q:/微信|联系|加你/,a:'cheny2806，备注"咨询"。燕姐48小时内回复。'},
+        6:{q:/适合/,a:'想做个人IP的创业者、企业老板、品牌操盘手。零经验也能做——定位雷达专门帮你从经历里挖优势。'},
+        7:{q:/没经验|零经验/,a:'能。每个人都有自己的弹药库，只是你自己还没发现。定位雷达就是帮你挖出来的。'},
+        8:{q:/城市|哪里|深圳/,a:'深圳。线下可以约「湾区品牌圈私享局」，筛选过的品牌决策者面对面碰撞，每次限席。'},
+        9:{q:/创业|不知道.*开始/,a:'很正常。大多数人不是缺能力，是缺一个帮你把经历翻译成方向的人。先做定位雷达，三步走完你会清楚很多。'},
+        10:{q:/副业|增加收入|有工作/,a:'先从你最熟悉的领域切进去。你每天在做的、觉得理所当然的事，可能正是别人愿意花钱买的。定位雷达帮你找出那个点。'},
+        11:{q:/宝妈/,a:'当然能。你的生活经验和育儿洞察就是内容。重点是找到"只有你能讲的角度"。不要跟专家比专业，比真实。'},
+        12:{q:/年纪|年龄/,a:'年龄从来不是问题。你积累的阅历、踩过的坑、走过的弯路，是年轻人没有的弹药。这些恰恰是最值钱的IP素材。'},
+        13:{q:/内向|性格/,a:'非常适合。自媒体不需要你变成外向的人。文字输出、知识分享、一对一咨询——每个都适合内向但有内容的人。'},
+        14:{q:/定价|价格.*服务/,a:'先免费做3个案例，拿反馈。如果有人主动问"多少钱"，你的价格就出来了。从低往高调，比从高往低降容易得多。'},
+        15:{q:/企业.*GEO|GEO.*企业|品牌.*GEO/,a:'让你的内容被AI引用。三件事：标题结构化（带时间锚点）、多平台形成引用网络、定期追踪引用率。具体可以约燕姐聊。'},
+        16:{q:/企业.*服务|公司.*合作/,a:'三种：①品牌定位诊断 ②GEO内容增长体系搭建 ③品牌共创·战略级陪跑。根据你的阶段匹配。'},
+        17:{q:/案例/,a:'燕姐操盘过从0到破亿的品牌全周期。具体案例涉及客户隐私，加微信单独聊。'},
+        18:{q:/合作.*流程|怎么.*合作/,a:'加了微信→把需求说两句→燕姐48h内回复→判断匹配度→出方案→确认后启动。不画饼，每一步都讲清楚。'},
+        19:{q:/线下.*活动|私享局/,a:'深圳定期举办「湾区品牌圈私享局」，筛选过的品牌决策者闭门碰撞。关注朋友圈通知。'},
+        20:{q:/价格.*谈|能.*便宜/,a:'服务价格根据你的需求深度定制。加了微信聊完需求再定，不浪费彼此时间。'}
+      },
+      'zh-tw': {
+        1:{q:/燕姐|做什麼/,a:'AI+IP精準定位 + GEO內容增長。幫個人和企業被搜到、被信任、被選擇。15年品牌操盤手，從0做到破億。'},
+        5:{q:/微信|聯繫|加你/,a:'cheny2806，備註"諮詢"。燕姐48小時內回覆。'},
+        7:{q:/沒經驗|零經驗/,a:'能。每個人都有自己的彈藥庫，只是你自己還沒發現。定位雷達就是幫你挖出來的。'}
+      },
+      en: {
+        1:{q:/who|what.*do|about/,a:'AI + IP precision positioning + GEO content growth. 15 years in Fortune 500 brand operations, grew a brand from zero to 100M+. Helping individuals and businesses get found, trusted, and chosen by AI search.'},
+        2:{q:/free|toolkit/,a:'Yes, pay what you want. Three-step self-assessment, AI generates your IP positioning report. Tip if you find it valuable ☕'},
+        5:{q:/wechat|contact/,a:'Add WeChat: cheny2806, note "consult". Yan replies within 48 hours.'}
+      }
+    };
+
+    var messages = {
+      zh: {title:'燕姐智库',placeholder:'输入你的问题…',greeting:'你好，我是燕姐智库。关于IP定位、GEO增长、个人品牌，可以直接问我 👇',fallback:'这个问题比较个性化，加微信 cheny2806 我直接帮你。',think:'思考中…'},
+      'zh-tw': {title:'燕姐智庫',placeholder:'輸入你的問題…',greeting:'你好，我是燕姐智庫。關於IP定位、GEO增長、個人品牌，可以直接問我 👇',fallback:'這個問題比較個性化，加微信 cheny2806 我直接幫你。',think:'思考中…'},
+      en: {title:'Yan AI',placeholder:'Ask me anything…',greeting:'Hi, I\'m Yan\'s AI assistant. Ask me about IP positioning, GEO growth, or personal branding 👇',fallback:'This needs a more personal touch. Add WeChat: cheny2806 and Yan will help you directly.',think:'Thinking…'}
+    };
+
+    function getLang(){ var l=localStorage.getItem('lang')||'zh'; return messages[l]?l:'zh'; }
+    var lang=getLang(), msg=messages[lang], fdict=faq[lang]||faq.zh;
+    var chatCount=0, isOpen=false;
+
+    // 创建DOM
+    var css=document.createElement('style');
+    css.textContent='.yk-bubble{position:fixed;bottom:20px;right:16px;z-index:9998;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#a78bfa);box-shadow:0 4px 20px rgba(108,92,231,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .2s}.yk-bubble:hover{transform:scale(1.08)}.yk-bubble .dot{position:absolute;top:4px;right:4px;width:10px;height:10px;border-radius:50%;background:#22c55e;border:2px solid #fff}.yk-chat{position:fixed;bottom:80px;right:16px;z-index:9999;width:340px;max-width:calc(100vw-32px);height:440px;max-height:calc(100vh-140px);background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.15);display:none;flex-direction:column;overflow:hidden}.yk-chat.open{display:flex}.yk-chat-header{background:linear-gradient(135deg,#6c5ce7,#8b5cf6);color:#fff;padding:14px 16px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:space-between}.yk-chat-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 4px}.yk-chat-body{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}.yk-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.6;word-break:break-word}.yk-msg.assistant{background:#f3f0ff;color:#333;align-self:flex-start;border-bottom-left-radius:4px}.yk-msg.user{background:#6c5ce7;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}.yk-chat-input{border-top:1px solid #eee;padding:10px 12px;display:flex;gap:8px}.yk-chat-input input{flex:1;border:1px solid #e5e0f0;border-radius:20px;padding:8px 14px;font-size:13px;outline:none}.yk-chat-input button{background:linear-gradient(135deg,#6c5ce7,#8b5cf6);color:#fff;border:none;border-radius:20px;padding:8px 16px;font-size:13px;cursor:pointer;white-space:nowrap}';
+    document.head.appendChild(css);
+
+    var bubble=document.createElement('div'); bubble.className='yk-bubble'; bubble.innerHTML='💬<div class="dot"></div>';
+    var chat=document.createElement('div'); chat.className='yk-chat';
+    chat.innerHTML='<div class="yk-chat-header"><span>'+msg.title+'</span><button class="yk-chat-close">✕</button></div><div class="yk-chat-body"></div><div class="yk-chat-input"><input type="text" placeholder="'+msg.placeholder+'"><button>发送</button></div>';
+    document.body.appendChild(bubble); document.body.appendChild(chat);
+
+    var body=chat.querySelector('.yk-chat-body'), input=chat.querySelector('input'), btn=chat.querySelector('button');
+    
+    function addMsg(role,text){ var d=document.createElement('div'); d.className='yk-msg '+role; d.textContent=text; body.appendChild(d); body.scrollTop=body.scrollHeight; }
+
+    function searchFAQ(query){
+      var q=query.toLowerCase();
+      for(var k in fdict){
+        var entry=fdict[k];
+        if(entry.q instanceof RegExp){ if(entry.q.test(q)) return entry.a; }
+        else { if(q.indexOf(entry.q)!==-1) return entry.a; }
+      }
+      return null;
+    }
+
+    function toggle(){
+      isOpen=!isOpen; chat.classList.toggle('open',isOpen);
+      if(isOpen && body.children.length===0) addMsg('assistant',msg.greeting);
+    }
+
+    async function send(){
+      var q=input.value.trim(); if(!q) return;
+      addMsg('user',q); input.value='';
+      
+      var faqHit=searchFAQ(q);
+      if(faqHit){ addMsg('assistant',faqHit); chatCount++; return; }
+      
+      chatCount++;
+      if(chatCount>=4){ addMsg('assistant',msg.fallback); return; }
+      
+      addMsg('assistant',msg.think);
+      var last=body.lastElementChild;
+      try{
+        var resp=await fetch('https://api.deepseek.com/v1/chat/completions',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a23438e1c24ef19b7e61bbc9e08ec1'},
+          body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'你是燕姐智库，北大燕姐的AI助理。用'+lang+'回复，语气真诚直接，50字以内。最后可引导加微信cheny2806。'},{role:'user',content:q}],max_tokens:200})
+        });
+        var d=await resp.json();
+        var reply=d.choices[0].message.content||d.choices[0].message.reasoning_content||'';
+        last.textContent=reply||msg.fallback;
+      }catch(e){ last.textContent=msg.fallback; }
+    }
+
+    bubble.addEventListener('click',toggle);
+    chat.querySelector('.yk-chat-close').addEventListener('click',toggle);
+    btn.addEventListener('click',send);
+    input.addEventListener('keydown',function(e){ if(e.key==='Enter') send(); });
+  })();
+  </script>
 </body>
 </html>
