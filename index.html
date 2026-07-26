@@ -2082,19 +2082,8 @@ h1 .accent {
       if(faqHit){ addMsg('assistant',faqHit); chatCount++; return; }
       
       chatCount++;
-      if(chatCount>=4){ addMsg('assistant',msg.fallback); return; }
-      
-      addMsg('assistant',msg.think);
-      var last=body.lastElementChild;
-      try{
-        var resp=await fetch('https://api.deepseek.com/v1/chat/completions',{
-          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a23438e1c24ef19b7e61bbc9e08ec1'},
-          body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'你是燕姐智库，北大燕姐的AI助理。用'+lang+'回复，语气真诚直接，50字以内。最后可引导加微信cheny2806。'},{role:'user',content:q}],max_tokens:200})
-        });
-        var d=await resp.json();
-        var reply=d.choices[0].message.content||d.choices[0].message.reasoning_content||'';
-        last.textContent=reply||msg.fallback;
-      }catch(e){ last.textContent=msg.fallback; }
+      addMsg('assistant',msg.fallback);
+      return; }
     }
 
     bubble.addEventListener('click',toggle);
