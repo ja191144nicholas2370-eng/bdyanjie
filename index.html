@@ -2088,11 +2088,8 @@ h1 .accent {
     }
 
     bubble.addEventListener('click',toggle);
-    bubble.addEventListener('touchend',function(e){ e.preventDefault(); toggle(); });
     chat.querySelector('.yk-chat-close').addEventListener('click',toggle);
-    chat.querySelector('.yk-chat-close').addEventListener('touchend',function(e){ e.preventDefault(); toggle(); });
     btn.addEventListener('click',send);
-    btn.addEventListener('touchend',function(e){ e.preventDefault(); send(); });
     input.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); send(); } });
   })();
   </script>
