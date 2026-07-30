@@ -48,9 +48,9 @@
 
       'svc.eyebrow': '02 — Services',
       'svc.title': '我的服务<em>。</em>',
-      'svc1.tag': 'Free · 随喜打赏',
+      'svc1.tag': 'Free · 免费使用',
       'svc1.title': 'AI + IP 定位工具包',
-      'svc1.desc': '我整理的AI+IP定位工具，拿去直接用。觉得有用就打个赏。',
+      'svc1.desc': '我整理的AI+IP定位工具，拿去直接用。觉得有用就分享给朋友。',
       'svc1.btn': '获取工具包',
       'svc2.tag': '￥500 – 600',
       'svc2.title': 'AI + IP 定位雷达',
@@ -97,10 +97,10 @@
       'copytip': '已复制微信号 cheny2806',
 
       'modal.toolkit.title': 'AI + IP 定位工具包',
-      'modal.toolkit.desc': '10分钟，三步挖出你的核心竞争力。<br>品牌操盘手的方法，跟AI生成的不一样。做完觉得值，页面底部可以打赏。',
+      'modal.toolkit.desc': '10分钟，三步挖出你的核心竞争力。<br>品牌操盘手的方法，跟AI生成的不一样。做完觉得值，再来找我聊。',
       'modal.toolkit.btn': '打开免费自测 →',
       'modal.toolkit.href': 'radar.html',
-      'modal.toolkit.note': '觉得有用，随心打赏',
+      'modal.toolkit.note': '觉得有用，分享给需要的人',
       'modal.consult.title': '服务咨询',
       'modal.consult.desc': '添加微信，详细沟通你的需求，我给你具体的建议和方案。',
       'modal.consult.btn': '复制微信号',
@@ -552,7 +552,7 @@
   });
 
   /* ============================================================
-     工具包打赏弹窗
+     工具包弹窗
      ============================================================ */
   var modal = document.getElementById('toolkitModal');
   var modalClose = document.getElementById('modalClose');
