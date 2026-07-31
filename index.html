@@ -2121,7 +2121,7 @@ h1 .accent {
     chat.innerHTML='<div class="yk-chat-header"><span>'+msg.title+'</span><button class="yk-chat-close">✕</button></div><div class="yk-chat-body"></div><div class="yk-chat-input"><input type="text" placeholder="'+msg.placeholder+'"><button>发送</button></div>';
     document.body.appendChild(bubble); document.body.appendChild(chat);
 
-    var body=chat.querySelector('.yk-chat-body'), input=chat.querySelector('input'), btn=chat.querySelector('button');
+    var body=chat.querySelector('.yk-chat-body'), input=chat.querySelector('input'), btn=chat.querySelector('.yk-chat-input button');
     
     function addMsg(role,text){ var d=document.createElement('div'); d.className='yk-msg '+role; d.textContent=text; body.appendChild(d); body.scrollTop=body.scrollHeight; }
 
