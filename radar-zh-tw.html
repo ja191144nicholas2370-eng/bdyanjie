@@ -2236,7 +2236,7 @@ h1 .accent {
 
         fetch('https://api.deepseek.com/v1/chat/completions', {
           method: 'POST',
-          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
+          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-13f08531840642749a5fb8e2282bf198'},
           body: JSON.stringify({model:'deepseek-v4-pro', messages:[{role:'system',content:'你是IP定位雷達智能體，用繁體中文回覆。'},{role:'user',content:prompt}], temperature:0.65, max_tokens:3000})
         })
         .then(function(r) { return r.json(); })
