@@ -258,7 +258,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
 
         fetch('https://api.deepseek.com/v1/chat/completions', {
           method: 'POST',
-          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
+          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-13f08531840642749a5fb8e2282bf198'},
           body: JSON.stringify({model:'deepseek-v4-pro', messages:[{role:'system',content:'You are IP Positioning Radar agent.'},{role:'user',content:prompt}], temperature:0.65, max_tokens:3000})
         })
         .then(function(r) { return r.json(); })
@@ -644,7 +644,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
   var prompt='You are IP Positioning Radar. Generate an IP positioning diagnostic report. Structure: ①Why You (find strengths the user doesn\'t realize) ②Who You Are (3 positioning lines: empathy+contrarian+exclusive) ③What Now (3 actionable paths). No preaching. Under 2000 words.\n\nUser input:\nStep1: '+s1+'\nStep2: '+s2+'\nStep3: '+s3;
   fetch('https://api.deepseek.com/v1/chat/completions',{
     method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-82a2343f44f547cebe2a714e02008ec1'},
+    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-13f08531840642749a5fb8e2282bf198'},
     body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'You are IP Positioning Radar.'},{role:'user',content:prompt}],temperature:0.65,max_tokens:3000})
   }).then(function(r){return r.json()}).then(function(data){
     var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
