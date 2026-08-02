@@ -108,14 +108,14 @@
     <div class="result-box reveal in" style="text-align:center;">
       <p style="font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent, #c41e3a);margin-bottom:8px;">Step 4</p>
       <div class="big-line">The three boxes above — that's your <strong>positioning arsenal</strong>.</div>
-      <p style="margin-top:12px;color:#555;line-height:1.8;">Click below to compile it into a document.<br>Tip any amount to download, or send directly to Yan for follow-up consulting.</p>
+      <p style="margin-top:12px;color:#555;line-height:1.8;">Click below to compile it into a document.<br>Support as you wish to download, or send directly to Yan for follow-up consulting.</p>
       <button id="generateSummaryBtn" class="btn btn-primary reveal in d1" style="margin-top:20px;font-size:1.1rem;padding:14px 32px;">📋 Generate My Positioning Arsenal</button>
       <div id="donateSection" class="checklist reveal" style="display:none;margin-top:28px;text-align:center;border:2px solid var(--accent, #c41e3a);">
-        <h4 style="color:var(--accent, #c41e3a);">💝 Tip to Download</h4>
+        <h4 style="color:var(--accent, #c41e3a);">💝 Support to Download</h4>
         <p style="margin:10px 0;font-size:0.95rem;color:#555;">This document contains your complete positioning assets<br>Your experience, strengths, and positioning statement — download with one click</p>
         <div style="margin:14px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div>
         <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">Every report is personally reviewed by Yan. Tip as you wish, download instantly</p>
-        <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">✅ Tipped — Download Document</button>
+        <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">✅ Supported — Download Document</button>
         <p style="font-size:0.78rem;color:#999;margin-top:10px;">After download, send to Yan (cheny2806) as a basis for 1-on-1 consulting</p>
       </div>
     </div>
@@ -159,7 +159,7 @@
     <div class="svc-grid" style="grid-template-columns:repeat(3,1fr);">
       <div class="svc-card glass reveal"><h3>🆓 Try Solo</h3><p>Follow Path A. If it clicks one day, congratulations. If you get stuck — you know where to find me.</p><p style="font-size:0.8rem;color:#999;margin-top:8px;">For: self-explorers</p></div>
       <div class="svc-card glass reveal d1" style="border:2px solid var(--accent, #c41e3a);"><div style="display:inline-block;background:var(--accent, #c41e3a);color:#fff;padding:2px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:10px;">👈 Recommended</div><h3>🎯 Work with Yan</h3><p>Send me your three boxes. 1-on-1: positioning + tags + first content.</p><p style="font-size:0.9rem;font-weight:700;color:var(--accent, #c41e3a);margin-top:8px;">¥500–600</p><a class="btn btn-primary svc-btn" href="index.html#contact" data-copy>Add WeChat & Send</a></div>
-      <div class="svc-card glass reveal d2"><h3>💝 Tip First</h3><p>If this checklist helped you, buy me a coffee. I'll keep updating it.</p><div style="margin:12px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div><p style="font-size:0.78rem;color:#999;margin-top:6px;">Scan to tip, any amount</p></div>
+      <div class="svc-card glass reveal d2"><h3>💝 Support First</h3><p>If this checklist helped you, buy me a coffee. I'll keep updating it.</p><div style="margin:12px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div><p style="font-size:0.78rem;color:#999;margin-top:6px;">Scan to support, any amount</p></div>
     </div>
   </div>
 </section>
@@ -175,7 +175,7 @@
     <h2 class="reveal d1" style="text-align:center;">You can cut a rough outline,<br>but not the <em>sharpest edge</em>.</h2>
     <p class="sub reveal d2" style="text-align:center;">Screenshot your three boxes, add me on WeChat.<br>I'll do the step you can't do yourself.</p>
     <div class="hero-cta reveal d3" style="justify-content:center;flex-wrap:wrap;"><a class="btn btn-primary" href="index.html#contact" data-copy>Add WeChat · cheny2806</a></div>
-    <div style="text-align:center;margin-top:16px;"><p style="font-size:0.9rem;color:#888;">Found it useful? Tip any amount</p><img src="assets/img/wechat-qr.jpg" alt="QR" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" /></div>
+    <div style="text-align:center;margin-top:16px;"><p style="font-size:0.9rem;color:#888;">Found it useful? Support me</p><img src="assets/img/wechat-qr.jpg" alt="QR" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" /></div>
     <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:#999;">⚡ This page updates continuously. Bookmark it — every visit brings iteration.<br>Last updated: July 2026 · Yan iterates methodology from the front lines</p>
   </div>
 </section>
@@ -221,7 +221,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     });
   }).then(function(data){
     var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
-    btn.textContent='✅ Tipped - Download Document';btn.disabled=false;
+    btn.textContent='✅ Supported - Download Document';btn.disabled=false;
     if(data.choices&&data.choices[0]){
       var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
             try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,lang:'en',report:text}) }); } catch(e) {}
@@ -293,7 +293,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
               if (d.status === 'done' && d.report) {
                 clearInterval(poll);
                 var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
-                downloadBtn.textContent = '✅ Tipped - Download';
+                downloadBtn.textContent = '✅ Supported - Download';
                 downloadBtn.disabled = false;
                 var text = d.report;
                 var now = new Date();
@@ -588,14 +588,14 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     <div class="result-box reveal in" style="text-align:center;">
       <p style="font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent, #c41e3a);margin-bottom:8px;">Step 4</p>
       <div class="big-line">The three boxes above — that's your <strong>positioning arsenal</strong>.</div>
-      <p style="margin-top:12px;color:#555;line-height:1.8;">Click below to compile it into a document.<br>Tip any amount to download, or send directly to Yan for follow-up consulting.</p>
+      <p style="margin-top:12px;color:#555;line-height:1.8;">Click below to compile it into a document.<br>Support as you wish to download, or send directly to Yan for follow-up consulting.</p>
       <button id="generateSummaryBtn" class="btn btn-primary reveal in d1" style="margin-top:20px;font-size:1.1rem;padding:14px 32px;">📋 Generate My Positioning Arsenal</button>
       <div id="donateSection" class="checklist reveal" style="display:none;margin-top:28px;text-align:center;border:2px solid var(--accent, #c41e3a);">
-        <h4 style="color:var(--accent, #c41e3a);">💝 Tip to Download</h4>
+        <h4 style="color:var(--accent, #c41e3a);">💝 Support to Download</h4>
         <p style="margin:10px 0;font-size:0.95rem;color:#555;">This document contains your complete positioning assets<br>Your experience, strengths, and positioning statement — download with one click</p>
         <div style="margin:14px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div>
         <p style="font-size:0.82rem;color:#999;margin-bottom:12px;">Every report is personally reviewed by Yan. Tip as you wish, download instantly</p>
-        <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">✅ Tipped — Download Document</button>
+        <button id="downloadSummaryBtn" class="btn btn-primary" style="font-size:1rem;padding:12px 28px;">✅ Supported — Download Document</button>
         <p style="font-size:0.78rem;color:#999;margin-top:10px;">After download, send to Yan (cheny2806) as a basis for 1-on-1 consulting</p>
       </div>
     </div>
@@ -639,7 +639,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     <div class="svc-grid" style="grid-template-columns:repeat(3,1fr);">
       <div class="svc-card glass reveal"><h3>🆓 Try Solo</h3><p>Follow Path A. If it clicks one day, congratulations. If you get stuck — you know where to find me.</p><p style="font-size:0.8rem;color:#999;margin-top:8px;">For: self-explorers</p></div>
       <div class="svc-card glass reveal d1" style="border:2px solid var(--accent, #c41e3a);"><div style="display:inline-block;background:var(--accent, #c41e3a);color:#fff;padding:2px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:10px;">👈 Recommended</div><h3>🎯 Work with Yan</h3><p>Send me your three boxes. 1-on-1: positioning + tags + first content.</p><p style="font-size:0.9rem;font-weight:700;color:var(--accent, #c41e3a);margin-top:8px;">¥500–600</p><a class="btn btn-primary svc-btn" href="index.html#contact" data-copy>Add WeChat & Send</a></div>
-      <div class="svc-card glass reveal d2"><h3>💝 Tip First</h3><p>If this checklist helped you, buy me a coffee. I'll keep updating it.</p><div style="margin:12px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div><p style="font-size:0.78rem;color:#999;margin-top:6px;">Scan to tip, any amount</p></div>
+      <div class="svc-card glass reveal d2"><h3>💝 Support First</h3><p>If this checklist helped you, buy me a coffee. I'll keep updating it.</p><div style="margin:12px 0;"><img src="assets/img/wechat-qr.jpg" alt="WeChat Pay QR" style="width:160px;border-radius:10px;display:block;margin:0 auto;" loading="lazy" /></div><p style="font-size:0.78rem;color:#999;margin-top:6px;">Scan to support, any amount</p></div>
     </div>
   </div>
 </section>
@@ -655,7 +655,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     <h2 class="reveal d1" style="text-align:center;">You can cut a rough outline,<br>but not the <em>sharpest edge</em>.</h2>
     <p class="sub reveal d2" style="text-align:center;">Screenshot your three boxes, add me on WeChat.<br>I'll do the step you can't do yourself.</p>
     <div class="hero-cta reveal d3" style="justify-content:center;flex-wrap:wrap;"><a class="btn btn-primary" href="index.html#contact" data-copy>Add WeChat · cheny2806</a></div>
-    <div style="text-align:center;margin-top:16px;"><p style="font-size:0.9rem;color:#888;">Found it useful? Tip any amount</p><img src="assets/img/wechat-qr.jpg" alt="QR" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" /></div>
+    <div style="text-align:center;margin-top:16px;"><p style="font-size:0.9rem;color:#888;">Found it useful? Support me</p><img src="assets/img/wechat-qr.jpg" alt="QR" style="width:140px;border-radius:10px;margin:8px auto;display:block;" loading="lazy" /></div>
     <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:#999;">⚡ This page updates continuously. Bookmark it — every visit brings iteration.<br>Last updated: July 2026 · Yan iterates methodology from the front lines</p>
   </div>
 </section>
@@ -701,7 +701,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     });
   }).then(function(data){
     var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
-    btn.textContent='✅ Tipped - Download Document';btn.disabled=false;
+    btn.textContent='✅ Supported - Download Document';btn.disabled=false;
     if(data.choices&&data.choices[0]){
       var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
             try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
