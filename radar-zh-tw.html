@@ -2231,36 +2231,62 @@ h1 .accent {
         loadingBox.innerHTML = '<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">IP定位報告正在生成中</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">深度分析約需30秒，請稍後…</p>';
         document.body.appendChild(loadingBox);
 
-        // 直接调用DeepSeek API生成报告
-        var prompt = '你是「IP定位雷達」。基於用户填写的三步骤内容，生成一份IP定位深度诊断报告。结构：①凭什么是你（找出用户自己没意识到的优势）②你是谁（三句话定位：共鸣型+反常识型+独家型）③现在做什么（三条可执行路径）。不说教、不居高临下。2000字以内。\\n\\n用户填写内容：\\n步骤1：' + step1 + '\\n步骤2：' + step2 + '\\n步骤3：' + step3;
-
-        fetch('https://api.deepseek.com/v1/chat/completions', {
+        // 异步中转：提交任务 → 服务器后台调DeepSeek（key不暴露）→ 轮询结果
+        var API_BASE = 'https://4602cdfbd7db1e08-43-139-102-63.serveousercontent.com';
+        fetch(API_BASE + '/api/generate-report', {
           method: 'POST',
-          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-13f08531840642749a5fb8e2282bf198'},
-          body: JSON.stringify({model:'deepseek-v4-pro', messages:[{role:'system',content:'你是IP定位雷達智能體，用繁體中文回覆。'},{role:'user',content:prompt}], temperature:0.65, max_tokens:3000})
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({step1:step1, step2:step2, step3:step3})
         })
         .then(function(r) { return r.json(); })
         .then(function(data) {
-          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
-          downloadBtn.textContent = '✅ 我已打賞，下載文檔';
-          downloadBtn.disabled = false;
-          if (data.choices && data.choices[0]) {
-            var msg = data.choices[0].message; var text = msg.content || msg.reasoning_content || '';
-            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,lang:'zh-tw',report:text}) }); } catch(e) {}
-
-            var now = new Date();
-            var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
-            var ua = navigator.userAgent.toLowerCase();
-            var isWx = ua.indexOf('micromessenger') !== -1;
-            if (isWx) { copyTextToUser(text, dateStr); }
-            else {
-              var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-              var a = document.createElement('a');
-              a.href = URL.createObjectURL(blob);
-              a.download = '北大燕姐-IP定位分析報告-' + dateStr + '.txt';
-              document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            }
-          } else { alert('生成失敗。你填寫的內容已自動保存，刷新頁面後還在。可加微信 cheny2806 發給燕姐手動生成。'); downloadBtn.textContent = '🔄 重新生成'; downloadBtn.disabled = false; }
+          if (!data.ok || !data.task_id) {
+            var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+            downloadBtn.textContent = '🔄 重新生成';
+            downloadBtn.disabled = false;
+            alert((data.error || '生成失败') + ' 你填寫的內容已自動保存，可加微信 cheny2806 聯繫燕姐。');
+            return;
+          }
+          var taskId = data.task_id;
+          var pollCount = 0;
+          var poll = setInterval(function() {
+            pollCount++;
+            fetch(API_BASE + '/api/report-status?task_id=' + taskId)
+            .then(function(r) { return r.json(); })
+            .then(function(d) {
+              if (d.status === 'done' && d.report) {
+                clearInterval(poll);
+                var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+                downloadBtn.textContent = '✅ 我已打賞，下載文檔';
+                downloadBtn.disabled = false;
+                var text = d.report;
+                var now = new Date();
+                var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+                var ua = navigator.userAgent.toLowerCase();
+                var isWx = ua.indexOf('micromessenger') !== -1;
+                if (isWx) { copyTextToUser(text, dateStr); }
+                else {
+                  var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                  var a = document.createElement('a');
+                  a.href = URL.createObjectURL(blob);
+                  a.download = '北大燕姐-IP定位分析報告-' + dateStr + '.txt';
+                  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                }
+              } else if (d.status === 'error') {
+                clearInterval(poll);
+                var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+                downloadBtn.textContent = '🔄 重新生成';
+                downloadBtn.disabled = false;
+                alert('生成失敗。你填寫的內容已自動保存，可加微信 cheny2806 聯繫燕姐手動生成。');
+              } else if (pollCount > 40) {
+                clearInterval(poll);
+                var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+                downloadBtn.textContent = '🔄 重新生成';
+                downloadBtn.disabled = false;
+                alert('生成超時。你填寫的內容已自動保存，可加微信 cheny2806 聯繫燕姐手動生成。');
+              }
+            });
+          }, 3000);
         })
         .catch(function() {
           var lb = document.getElementById('reportLoading'); if (lb) lb.remove();

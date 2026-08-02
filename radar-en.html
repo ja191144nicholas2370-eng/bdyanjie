@@ -201,11 +201,25 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
   lb.innerHTML='<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">Generating your IP positioning report</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">Deep analysis takes about 30 seconds...</p>';
   document.body.appendChild(lb);
   var prompt='You are IP Positioning Radar. Generate an IP positioning diagnostic report. Structure: ①Why You (find strengths the user doesn\'t realize) ②Who You Are (3 positioning lines: empathy+contrarian+exclusive) ③What Now (3 actionable paths). No preaching. Under 2000 words.\n\nUser input:\nStep1: '+s1+'\nStep2: '+s2+'\nStep3: '+s3;
-  fetch('https://api.deepseek.com/v1/chat/completions',{
+  fetch('https://4602cdfbd7db1e08-43-139-102-63.serveousercontent.com/api/generate-report',{
     method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-13f08531840642749a5fb8e2282bf198'},
-    body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'You are IP Positioning Radar.'},{role:'user',content:prompt}],temperature:0.65,max_tokens:3000})
-  }).then(function(r){return r.json()}).then(function(data){
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({step1:s1,step2:s2,step3:s3})
+  }).then(function(r){return r.json()}).then(function(d0){
+    if(!d0.ok||!d0.task_id){alert('Generation failed. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;var lb0=document.getElementById('reportLoading');if(lb0)lb0.remove();throw new Error('no task');}
+    return new Promise(function(resolve){
+      var tid=d0.task_id,pc=0;
+      var poll=setInterval(function(){
+        pc++;
+        fetch('https://4602cdfbd7db1e08-43-139-102-63.serveousercontent.com/api/report-status?task_id='+tid)
+        .then(function(r){return r.json()}).then(function(d){
+          if(d.status==='done'&&d.report){clearInterval(poll);resolve({choices:[{message:{content:d.report}}]});}
+          else if(d.status==='error'){clearInterval(poll);alert('Generation failed. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;resolve({choices:[]});}
+          else if(pc>40){clearInterval(poll);alert('Generation timeout. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;resolve({choices:[]});}
+        });
+      },3000);
+    });
+  }).then(function(data){
     var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
     btn.textContent='✅ Tipped - Download Document';btn.disabled=false;
     if(data.choices&&data.choices[0]){
@@ -253,44 +267,69 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
         loadingBox.innerHTML = '<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">IP Positioning Report Generating</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">Deep analysis takes ~30 seconds...</p>';
         document.body.appendChild(loadingBox);
 
-        // 直接调用DeepSeek API生成报告
-        var prompt = 'You are IP Positioning Radar. Based on用户填写的三步骤内容，生成一份IP定位深度诊断报告。结构：①凭什么是你（找出用户自己没意识到的优势）②你是谁（三句话定位：共鸣型+反常识型+独家型）③现在做什么（三条可执行路径）。不说教、不居高临下。2000字以内。\\n\\n用户填写内容：\\n步骤1：' + step1 + '\\n步骤2：' + step2 + '\\n步骤3：' + step3;
-
-        fetch('https://api.deepseek.com/v1/chat/completions', {
+        // Async proxy: server calls DeepSeek (key hidden) -> poll result
+        var API_BASE = 'https://4602cdfbd7db1e08-43-139-102-63.serveousercontent.com';
+        fetch(API_BASE + '/api/generate-report', {
           method: 'POST',
-          headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer sk-13f08531840642749a5fb8e2282bf198'},
-          body: JSON.stringify({model:'deepseek-v4-pro', messages:[{role:'system',content:'You are IP Positioning Radar agent.'},{role:'user',content:prompt}], temperature:0.65, max_tokens:3000})
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({step1:step1, step2:step2, step3:step3})
         })
         .then(function(r) { return r.json(); })
         .then(function(data) {
-          var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
-          downloadBtn.textContent = '✅ Tipped - Download';
-          downloadBtn.disabled = false;
-          if (data.choices && data.choices[0]) {
-            var msg = data.choices[0].message; var text = msg.content || msg.reasoning_content || '';
-            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
-
-            var now = new Date();
-            var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
-            var ua = navigator.userAgent.toLowerCase();
-            var isWx = ua.indexOf('micromessenger') !== -1;
-            if (isWx) { copyTextToUser(text, dateStr); }
-            else {
-              var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-              var a = document.createElement('a');
-              a.href = URL.createObjectURL(blob);
-              a.download = 'BeiDa-Yan-IP-Report-' + dateStr + '.txt';
-              document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            }
-          } else { alert('Generation failed. Content auto-saved. Add cheny2806 on WeChat for manual generation.'); downloadBtn.textContent = '🔄 Retry'; downloadBtn.disabled = false; }
+          if (!data.ok || !data.task_id) {
+            var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+            downloadBtn.textContent = '🔄 Retry';
+            downloadBtn.disabled = false;
+            alert((data.error || 'Generation failed') + ' Your content is saved. Add cheny2806 on WeChat for manual help.');
+            return;
+          }
+          var taskId = data.task_id;
+          var pollCount = 0;
+          var poll = setInterval(function() {
+            pollCount++;
+            fetch(API_BASE + '/api/report-status?task_id=' + taskId)
+            .then(function(r) { return r.json(); })
+            .then(function(d) {
+              if (d.status === 'done' && d.report) {
+                clearInterval(poll);
+                var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+                downloadBtn.textContent = '✅ Tipped - Download';
+                downloadBtn.disabled = false;
+                var text = d.report;
+                var now = new Date();
+                var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+                var ua = navigator.userAgent.toLowerCase();
+                var isWx = ua.indexOf('micromessenger') !== -1;
+                if (isWx) { copyTextToUser(text, dateStr); }
+                else {
+                  var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                  var a = document.createElement('a');
+                  a.href = URL.createObjectURL(blob);
+                  a.download = 'PKU-Yan-IP-Report-' + dateStr + '.txt';
+                  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                }
+              } else if (d.status === 'error') {
+                clearInterval(poll);
+                var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+                downloadBtn.textContent = '🔄 Retry';
+                downloadBtn.disabled = false;
+                alert('Generation failed. Your content is saved. Add cheny2806 on WeChat for manual generation.');
+              } else if (pollCount > 40) {
+                clearInterval(poll);
+                var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
+                downloadBtn.textContent = '🔄 Retry';
+                downloadBtn.disabled = false;
+                alert('Generation timeout. Your content is saved. Add cheny2806 on WeChat for manual generation.');
+              }
+            });
+          }, 3000);
         })
         .catch(function() {
           var lb = document.getElementById('reportLoading'); if (lb) lb.remove();
           downloadBtn.textContent = '🔄 Retry';
           downloadBtn.disabled = false;
-          alert('Network error. Content auto-saved. Add cheny2806 on WeChat.');
+          alert('Network error. Your content is saved. Add cheny2806 on WeChat for manual generation.');
         });
-      });
 
       /* ====== 智能IP定位报告生成 ====== */
       function generateIPReport(s1, s2, s3, dateStr) {
@@ -642,11 +681,25 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
   lb.innerHTML='<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">Generating your IP positioning report</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">Deep analysis takes about 30 seconds...</p>';
   document.body.appendChild(lb);
   var prompt='You are IP Positioning Radar. Generate an IP positioning diagnostic report. Structure: ①Why You (find strengths the user doesn\'t realize) ②Who You Are (3 positioning lines: empathy+contrarian+exclusive) ③What Now (3 actionable paths). No preaching. Under 2000 words.\n\nUser input:\nStep1: '+s1+'\nStep2: '+s2+'\nStep3: '+s3;
-  fetch('https://api.deepseek.com/v1/chat/completions',{
+  fetch('https://4602cdfbd7db1e08-43-139-102-63.serveousercontent.com/api/generate-report',{
     method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer sk-13f08531840642749a5fb8e2282bf198'},
-    body:JSON.stringify({model:'deepseek-v4-pro',messages:[{role:'system',content:'You are IP Positioning Radar.'},{role:'user',content:prompt}],temperature:0.65,max_tokens:3000})
-  }).then(function(r){return r.json()}).then(function(data){
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({step1:s1,step2:s2,step3:s3})
+  }).then(function(r){return r.json()}).then(function(d0){
+    if(!d0.ok||!d0.task_id){alert('Generation failed. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;var lb0=document.getElementById('reportLoading');if(lb0)lb0.remove();throw new Error('no task');}
+    return new Promise(function(resolve){
+      var tid=d0.task_id,pc=0;
+      var poll=setInterval(function(){
+        pc++;
+        fetch('https://4602cdfbd7db1e08-43-139-102-63.serveousercontent.com/api/report-status?task_id='+tid)
+        .then(function(r){return r.json()}).then(function(d){
+          if(d.status==='done'&&d.report){clearInterval(poll);resolve({choices:[{message:{content:d.report}}]});}
+          else if(d.status==='error'){clearInterval(poll);alert('Generation failed. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;resolve({choices:[]});}
+          else if(pc>40){clearInterval(poll);alert('Generation timeout. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;resolve({choices:[]});}
+        });
+      },3000);
+    });
+  }).then(function(data){
     var lb2=document.getElementById('reportLoading');if(lb2)lb2.remove();
     btn.textContent='✅ Tipped - Download Document';btn.disabled=false;
     if(data.choices&&data.choices[0]){
