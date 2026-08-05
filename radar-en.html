@@ -201,7 +201,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
   lb.innerHTML='<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">Generating your IP positioning report</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">Deep analysis takes about 30 seconds...</p>';
   document.body.appendChild(lb);
   var prompt='You are IP Positioning Radar. Generate an IP positioning diagnostic report. Structure: ①Why You (find strengths the user doesn\'t realize) ②Who You Are (3 positioning lines: empathy+contrarian+exclusive) ③What Now (3 actionable paths). No preaching. Under 2000 words.\n\nUser input:\nStep1: '+s1+'\nStep2: '+s2+'\nStep3: '+s3;
-  fetch('https://2c9332c6cd701bd1-43-139-102-63.serveousercontent.com/api/generate-report',{
+  fetch('https://api.beidayan.com/api/generate-report',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({step1:s1,step2:s2,step3:s3})
@@ -211,7 +211,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
       var tid=d0.task_id,pc=0;
       var poll=setInterval(function(){
         pc++;
-        fetch('https://2c9332c6cd701bd1-43-139-102-63.serveousercontent.com/api/report-status?task_id='+tid)
+        fetch('https://api.beidayan.com/api/report-status?task_id='+tid)
         .then(function(r){return r.json()}).then(function(d){
           if(d.status==='done'&&d.report){clearInterval(poll);resolve({choices:[{message:{content:d.report}}]});}
           else if(d.status==='error'){clearInterval(poll);alert('Generation failed. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;resolve({choices:[]});}
@@ -224,7 +224,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     btn.textContent='✅ Supported - Download Document';btn.disabled=false;
     if(data.choices&&data.choices[0]){
       var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
-            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,lang:'en',report:text}) }); } catch(e) {}
+            try { fetch('https://api.beidayan.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,lang:'en',report:text}) }); } catch(e) {}
 
       var now=new Date();var ds=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
       var ua=navigator.userAgent.toLowerCase();var isWx=ua.indexOf('micromessenger')!==-1;
@@ -268,7 +268,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
         document.body.appendChild(loadingBox);
 
         // Async proxy: server calls DeepSeek (key hidden) -> poll result
-        var API_BASE = 'https://2c9332c6cd701bd1-43-139-102-63.serveousercontent.com';
+        var API_BASE = 'https://api.beidayan.com';
         fetch(API_BASE + '/api/generate-report', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
@@ -681,7 +681,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
   lb.innerHTML='<div style="font-size:2rem;margin-bottom:12px;">⏳</div><p style="font-size:1rem;font-weight:600;color:#333;">Generating your IP positioning report</p><p style="font-size:0.85rem;color:#999;margin-top:4px;">Deep analysis takes about 30 seconds...</p>';
   document.body.appendChild(lb);
   var prompt='You are IP Positioning Radar. Generate an IP positioning diagnostic report. Structure: ①Why You (find strengths the user doesn\'t realize) ②Who You Are (3 positioning lines: empathy+contrarian+exclusive) ③What Now (3 actionable paths). No preaching. Under 2000 words.\n\nUser input:\nStep1: '+s1+'\nStep2: '+s2+'\nStep3: '+s3;
-  fetch('https://2c9332c6cd701bd1-43-139-102-63.serveousercontent.com/api/generate-report',{
+  fetch('https://api.beidayan.com/api/generate-report',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({step1:s1,step2:s2,step3:s3})
@@ -691,7 +691,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
       var tid=d0.task_id,pc=0;
       var poll=setInterval(function(){
         pc++;
-        fetch('https://2c9332c6cd701bd1-43-139-102-63.serveousercontent.com/api/report-status?task_id='+tid)
+        fetch('https://api.beidayan.com/api/report-status?task_id='+tid)
         .then(function(r){return r.json()}).then(function(d){
           if(d.status==='done'&&d.report){clearInterval(poll);resolve({choices:[{message:{content:d.report}}]});}
           else if(d.status==='error'){clearInterval(poll);alert('Generation failed. Add cheny2806 on WeChat for manual help.');btn.textContent='🔄 Retry';btn.disabled=false;resolve({choices:[]});}
@@ -704,7 +704,7 @@ document.getElementById('downloadSummaryBtn').addEventListener('click',function(
     btn.textContent='✅ Supported - Download Document';btn.disabled=false;
     if(data.choices&&data.choices[0]){
       var msg=data.choices[0].message;var text=msg.content||msg.reasoning_content||'';
-            try { fetch('https://48f5ae66af5f369c-43-139-102-63.serveousercontent.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
+            try { fetch('https://api.beidayan.com/api/save-report', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({step1:step1,step2:step2,step3:step3,report:text}) }); } catch(e) {}
 
       var now=new Date();var ds=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
       var ua=navigator.userAgent.toLowerCase();var isWx=ua.indexOf('micromessenger')!==-1;
