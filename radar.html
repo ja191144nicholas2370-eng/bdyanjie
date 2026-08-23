@@ -2469,5 +2469,21 @@ h1 .accent {
       }
     })();
   </script>
+<script>
+/* 填写内容实时保存+恢复（防丢失 8/23） */
+(function(){
+  function setAll(step, val){
+    document.querySelectorAll('textarea[id="radar-input-step'+step+'"]').forEach(function(el){ el.value = val; });
+  }
+  [1,2,3].forEach(function(i){
+    var els = document.querySelectorAll('textarea[id="radar-input-step'+i+'"]');
+    if(!els.length) return;
+    try { var v = localStorage.getItem('radar_step'+i); if(v) els.forEach(function(el){ el.value = v; }); } catch(e){}
+    els.forEach(function(el){
+      el.addEventListener('input', function(){ try { localStorage.setItem('radar_step'+i, el.value); } catch(e){} });
+    });
+  });
+})();
+</script>
 </body>
 </html>
