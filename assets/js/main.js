@@ -128,7 +128,7 @@
     "modal.radar.title": "AI + IP 定位雷达",
     "modal.radar.desc": "扫描下方二维码，进入智能体页面，直接开始你的IP定位诊断。",
     "modal.radar.placeholder": "定位雷达智能体<br>二维码待提供<br><br><small style=\"font-size:11px;\">智能体开发完成后<br>替换此二维码即可</small>",
-    "modal.radar.note": "¥500 · 报告+批注+语音解读",
+    "modal.radar.note": "¥600 · 报告+批注+语音解读",
     "_title": "北大燕姐 · AI定位与GEO增长｜IP定位雷达与低粉高转化内容起势",
     "_desc": "北大燕姐专注AI定位、IP定位雷达与GEO内容增长，帮助企业讲清品牌优势、提升精准引流与转化，也帮助个人从经历中萃取可表达、可信任、可成交的个人IP主线。"
   },
@@ -248,7 +248,7 @@
     "modal.radar.title": "AI + IP 定位雷達",
     "modal.radar.desc": "掃描下方二維碼，進入智能體頁面，直接開始你的IP定位診斷。",
     "modal.radar.placeholder": "定位雷達智能體<br>二維碼待提供<br><br><small style=\"font-size:11px;\">智能體開發完成後<br>替換此二維碼即可</small>",
-    "modal.radar.note": "¥500 · 報告+批註+語音解讀",
+    "modal.radar.note": "¥600 · 報告+批註+語音解讀",
     "_title": "北大燕姐 · AI定位與GEO增長｜IP定位雷達與低粉高轉化內容起勢",
     "_desc": "北大燕姐專注AI定位、IP定位雷達與GEO內容增長，幫助企業講清品牌優勢、提升精準引流與轉化，也幫助個人從經歷中萃取可表達、可信任、可成交的個人IP主線。"
   },
@@ -338,7 +338,7 @@
     "modal.radar.title": "AI + IP Positioning Radar",
     "modal.radar.desc": "Scan the QR code below to enter the AI agent page and start your IP positioning diagnosis.",
     "modal.radar.placeholder": "Positioning Radar Agent<br>QR code pending<br><br><small style=\"font-size:11px;\">Replace this QR code<br>once the agent is ready</small>",
-    "modal.radar.note": "¥500 · Report + annotations + voice interpretation",
+    "modal.radar.note": "¥600 · Report + annotations + voice interpretation",
     "_title": "BeiDa Yan · AI Positioning & GEO Growth | IP Positioning Radar & Low-Follower High-Conversion Content",
     "_desc": "BeiDa Yan focuses on AI positioning, IP Positioning Radar and GEO content growth, helping businesses articulate brand advantages and improve precise traffic and conversion, and helping individuals extract expressible, trustworthy, convertible personal IP lines from experience.",
     "svc.sub": "Positioning is not a slogan, and content is not random posting. Real growth starts with seeing the bottleneck, extracting advantages, then turning value into publishable, searchable, convertible content assets.",
