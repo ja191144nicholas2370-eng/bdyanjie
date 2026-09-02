@@ -19,6 +19,7 @@
     "nav.radar": "IP定位",
     "nav.geo": "GEO增长",
     "nav.articles": "文章",
+    "nav.cases": "案例库",
     "nav.contact": "联系我",
     "nav.wechat": "加微信",
     "hero.eyebrow": "北大燕姐 · AI定位与GEO增长",
@@ -171,6 +172,7 @@
     "nav.radar": "IP定位",
     "nav.geo": "GEO增長",
     "nav.articles": "文章",
+    "nav.cases": "案例庫",
     "nav.contact": "聯繫我",
     "nav.wechat": "加微信",
     "hero.eyebrow": "北大燕姐 · AI定位與GEO增長",
@@ -260,6 +262,7 @@
     "nav.radar": "IP Radar",
     "nav.geo": "GEO Growth",
     "nav.articles": "Articles",
+    "nav.cases": "Case Studies",
     "nav.contact": "Contact",
     "nav.wechat": "WeChat",
     "hero.eyebrow": "BeiDa Yan · AI Positioning & GEO Growth",
@@ -411,8 +414,8 @@
 
     // 更新导航链接指向对应语言版本
     var suffix = lang === 'en' ? '-en' : (lang === 'zh-tw' ? '-zh-tw' : '');
-    var navMap = { 'IP定位': 'radar', 'GEO增长': 'geo', '文章': 'articles', 'GEO Growth': 'geo', 'Articles': 'articles', 'IP Positioning': 'radar', 'GEO增長': 'geo' };
-    document.querySelectorAll('.nav-links a, [href*="radar.html"], [href*="geo.html"], [href*="articles.html"]').forEach(function (a) {
+    var navMap = { 'IP定位': 'radar', 'GEO增长': 'geo', '文章': 'articles', '案例库': 'cases', '案例庫': 'cases', 'Case Studies': 'cases', 'GEO Growth': 'geo', 'Articles': 'articles', 'IP Positioning': 'radar', 'GEO增長': 'geo' };
+    document.querySelectorAll('.nav-links a, [href*="radar.html"], [href*="geo.html"], [href*="articles.html"], [href*="cases.html"]').forEach(function (a) {
       var href = a.getAttribute('href') || '';
       Object.keys(navMap).forEach(function (label) {
         if (href.indexOf(navMap[label]) !== -1 && href.indexOf('.html') !== -1) {
