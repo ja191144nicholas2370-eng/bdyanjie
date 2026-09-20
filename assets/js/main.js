@@ -748,3 +748,33 @@
      ============================================================ */
 
 })();
+
+/* ====== 境外合规：英文模式下隐藏微信引流入口，仅保留邮箱 ====== */
+(function () {
+  var EMAIL = "234663291@qq.com";
+  function syncCompliance() {
+    var lang = (localStorage.getItem('lang') || 'zh') + '';
+    var isEn = lang.indexOf('en') === 0;
+    document.querySelectorAll('.wechat-box').forEach(function (el) {
+      el.style.display = isEn ? 'none' : '';
+    });
+    document.querySelectorAll('.btn-wechat').forEach(function (el) {
+      if (isEn) {
+        el.setAttribute('href', 'mailto:' + EMAIL);
+        el.textContent = 'Email';
+      }
+    });
+    document.querySelectorAll('[data-copy]').forEach(function (el) {
+      if (isEn) {
+        el.removeAttribute('data-copy');
+        el.setAttribute('href', 'mailto:' + EMAIL);
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function () { setTimeout(syncCompliance, 80); });
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.closest && e.target.closest('#langSwitch, .lang-switch')) {
+      setTimeout(syncCompliance, 150);
+    }
+  }, true);
+})();
