@@ -1,236 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://beidayan.com/articles-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles.html" />
+    <loc>https://beidayan.com/articles-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles.html" />
+    <loc>https://beidayan.com/articles-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles.html" />
+    <loc>https://beidayan.com/articles</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ai-tools-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ai-tools-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ai-tools-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ai-tools.html" />
+    <loc>https://beidayan.com/articles/ai-tools-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ai-tools-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ai-tools-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ai-tools" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ai-tools-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ai-tools-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ai-tools-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ai-tools.html" />
+    <loc>https://beidayan.com/articles/ai-tools-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ai-tools-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ai-tools-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ai-tools" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ai-tools.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ai-tools-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ai-tools-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ai-tools.html" />
+    <loc>https://beidayan.com/articles/ai-tools</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ai-tools-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ai-tools-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ai-tools" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-2026-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-2026-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-2026-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-2026.html" />
+    <loc>https://beidayan.com/articles/geo-2026-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-2026-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-2026-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-2026-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-2026-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-2026-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-2026.html" />
+    <loc>https://beidayan.com/articles/geo-2026-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-2026-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-2026-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-2026-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-2026-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-2026.html" />
+    <loc>https://beidayan.com/articles/geo-2026</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-2026-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-2026-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-ai-search-video-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-ai-search-video-2026.html" />
+    <loc>https://beidayan.com/articles/geo-ai-search-video-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-ai-search-video-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-invisible-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-invisible-2026.html" />
+    <loc>https://beidayan.com/articles/geo-invisible-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-invisible-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-redbook-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-redbook-2026.html" />
+    <loc>https://beidayan.com/articles/geo-redbook-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-redbook-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-service-provider-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-service-provider-2026.html" />
+    <loc>https://beidayan.com/articles/geo-service-provider-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-service-provider-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-shortest-path-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-shortest-path-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-shortest-path-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-shortest-path.html" />
+    <loc>https://beidayan.com/articles/geo-shortest-path-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-shortest-path-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-shortest-path-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-shortest-path" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-shortest-path-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-shortest-path-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-shortest-path-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-shortest-path.html" />
+    <loc>https://beidayan.com/articles/geo-shortest-path-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-shortest-path-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-shortest-path-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-shortest-path" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/geo-shortest-path.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-shortest-path-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-shortest-path-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-shortest-path.html" />
+    <loc>https://beidayan.com/articles/geo-shortest-path</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/geo-shortest-path-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/geo-shortest-path-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/geo-shortest-path" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ip-awakening-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-awakening-2026.html" />
+    <loc>https://beidayan.com/articles/ip-awakening-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-awakening-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ip-positioning-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ip-positioning-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ip-positioning-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-positioning.html" />
+    <loc>https://beidayan.com/articles/ip-positioning-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ip-positioning-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ip-positioning-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-positioning" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ip-positioning-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ip-positioning-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ip-positioning-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-positioning.html" />
+    <loc>https://beidayan.com/articles/ip-positioning-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ip-positioning-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ip-positioning-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-positioning" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ip-positioning.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ip-positioning-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ip-positioning-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-positioning.html" />
+    <loc>https://beidayan.com/articles/ip-positioning</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/articles/ip-positioning-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/articles/ip-positioning-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-positioning" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/ip-radar-deepdive-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-radar-deepdive-2026.html" />
+    <loc>https://beidayan.com/articles/ip-radar-deepdive-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/ip-radar-deepdive-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/shangsixiu-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/shangsixiu-2026.html" />
+    <loc>https://beidayan.com/articles/shangsixiu-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/shangsixiu-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/state-council-ai-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/state-council-ai-2026.html" />
+    <loc>https://beidayan.com/articles/state-council-ai-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/state-council-ai-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/tencent-meeting-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/tencent-meeting-2026.html" />
+    <loc>https://beidayan.com/articles/tencent-meeting-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/tencent-meeting-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/articles/zhongshanshan-2026.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/zhongshanshan-2026.html" />
+    <loc>https://beidayan.com/articles/zhongshanshan-2026</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/articles/zhongshanshan-2026" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/cases-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/cases-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/cases-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/cases.html" />
+    <loc>https://beidayan.com/cases-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/cases-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/cases-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/cases" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/cases-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/cases-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/cases-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/cases.html" />
+    <loc>https://beidayan.com/cases-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/cases-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/cases-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/cases" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/cases.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/cases-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/cases-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/cases.html" />
+    <loc>https://beidayan.com/cases</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/cases-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/cases-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/cases" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/geo-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/geo-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/geo-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/geo.html" />
+    <loc>https://beidayan.com/faq-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/faq-en" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/faq" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/geo-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/geo-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/geo-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/geo.html" />
+    <loc>https://beidayan.com/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/faq-en" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/faq" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/geo.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/geo-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/geo-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/geo.html" />
+    <loc>https://beidayan.com/geo-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/geo-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/geo-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/geo" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/home.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/home.html" />
+    <loc>https://beidayan.com/geo-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/geo-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/geo-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/geo" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://beidayan.com/geo</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/geo-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/geo-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/geo" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -241,26 +249,26 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/radar-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/radar-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/radar-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/radar.html" />
+    <loc>https://beidayan.com/radar-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/radar-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/radar-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/radar" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/radar-zh-tw.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/radar-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/radar-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/radar.html" />
+    <loc>https://beidayan.com/radar-zh-tw</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/radar-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/radar-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/radar" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beidayan.com/radar.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/radar-en.html" />
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/radar-zh-tw.html" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/radar.html" />
+    <loc>https://beidayan.com/radar</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beidayan.com/radar-en" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://beidayan.com/radar-zh-tw" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://beidayan.com/radar" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
