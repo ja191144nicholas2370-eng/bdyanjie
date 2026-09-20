@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# AI 搜索引擎与助手（GEO）
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: Baiduspider
+Allow: /
+
+Sitemap: https://beidayan.com/sitemap.xml
